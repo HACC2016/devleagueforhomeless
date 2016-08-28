@@ -1,0 +1,19 @@
+{
+  "name": "hacc2016-devleague-for-homelessness",
+  "version": "1.0.0",
+  "description": "Help homeless outreach teams efficiently respond to community referrals through mobile apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creindle/hacc2016-DevLeague-for-Homelessness.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/creindle/hacc2016-DevLeague-for-Homelessness/issues"
+  },
+  "homepage": "https://github.com/creindle/hacc2016-DevLeague-for-Homelessness#readme"
+}
