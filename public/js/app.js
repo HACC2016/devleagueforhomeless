@@ -58,37 +58,75 @@
 	        null,
 	        "Report Camp"
 	      ),
+	      React.createElement("br", null),
 	      React.createElement(
 	        "form",
-	        { className: "formContainer" },
+	        { className: "form" },
 	        React.createElement(
 	          "div",
-	          null,
-	          "Location",
-	          React.createElement("input", { type: "text", name: "location" })
+	          { className: "location" },
+	          React.createElement("input", {
+	            type: "text",
+	            name: "location",
+	            placeholder: "1234 Street Name, City, State, Zipcode"
+	          }),
+	          React.createElement(
+	            "label",
+	            { htmlFor: "location" },
+	            "Location"
+	          )
 	        ),
 	        React.createElement(
 	          "div",
-	          null,
-	          "Email",
-	          React.createElement("input", { type: "text", name: "location" })
+	          { className: "email" },
+	          React.createElement("input", {
+	            type: "text",
+	            name: "location",
+	            placeholder: "yourname@example.com"
+	          }),
+	          React.createElement(
+	            "label",
+	            { htmlFor: "location" },
+	            "E-mail"
+	          )
 	        ),
 	        React.createElement(
 	          "div",
-	          null,
-	          "Phone Number",
-	          React.createElement("input", { type: "text", name: "location" })
+	          { className: "phone" },
+	          React.createElement("input", {
+	            type: "text",
+	            name: "location",
+	            placeholder: "(###) ###-####"
+	          }),
+	          React.createElement(
+	            "label",
+	            { htmlFor: "location" },
+	            "Phone Number"
+	          )
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "description" },
+	          React.createElement("textarea", {
+	            name: "description",
+	            placeholder: "Please write a detailed description of what you see."
+	          }),
+	          React.createElement(
+	            "label",
+	            { htmlFor: "location" },
+	            "Description"
+	          )
 	        ),
 	        React.createElement(
 	          "button",
-	          { type: "submit", className: "submitButton" },
+	          { type: "submit", className: "submit" },
 	          "Submit"
 	        )
 	      ),
 	      React.createElement("br", null),
 	      React.createElement(
 	        "p",
-	        null,
+	        { className: "mahalo" },
 	        " Mahalo for helping your community!"
 	      )
 	    );
