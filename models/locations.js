@@ -6,7 +6,14 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        models.Locations.belongsTo(models.Gender, {
+          foreignKey: 'gender_id',
+          as: 'gender'
+        });
+        models.Locations.belongsTo(models.Pics, {
+          foreignKey: 'pic_id',
+          as: 'pic'
+        });
       }
     }
   });

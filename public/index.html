@@ -5,7 +5,7 @@
   <title>Enter Homeless Information</title>
 </head>
 <body>
-  <form action="/" type= 'x-www-form-urlencoded' method="POST">
+  <form action="/homeless" enctype="multipart/form-data" method="POST">
   name:<br>
   <input type="text" name="name" value="name">
   <br>
@@ -18,7 +18,7 @@
   Description:<br>
   <input type="textbox" name="description" value="description">
   <br>
-  Location: <input type="file" name="pic" id="pic">
+  Location: <input type="file" name="pic" accept="image/*">
   <br>
   <input type="submit" value="Submit">
 </form>
