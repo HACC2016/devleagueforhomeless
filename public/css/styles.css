@@ -64,10 +64,21 @@ table {
   display: block; }
 
 /* close commented backslash hack */
+html {
+  height: 100%; }
+
 body {
+  height: 100%;
   font-family: 'Open Sans', sans-serif;
   color: white;
-  background-color: darkblue; }
+  background: #1584eb;
+  background: -moz-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1584eb), color-stop(100%, #11263d));
+  background: -webkit-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
+  background: -o-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
+  background: radial-gradient(ellipse at center, #1584eb 0%, #11263d 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 ); }
 
 h1 {
   font-family: 'Bree Serif', serif;
@@ -97,14 +108,16 @@ input:focus, textarea:focus {
   padding: 10px; }
 
 .form label {
-  margin-left: 10px;
-  color: #ca9e2b; }
+  color: #ca9e2b;
+  display: block;
+  margin-bottom: 5px; }
 
 .location, .email, .phone, .description {
   padding: 5px; }
 
 .submit {
   width: auto;
+  margin-left: 5px;
   padding: 9px 15px;
   background: #ca9e2b;
   border: 0;
@@ -112,6 +125,9 @@ input:focus, textarea:focus {
   color: #FFFFFF;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px; }
+
+.submit:hover {
+  cursor: pointer; }
 
 input, textarea {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;

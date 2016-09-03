@@ -65,57 +65,57 @@
 	        React.createElement(
 	          "div",
 	          { className: "location" },
-	          React.createElement("input", {
-	            type: "text",
-	            name: "location",
-	            placeholder: "1234 Street Name, City, State, Zipcode"
-	          }),
 	          React.createElement(
 	            "label",
 	            { htmlFor: "location" },
 	            "Location"
-	          )
+	          ),
+	          React.createElement("input", {
+	            type: "text",
+	            name: "location",
+	            placeholder: "1234 Street Name, City, State, Zipcode"
+	          })
 	        ),
 	        React.createElement(
 	          "div",
 	          { className: "email" },
+	          React.createElement(
+	            "label",
+	            { htmlFor: "email" },
+	            "E-mail"
+	          ),
 	          React.createElement("input", {
 	            type: "text",
 	            name: "location",
 	            placeholder: "yourname@example.com"
-	          }),
-	          React.createElement(
-	            "label",
-	            { htmlFor: "location" },
-	            "E-mail"
-	          )
+	          })
 	        ),
 	        React.createElement(
 	          "div",
 	          { className: "phone" },
+	          React.createElement(
+	            "label",
+	            { htmlFor: "phone" },
+	            "Phone Number"
+	          ),
 	          React.createElement("input", {
 	            type: "text",
 	            name: "location",
 	            placeholder: "(###) ###-####"
-	          }),
-	          React.createElement(
-	            "label",
-	            { htmlFor: "location" },
-	            "Phone Number"
-	          )
+	          })
 	        ),
 	        React.createElement(
 	          "div",
 	          { className: "description" },
+	          React.createElement(
+	            "label",
+	            { htmlFor: "description" },
+	            "Description"
+	          ),
 	          React.createElement("textarea", {
 	            name: "description",
 	            placeholder: "Please write a detailed description of what you see."
-	          }),
-	          React.createElement(
-	            "label",
-	            { htmlFor: "location" },
-	            "Description"
-	          )
+	          })
 	        ),
 	        React.createElement(
 	          "button",

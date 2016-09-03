@@ -20,12 +20,31 @@ $large: "only screen and (min-width: 1000px)";
   }
 }
 
-//
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   font-family: 'Open Sans', sans-serif;
-  // font-family: 'Bree Serif', serif;
   color: white;
-  background-color: darkblue;
+  // gradient
+  background: rgba(21,132,235,1);
+background: -moz-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(21,132,235,1)), color-stop(100%, rgba(17,38,61,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+background: radial-gradient(ellipse at center, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 );
+  // background: rgba(21,132,235,1);
+  // background: -moz-linear-gradient(-45deg, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  // background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(21,132,235,1)), color-stop(100%, rgba(17,38,61,1)));
+  // background: -webkit-linear-gradient(-45deg, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  // background: -o-linear-gradient(-45deg, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  // background: -ms-linear-gradient(-45deg, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  // background: linear-gradient(135deg, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 );
 }
 
 h1 {
@@ -61,15 +80,18 @@ input:focus, textarea:focus {
 }
 
 .form label {
-    margin-left: 10px;
     color: #ca9e2b;
+    display: block;
+    margin-bottom: 5px;
 }
 
 .location, .email, .phone, .description {
   padding: 5px;
 }
+
 .submit {
     width: auto;
+    margin-left: 5px;
     padding: 9px 15px;
     background: #ca9e2b;
     border: 0;
@@ -79,6 +101,9 @@ input:focus, textarea:focus {
     -moz-border-radius: 5px;
 }
 
+.submit:hover {
+  cursor: pointer;
+}
 // drop shadows
 input, textarea {
   box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;

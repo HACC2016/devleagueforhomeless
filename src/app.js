@@ -6,35 +6,35 @@ const MainContainer = React.createClass({
         <br />
         <form className="form">
           <div className="location">
+            <label htmlFor="location">Location</label>
             <input
               type="text"
               name="location"
               placeholder="1234 Street Name, City, State, Zipcode"
             />
-            <label htmlFor="location">Location</label>
           </div>
           <div className="email">
+            <label htmlFor="email">E-mail</label>
             <input
               type="text"
               name="location"
               placeholder="yourname@example.com"
             />
-            <label htmlFor="location">E-mail</label>
           </div>
           <div className="phone">
+            <label htmlFor="phone">Phone Number</label>
             <input
               type="text"
               name="location"
               placeholder="(###) ###-####"
             />
-            <label htmlFor="location">Phone Number</label>
           </div>
           <div className="description">
+            <label htmlFor="description">Description</label>
             <textarea
               name="description"
               placeholder="Please write a detailed description of what you see."
             ></textarea>
-            <label htmlFor="location">Description</label>
           </div>
           <button type="submit" className="submit">
             Submit
