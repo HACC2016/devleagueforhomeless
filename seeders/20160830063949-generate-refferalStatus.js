@@ -2,26 +2,26 @@
 
 module.exports = {
 up : function (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert('Genders', [{
-      name: 'Male',
+    return queryInterface.bulkInsert('refferalStatuses', [{
+      name: 'Done',
       createdAt : new Date(),
       updatedAt : new Date()
     },{
-      name: 'Female',
+      name: 'In Progress',
       createdAt : new Date(),
       updatedAt : new Date()
     },{
-      name: 'Group',
+      name: 'Danger',
       createdAt : new Date(),
       updatedAt : new Date()
     },{
-      name: 'Other',
+      name: 'Queue',
       createdAt : new Date(),
       updatedAt : new Date()
     }], {});
   },
 
   down : function (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('Genders', []);
+    return queryInterface.bulkDelete('refferalStatuses', []);
   }
 };

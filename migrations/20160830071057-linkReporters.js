@@ -2,18 +2,18 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-      return queryInterface.addColumn("Reporters", "reporter_id", {
+      return queryInterface.addColumn("Refferals", "reporter_id", {
         type:Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         foreignKey: true,
         references:{
-          model: "Refferals",
+          model: "Reporters",
           key: "id"
         }
       });
   },
 
   down: function (queryInterface, Sequelize) {
-    return queryInterface.removeColumn('Reporters', 'reporter_id');
+    return queryInterface.removeColumn('Refferals', 'reporter_id');
   }
 };
