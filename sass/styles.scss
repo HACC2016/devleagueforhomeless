@@ -1,0 +1,126 @@
+// Resets, clearfix
+@import "sass/partials/_reset.scss";
+@import "sass/partials/_clearfix.scss";
+
+
+// media query ranges
+
+$small: "only screen and (min-width: 200px) and (max-width: 650px)";
+$large: "only screen and (min-width: 1000px)";
+
+// Mixins
+@mixin small {
+  @media #{$small} {
+    @content;
+  }
+}
+@mixin large {
+  @media #{$large} {
+    @content;
+  }
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  // gradient
+  background: rgba(21,132,235,1);
+background: -moz-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(21,132,235,1)), color-stop(100%, rgba(17,38,61,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+background: radial-gradient(ellipse at center, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 );
+  // background: rgba(21,132,235,1);
+  // background: -moz-linear-gradient(-45deg, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  // background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(21,132,235,1)), color-stop(100%, rgba(17,38,61,1)));
+  // background: -webkit-linear-gradient(-45deg, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  // background: -o-linear-gradient(-45deg, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  // background: -ms-linear-gradient(-45deg, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  // background: linear-gradient(135deg, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 );
+}
+
+h1 {
+  font-family: 'Bree Serif', serif;
+  font-size: 48px;
+  color: #ca9e2b;
+  text-align: center;
+}
+
+input, textarea {
+  padding: 9px;
+  border: solid 1px #E5E5E5;
+  outline: 0;
+  font: normal 13px/100% Verdana, Tahoma, sans-serif;
+  width: 200px;
+  background: #FFFFFF;
+}
+
+textarea {
+  width: 400px;
+  max-width: 400px;
+  height: 150px;
+  line-height: 150%;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+  border-color: #C9C9C9;
+}
+
+.form {
+  padding: 10px;
+}
+
+.form label {
+    color: #ca9e2b;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.location, .email, .phone, .description {
+  padding: 5px;
+}
+
+.submit {
+    width: auto;
+    margin-left: 5px;
+    padding: 9px 15px;
+    background: #ca9e2b;
+    border: 0;
+    font-size: 14px;
+    color: #FFFFFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.submit:hover {
+  cursor: pointer;
+}
+// drop shadows
+input, textarea {
+  box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+  -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+  -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+}
+
+// gradient
+input, textarea {
+  background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+  background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+}
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+}
+
+.mahalo {
+  padding: 10px;
+}

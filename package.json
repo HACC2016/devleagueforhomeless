@@ -1,27 +1,54 @@
 {
-  "name": "hacc2016-devleague-for-homelessness",
+  "name": "hacc2016-DevLeague-for-Homelessness",
   "version": "1.0.0",
   "description": "Help homeless outreach teams efficiently respond to community referrals through mobile apps",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run build -- --watch",
+    "build": "webpack src/app.js public/js/app.js --module-bind 'js=babel'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/creindle/hacc2016-DevLeague-for-Homelessness.git"
+    "url": "git+https://github.com/kekuso/hacc2016-DevLeague-for-Homelessness.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/creindle/hacc2016-DevLeague-for-Homelessness/issues"
+    "url": "https://github.com/kekuso/hacc2016-DevLeague-for-Homelessness/issues"
   },
   "homepage": "https://github.com/creindle/hacc2016-DevLeague-for-Homelessness#readme",
-  "devDependencies": {
+  "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "gulp": "^3.9.1",
+    "method-override": "^2.3.6",
     "multiparty": "^4.1.2",
     "pg": "^6.1.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.0.0-1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.13.2",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "eslint": "^3.3.1",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-react": "^6.1.2",
+    "eslint-plugin-standard": "^2.0.0",
+    "faker": "^3.1.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-sass": "^2.3.2",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "webpack": "^1.13.2"
   }
 }

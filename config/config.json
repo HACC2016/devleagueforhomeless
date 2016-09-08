@@ -1,7 +1,6 @@
 {
   "development": {
-    "username": "tanachi",
-    "password": "hello",
+    "username": "creindle",
     "database": "instahome",
     "host": "127.0.0.1",
     "dialect": "postgres"
