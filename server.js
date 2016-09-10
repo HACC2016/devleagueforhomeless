@@ -30,7 +30,7 @@ app.get('/homeless', function(req, res) {
   });
 });
 
-app.post('/adminView', function(req, res, next) {
+app.get('/adminView', function(req, res, next) {
   Refferals.findAll()
     .then(function (referral) {
       res.render('dashboard', {json: referral});
