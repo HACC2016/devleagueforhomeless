@@ -30,6 +30,13 @@ app.get('/homeless', function(req, res) {
   });
 });
 
+app.post('/adminView', function(req, res, next) {
+  Refferals.findAll()
+    .then(function (referral) {
+      res.render('dashboard', {json: referral});
+    });
+});
+
 app.post('/homeless', function(req, res, next) {
   // Create Form parse
   var form = new multiparty.Form();
