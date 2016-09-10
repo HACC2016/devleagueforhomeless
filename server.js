@@ -36,9 +36,6 @@ app.post('/homeless', function(req, res, next) {
   form.parse(req, function(err, fields, files) {
     if(err)
       next(err);
-    res.writeHead(200, {'content-type': 'text/plain'});
-    res.write('received upload:\n\n');
-    res.end(util.inspect({fields: fields, files: files}));
     // Reads the file sent from the user
     fs.readFile(files.pic[0].path, function (err, data) {
       if(err)
@@ -53,10 +50,9 @@ app.post('/homeless', function(req, res, next) {
         if(err)
           next(err);
         // Inserts Pic Name to  Picture table
-        Pics.create({fileName: insertName}).
-          then(function(pic) {
+        Pics.create({fileName: insertName})
+        .then(function(pic) {
             // Inserts Location data to  Locations table
-            console.log(pic.dataValues.id);
             Refferals.create({refferalStatus_id:1,
                               pic_id: pic.dataValues.id,
                               name: fields.name[0],
@@ -70,12 +66,10 @@ app.post('/homeless', function(req, res, next) {
                               zip: fields.zip[0],
                               address: fields.address[0],
                               GPS: "(0,0)",
-                              description: fields.description[0]}).
-            then(function(argument) {
+                              description: fields.description[0]})
+            .then(function(refferal) {
               // Sends response that tells the pic got uploaded
-              res.writeHead(200, {'content-type': 'text/plain'});
-              res.write('received upload:\n\n');
-              res.end(util.inspect({fields: fields, files: files}));
+              return res.json(refferal);
             });
         });
       });
