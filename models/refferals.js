@@ -1,21 +1,31 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Locations = sequelize.define('Refferals', {
+  var Refferals = sequelize.define('Refferals', {
     name: DataTypes.STRING,
+    description: DataTypes.TEXT,
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    email: DataTypes.STRING,
+    phoneNumber: DataTypes.INTEGER,
+    area: DataTypes.STRING,
+    address:DataTypes.STRING,
+    zip: DataTypes.INTEGER,
+    state: DataTypes.STRING,
+    city: DataTypes.STRING,
     description: DataTypes.TEXT
   }, {
     classMethods: {
       associate: function(models) {
-        models.Locations.belongsTo(models.Pics, {
+        models.Refferals.belongsTo(models.Pics, {
           foreignKey: 'pic_id',
           as: 'pic'
         });
-        models.Locations.belongsTo(models.refferalStatus, {
+        models.Refferals.belongsTo(models.refferalStatus, {
           foreignKey: 'refferalStatus_id',
           as: 'refferalStatus'
         });
       }
     }
   });
-  return Locations;
+  return Refferals;
 };
