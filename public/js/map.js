@@ -1,20 +1,23 @@
+
+
 var map;
 var markers = [];
 function initMap() {
 map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 40.7413549, lng: -73.9980244},
-  zoom: 13
+  center: {lat: 21.3069, lng: -157.8583},
+  zoom: 10
 });
 
 // These are the real estate listings that will be shown to the user.
 // Normally we'd have these in a database instead.
 var locations = [
-  {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
-  {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
-  {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759}},
-  {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377}},
-  {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
-  {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
+  {title: 'UH Manoa', location: {lat: 21.3000, lng: -157.8190}},
+  {title: 'Honolulu', location: {lat: 21.3069, lng: -157.8583}}
+  // {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
+  // {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759}},
+  // {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377}},
+  // {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
+  // {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
 ];
 
 var largeInfowindow = new google.maps.InfoWindow();
@@ -39,12 +42,10 @@ for (var i=0; i < locations.length; i++) {
   bounds.extend(marker.position);
   // Create an onclick event to open infowindow at each marker
   marker.addListener('click', function () {
-    console.log(this);
     populateInfoWindow(this, largeInfowindow);
-    console.log(largeInfowindow);
   });
 }
-// map.fitBounds(bounds);
+map.fitBounds(bounds);
 
 document.getElementById('show-listings').addEventListener('click', showListings);
 document.getElementById('hide-listings').addEventListener('click', hideListings);
@@ -52,15 +53,16 @@ document.getElementById('hide-listings').addEventListener('click', hideListings)
 
 // Function to populate infoWindow when marker is clicked. Populate based on marker's position.
 function populateInfoWindow(marker, infowindow){
-  console.log('marker in populateInfoWindow: ', marker);
   // check that infowindow is not already opened on this marker.
   if (infowindow.marker !== marker){
     infowindow.marker = marker;
-    infowindow.setContent('<div>' + marker.title + '</div>');
+    infowindow.setContent('<div class="marker">' + marker.title + '</div>');
     infowindow.open(map, marker);
+    console.log('open');
     // Make sure marker property is cleared if infowindow is closed.
-    infowindow.addListener('closeclick', function(){
-      infowindow.setMarker(null);
+    infowindow.addListener('closeclick',function(){
+      console.log("close");
+      infowindow.marker = null;
     });
   }
 }
