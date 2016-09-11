@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/uploads'));
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -43,6 +43,7 @@ app.get('/dashboard', function(req, res, next) {
       model: db.refferalStatus,
       as: 'refferalStatus',
     }]}).then(function(refferal) {
+      console.log(refferal[0].dataValues);
       res.render('dashboard', {json: refferal});
   });
 });

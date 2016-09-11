@@ -24,74 +24,40 @@ html(lang='en')
         input(placeholder='filter By')
       br
       .ticketTable
-        .headrow.row
-          .headColumn.col
-            | Ticket ID
-          .headColumn.col
-            | Receive Date/Time
-          .headColumn.col
-            | Location
-          .headColumn.col
-            | Short Description
-          .headColumn.col
-            | Status
-        .row
-          .col
-          .col
-          .col
-          .col
-          .col
-        .row
-          .col
-          .col
-          .col
-          .col
-          .col
-        .row
-          .col
-          .col
-          .col
-          .col
-          .col
-        .row
-          .col
-          .col
-          .col
-          .col
-          .col
-        .row
-          .col
-          .col
-          .col
-          .col
-          .col
-        .row
-          .col
-          .col
-          .col
-          .col
-          .col
-        .row
-          .col
-          .col
-          .col
-          .col
-          .col
-        .row
-          .col
-          .col
-          .col
-          .col
-          .col
-        .row
-          .col
-          .col
-          .col
-          .col
-          .col
-        .row
-          .col
-          .col
-          .col
-          .col
-          .col
+        each val, index in json
+          if index === 0
+            .headrow.row
+              .headColumn.col.ticketId
+                | Ticket ID
+              .headColumn.col.createdAt
+                | Receive Date/Time
+              .headColumn.col.address
+                | Location
+              .headColumn.col.description
+                | Short Description
+              .headColumn.col.status
+                | Status
+              .headColumn.col.username
+                | Submitter
+              .headColumn.col.phoneNumber
+                | Phone #
+              .headColumn.col.email
+                | Email
+          else
+            .row
+              .col.ticketId
+                | #{val.id}
+              .col.createdAt
+                | #{val.createdAt}
+              .col.address
+                | #{val.address}
+              .col.description
+                | #{val.description}
+              .col.status
+                | #{val.refferalStatus_id}
+              .col.username
+                | #{val.name}
+              .col.phoneNumber
+                | #{val.phoneNumber}
+              .col.email
+                | #{val.email}
