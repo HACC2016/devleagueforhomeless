@@ -11,6 +11,18 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      firstName: {
+        type: Sequelize.STRING
+      },
+      lastName: {
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      phoneNumber: {
+        type: Sequelize.INTEGER
+      },
       area: {
         type: Sequelize.STRING
       },
@@ -28,6 +40,26 @@ module.exports = {
       },
       description: {
         type: Sequelize.TEXT
+      },
+      refferalStatus_id: {
+        type:Sequelize.INTEGER,
+        foreignKey: true,
+        references:{
+          model: "refferalStatuses",
+          key: "id"
+        }
+      },
+      pic_id: {
+        type:Sequelize.INTEGER,
+        allowNull: false,
+        foreignKey: true,
+        references:{
+          model: "Pics",
+          key: "id"
+        }
+      },
+      GPS:{
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

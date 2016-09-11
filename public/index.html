@@ -1,33 +1,50 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Enter Homeless Information</title>
-  <script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
-  <script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
-  <script src="https://npmcdn.com/jquery@3.1.0/dist/jquery.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans" rel="stylesheet">
-  <link rel = 'stylesheet' type="text/css" href = '/css/styles.css'>
 </head>
 <body>
   <form action="/homeless" enctype="multipart/form-data" method="POST">
-    name:<br>
-    <input type="text" name="name">
-    <br>
-    Gender:<br>
-    <input type="radio" name="gender" value="1"> Male<br>
-    <input type="radio" name="gender" value="2"> Female<br>
-    <input type="radio" name="gender" value="3"> Group <br>
-    <input type="radio" name="gender" value="4"> Other <br>
-    <br>
-    Description:<br>
-    <textarea rows="4" cols="50" name="description"></textarea>
-    <br>
-    Location: <input type="file" name="pic" accept="image/*">
-    <br>
-    <input type="submit" value="Submit">
-  </form>
-  <div id = "app"></div>
-  <script type="text/javascript" src="/js/app.js"></script>
+  name:<br>
+  <input type="text" name="name" value="name">
+  <br>
+  firstname:<br>
+  <input type="text" name="firstName" value="firstName">
+  <br>
+  lastname:<br>
+  <input type="text" name="lastName" value="lastName">
+  <br>
+  email:<br>
+  <input type="text" name="email" value="email">
+  <br>
+  phone#:<br>
+  <input type="text" name="phoneNumber" value="1111111">
+  <br>
+  area:<br>
+  <input type="text" name="area" value="area">
+  <br>
+  city:<br>
+  <input type="text" name="city" value="city">
+  <br>
+  state:<br>
+  <input type="text" name="state" value="state">
+  <br>
+  address:<br>
+  <input type="text" name="address" value="address">
+  <br>
+  zip:<br>
+  <input type="text" name="zip" value="222222">
+  <br>
+  description:<br>
+  <input type="textbox" name="description" value="description">
+  <br>
+  location: <input type="file" name="pic" id="pic">
+  <br>
+  <input type="submit" value="Submit">
+</form>
+<div id="app"></div>
+<script type="text/javascript" src="/js/app.js"></script>
 </body>
 </html>

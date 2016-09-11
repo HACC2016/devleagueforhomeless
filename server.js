@@ -4,34 +4,28 @@ var db = require('./models');
 var multiparty = require('multiparty');
 var fs = require('fs');
 var util = require('util');
-var Locations = db.Locations;
+var Refferals = db.Refferals;
 var Pics = db.Pics;
+var bodyParser = require('body-parser');
 
-const path = require('path');
-const bodyParser = require('body-parser');
-
-
-app.set('port', (process.env.PORT || 3000));
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'uploads')));
-app.use(bodyParser.urlencoded({extended:false}));
+// git remote add upstream parent https://github.com/HACC2016/devleagueforhomeless.git
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-// middleware
-app.use(function(req, res, next) {
-  // set a header that will allow any origin to call me
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  // turn off cache
-  res.setHeader('Cache-Control', 'no-cache');
-  next();
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/uploads'));
+app.put(/\/homeless\/\d+/, function(req, res) {
+
 });
-
 app.get('/homeless', function(req, res) {
-  Locations.findAll({include: [{
-      model: db.Gender,
-      as: 'gender',
-      required: true
+  console.log(Pics);
+  Refferals.findAll({include: [{
+      model: Pics,
+      as: 'pic',
+    }, {
+      model: db.refferalStatus,
+      as: 'refferalStatus',
     }]}).then(function(data) {
       res.json(data);
   });
@@ -57,18 +51,26 @@ app.post('/homeless', function(req, res, next) {
         if(err)
           next(err);
         // Inserts Pic Name to  Picture table
-        Pics.create({name: insertName}).
-          then(function(pic) {
+        Pics.create({fileName: insertName})
+        .then(function(pic) {
             // Inserts Location data to  Locations table
-            Locations.create({name: fields.name[0],
-                              gender_id:fields.gender[0],
+            Refferals.create({refferalStatus_id:1,
                               pic_id: pic.dataValues.id,
-                              description: fields.description[0]}).
-            then(function(argument) {
+                              name: fields.name[0],
+                              firstName: fields.firstName[0],
+                              lastName: fields.lastName[0],
+                              email: fields.email[0],
+                              phoneNumber: fields.phoneNumber[0],
+                              area: fields.area[0],
+                              city: fields.city[0],
+                              state: fields.state[0],
+                              zip: fields.zip[0],
+                              address: fields.address[0],
+                              GPS: "(0,0)",
+                              description: fields.description[0]})
+            .then(function(refferal) {
               // Sends response that tells the pic got uploaded
-              res.writeHead(200, {'content-type': 'text/plain'});
-              res.write('received upload:\n\n');
-              res.end(util.inspect({fields: fields, files: files}));
+              return res.json(refferal);
             });
         });
       });
@@ -76,7 +78,7 @@ app.post('/homeless', function(req, res, next) {
   });
 });
 
-var server = app.listen(app.get('port'), function(){
+var server = app.listen(3000, function(){
   var host = server.address().address;
   var port = server.address().port;
   db.sequelize.sync();
