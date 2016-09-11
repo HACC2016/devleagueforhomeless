@@ -74,7 +74,9 @@
 	    navigator.geolocation.getCurrentPosition(function (position) {
 	      console.log(position);
 	      var initialPosition = JSON.stringify(position);
-	      _this.setState({ initialPosition: initialPosition });
+	      _this.setState({
+	        initialPosition: position
+	      });
 	    }, function (error) {
 	      return alert(error.message);
 	    }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 });
@@ -88,81 +90,37 @@
 	    navigator.geolocation.clearWatch(this.watchID);
 	  },
 
+	  sendLocation: function sendLocation() {
+	    var location = {
+	      latitude: this.state.initialPosition.coords.latitude,
+	      longitude: this.state.initialPosition.coords.longitude
+	    };
+	    console.log(this.state);
+	    $.ajax({
+	      url: "/api/referrals",
+	      type: "post",
+	      data: {
+	        latitude: location.latitude,
+	        longitude: location.longitude
+	      },
+	      success: function success(response) {
+	        if (data === "sucess") alert(response);
+	      },
+	      error: function error(response) {
+	        alert("ERROR: " + response);
+	      }
+	    });
+	  },
+
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "div",
-	      { className: "mainContainer" },
+	      null,
 	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        "Report Camp!!"
+	        "button",
+	        { onClick: this.sendLocation },
+	        "SEND MY LOCATION"
 	      ),
-	      _react2.default.createElement("br", null),
-	      _react2.default.createElement(
-	        "form",
-	        { className: "form" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "location" },
-	          _react2.default.createElement(
-	            "label",
-	            { htmlFor: "location" },
-	            "Location"
-	          ),
-	          _react2.default.createElement("input", {
-	            type: "text",
-	            name: "location",
-	            placeholder: "1234 Street Name, City, State, Zipcode"
-	          })
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "email" },
-	          _react2.default.createElement(
-	            "label",
-	            { htmlFor: "email" },
-	            "E-mail"
-	          ),
-	          _react2.default.createElement("input", {
-	            type: "text",
-	            name: "location",
-	            placeholder: "yourname@example.com"
-	          })
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "phone" },
-	          _react2.default.createElement(
-	            "label",
-	            { htmlFor: "phone" },
-	            "Phone Number"
-	          ),
-	          _react2.default.createElement("input", {
-	            type: "text",
-	            name: "location",
-	            placeholder: "(###) ###-####"
-	          })
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "description" },
-	          _react2.default.createElement(
-	            "label",
-	            { htmlFor: "description" },
-	            "Description"
-	          ),
-	          _react2.default.createElement("textarea", {
-	            name: "description",
-	            placeholder: "Please write a detailed description of what you see."
-	          })
-	        ),
-	        _react2.default.createElement(
-	          "button",
-	          { type: "submit", className: "submit" },
-	          "Submit"
-	        )
-	      ),
-	      _react2.default.createElement("br", null),
 	      _react2.default.createElement(
 	        "p",
 	        { className: "mahalo" },

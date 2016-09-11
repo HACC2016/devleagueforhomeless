@@ -78,6 +78,12 @@ app.post('/homeless', function(req, res, next) {
   });
 });
 
+app.post('/api/referrals', function (req, res) {
+  var location = {};
+  console.log(req.body);
+
+});
+
 var server = app.listen(3000, function(){
   var host = server.address().address;
   var port = server.address().port;

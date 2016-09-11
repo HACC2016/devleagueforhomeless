@@ -16,7 +16,9 @@ const MainContainer = React.createClass({
       (position) => {
         console.log(position);
         const initialPosition = JSON.stringify(position);
-        this.setState({initialPosition});
+        this.setState({
+          initialPosition: position
+        });
       },
       (error) => alert(error.message),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
@@ -31,48 +33,33 @@ const MainContainer = React.createClass({
     navigator.geolocation.clearWatch(this.watchID);
   },
 
+  sendLocation: function () {
+    const location = {
+      latitude: this.state.initialPosition.coords.latitude,
+      longitude: this.state.initialPosition.coords.longitude
+    }
+    console.log(this.state)
+    $.ajax({
+      url: "/api/referrals",
+      type: "post",
+      data: {
+        latitude: location.latitude,
+        longitude: location.longitude
+      },
+      success: function (response) {
+        if (data === "sucess")
+          alert(response);
+      },
+      error: function (response) {
+        alert("ERROR: " + response);
+      }
+    });
+  },
+
   render: function () {
     return (
-      <div className="mainContainer">
-        <h1>Report Camp!!</h1>
-        <br />
-        <form className="form">
-          <div className="location">
-            <label htmlFor="location">Location</label>
-            <input
-              type="text"
-              name="location"
-              placeholder="1234 Street Name, City, State, Zipcode"
-            />
-          </div>
-          <div className="email">
-            <label htmlFor="email">E-mail</label>
-            <input
-              type="text"
-              name="location"
-              placeholder="yourname@example.com"
-            />
-          </div>
-          <div className="phone">
-            <label htmlFor="phone">Phone Number</label>
-            <input
-              type="text"
-              name="location"
-              placeholder="(###) ###-####"
-            />
-          </div>
-          <div className="description">
-            <label htmlFor="description">Description</label>
-            <textarea
-              name="description"
-              placeholder="Please write a detailed description of what you see."
-            ></textarea>
-          </div>
-          <button type="submit" className="submit">
-            Submit
-          </button>
-        </form>
-        <br />
+      <div>
+        <button onClick={this.sendLocation}>SEND MY LOCATION</button>
         <p className="mahalo"> Mahalo for helping your community!</p>
       </div>
     );
