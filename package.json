@@ -1,5 +1,5 @@
 {
-  "name": "hacc2016-DevLeague-for-Homelessness",
+  "name": "hacc2016-devleague-for-homeless",
   "version": "1.0.0",
   "description": "Help homeless outreach teams efficiently respond to community referrals through mobile apps",
   "main": "index.js",
@@ -26,11 +26,12 @@
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
     "method-override": "^2.3.6",
     "multiparty": "^4.1.2",
     "pg": "^6.1.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.0.0-1"
+    "sequelize": "^3.24.0"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",

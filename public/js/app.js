@@ -44,96 +44,126 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	var MainContainer = React.createClass({
-	  displayName: "MainContainer",
+	  displayName: 'MainContainer',
+
+	  watchID: null,
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      initialPosition: 'unknown',
+	      lastPosition: 'unknown'
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    var _this = this;
+
+	    console.log("yo");
+	    navigator.geolocation.getCurrentPosition(function (position) {
+	      console.log(position);
+	      var initialPosition = JSON.stringify(position);
+	      _this.setState({ initialPosition: initialPosition });
+	    }, function (error) {
+	      return alert(error.message);
+	    }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 });
+	    this.watchID = navigator.geolocation.watchPosition(function (position) {
+	      var lastPosition = JSON.stringify(position);
+	      _this.setState({ lastPosition: lastPosition });
+	    });
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    navigator.geolocation.clearWatch(this.watchID);
+	  },
 
 	  render: function render() {
 	    return React.createElement(
-	      "div",
-	      { className: "mainContainer" },
+	      'div',
+	      { className: 'mainContainer' },
 	      React.createElement(
-	        "h1",
+	        'h1',
 	        null,
-	        "Report Camp"
+	        'Report Camp!!'
 	      ),
-	      React.createElement("br", null),
+	      React.createElement('br', null),
 	      React.createElement(
-	        "form",
-	        { className: "form" },
+	        'form',
+	        { className: 'form' },
 	        React.createElement(
-	          "div",
-	          { className: "location" },
+	          'div',
+	          { className: 'location' },
 	          React.createElement(
-	            "label",
-	            { htmlFor: "location" },
-	            "Location"
+	            'label',
+	            { htmlFor: 'location' },
+	            'Location'
 	          ),
-	          React.createElement("input", {
-	            type: "text",
-	            name: "location",
-	            placeholder: "1234 Street Name, City, State, Zipcode"
+	          React.createElement('input', {
+	            type: 'text',
+	            name: 'location',
+	            placeholder: '1234 Street Name, City, State, Zipcode'
 	          })
 	        ),
 	        React.createElement(
-	          "div",
-	          { className: "email" },
+	          'div',
+	          { className: 'email' },
 	          React.createElement(
-	            "label",
-	            { htmlFor: "email" },
-	            "E-mail"
+	            'label',
+	            { htmlFor: 'email' },
+	            'E-mail'
 	          ),
-	          React.createElement("input", {
-	            type: "text",
-	            name: "location",
-	            placeholder: "yourname@example.com"
+	          React.createElement('input', {
+	            type: 'text',
+	            name: 'location',
+	            placeholder: 'yourname@example.com'
 	          })
 	        ),
 	        React.createElement(
-	          "div",
-	          { className: "phone" },
+	          'div',
+	          { className: 'phone' },
 	          React.createElement(
-	            "label",
-	            { htmlFor: "phone" },
-	            "Phone Number"
+	            'label',
+	            { htmlFor: 'phone' },
+	            'Phone Number'
 	          ),
-	          React.createElement("input", {
-	            type: "text",
-	            name: "location",
-	            placeholder: "(###) ###-####"
+	          React.createElement('input', {
+	            type: 'text',
+	            name: 'location',
+	            placeholder: '(###) ###-####'
 	          })
 	        ),
 	        React.createElement(
-	          "div",
-	          { className: "description" },
+	          'div',
+	          { className: 'description' },
 	          React.createElement(
-	            "label",
-	            { htmlFor: "description" },
-	            "Description"
+	            'label',
+	            { htmlFor: 'description' },
+	            'Description'
 	          ),
-	          React.createElement("textarea", {
-	            name: "description",
-	            placeholder: "Please write a detailed description of what you see."
+	          React.createElement('textarea', {
+	            name: 'description',
+	            placeholder: 'Please write a detailed description of what you see.'
 	          })
 	        ),
 	        React.createElement(
-	          "button",
-	          { type: "submit", className: "submit" },
-	          "Submit"
+	          'button',
+	          { type: 'submit', className: 'submit' },
+	          'Submit'
 	        )
 	      ),
-	      React.createElement("br", null),
+	      React.createElement('br', null),
 	      React.createElement(
-	        "p",
-	        { className: "mahalo" },
-	        " Mahalo for helping your community!"
+	        'p',
+	        { className: 'mahalo' },
+	        ' Mahalo for helping your community!'
 	      )
 	    );
 	  }
 	});
 
-	ReactDOM.render(React.createElement(MainContainer, { url: "/", pollInterval: 2000 }), document.getElementById('app'));
+	ReactDOM.render(React.createElement(MainContainer, { url: '/', pollInterval: 2000 }), document.getElementById('app'));
 
 /***/ }
 /******/ ]);

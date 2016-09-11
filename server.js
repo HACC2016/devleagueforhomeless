@@ -7,8 +7,6 @@ var util = require('util');
 var Locations = db.Locations;
 var Pics = db.Pics;
 
-
-
 const path = require('path');
 const bodyParser = require('body-parser');
 
