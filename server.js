@@ -15,6 +15,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/uploads'));
 app.put(/\/homeless\/\d+/, function(req, res) {
+app.set('views', path.resolve(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 });
 app.get('/homeless', function(req, res) {
