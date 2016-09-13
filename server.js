@@ -43,7 +43,8 @@ app.get('/dashboard', function(req, res, next) {
       model: db.refferalStatus,
       as: 'refferalStatus',
     }]}).then(function(refferal) {
-      console.log(refferal[0].dataValues);
+      console.log(refferal[1].dataValues);
+      refferal.unshift({});
       res.render('dashboard', {json: refferal});
   });
 });
