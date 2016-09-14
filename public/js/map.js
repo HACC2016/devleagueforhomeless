@@ -1,12 +1,89 @@
-
-
 var map;
 var markers = [];
 function initMap() {
-map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 21.3069, lng: -157.8583},
-  zoom: 10
-});
+  var originPlaceId = null;
+  var destinationPlaceId = null;
+  var travMode =  'WALKING';
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 21.3069, lng: -157.8583},
+    zoom: 10
+  });
+
+  var directionsService = new google.maps.DirectionsService;
+  var directionsDisplay = new google.maps.DirectionsRenderer;
+  directionsDisplay.setMap(map);
+
+  var originInput = document.getElementById('origin-input');
+  var destinationInput = document.getElementById('destination-input');
+  var modes = document.getElementById('mode-selector');
+
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(modes);
+
+  var originAutocomplete = new google.maps.places.Autocomplete(originInput);
+  originAutocomplete.bindTo('bounds', map);
+  var destinationAutocomplete = new google.maps.places.Autocomplete(destinationInput);
+  destinationAutocomplete.bindTo('bounds', map);
+
+  displayRoute(originPlaceId, destinationPlaceId, travMode, directionsService, directionsDisplay);
+  var modeSelect = document.getElementById('mode-selector');
+  modeSelect.addEventListener('change', function(){
+      displayRoute(originPlaceId, destinationPlaceId, travMode,directionsService, directionsDisplay);
+  });
+
+  function expandViewportToFitPlace(map, place){
+    if (place.geometry.viewport){
+      map.fitBounds(place.geometry.viewport);
+    }else{
+      map.setCenter(place.geometry.location);
+      map.setZoom(17);
+    }
+  }
+
+  originAutocomplete.addListener('place_changed', function(){
+    var place = originAutocomplete.getPlace();
+    console.log('place in function: ', place);
+    if (!place.geometry){
+      window.alert("Autocomplete's returned place contains no geometry.");
+      return;
+    }
+    expandViewportToFitPlace(map, place);
+    console.log('place after return: ', place);
+
+    // If place has geometry, store place ID and route
+    originPlaceId = place.place_id;
+    displayRoute(originPlaceId, destinationPlaceId, travMode, directionsService, directionsDisplay);
+  });
+
+  destinationAutocomplete.addListener('place_changed', function(){
+    var place = destinationAutocomplete.getPlace();
+    if(!place.geometry){
+      window.alert("Autocomplete's returned palce contains no geometry.");
+      return;
+    }
+    expandViewportToFitPlace(map, place);
+    destinationPlaceId = place.place_id;
+    displayRoute(originPlaceId, destinationPlaceId, travMode,directionsService, directionsDisplay);
+  });
+
+  function displayRoute(originPlaceId, destinationPlaceId, travMode, directionsService, directionsDisplay){
+    // if (!originPlaceId || !destinationPlaceId){
+    //   return;
+    // }
+    var selectedMode = modes.value;
+    directionsService.route({
+      origin: {'placeId': originPlaceId},
+      destination: {'placeId': destinationPlaceId},
+      travelMode: google.maps.TravelMode[selectedMode]
+    }, function (response, status){
+      if (status === 'OK'){
+        directionsDisplay.setDirections(response);
+      } else{
+        window.alert('Request failed due to ' + status);
+      }
+    });
+  }
 
 // These are the real estate listings that will be shown to the user.
 // Normally we'd have these in a database instead.
@@ -48,8 +125,11 @@ for (var i=0; i < locations.length; i++) {
 map.fitBounds(bounds);
 
 document.getElementById('show-listings').addEventListener('click', showListings);
+
 document.getElementById('hide-listings').addEventListener('click', hideListings);
 }
+
+
 
 // Function to populate infoWindow when marker is clicked. Populate based on marker's position.
 function populateInfoWindow(marker, infowindow){
@@ -83,5 +163,28 @@ function hideListings(){
   for (var i = 0; i < markers.length; i++){
     markers[i].setMap(null);
   }
-
 }
+
+
+
+// function displayDirections(origin){
+//   hideListings();
+//   var directionsService = new google.maps.DirectionsService();
+//   var destinationAddress = document.getElementById('search-transportation-text').value;
+//   directionsService.route({
+//     origin: origin,
+//     desitnation: destinationAddress,
+//     travelMode: google.maps.TravelMode[mode]
+//   }, function(response, status){
+//     if (status === google.maps.DirectionsStatus.OK){
+//       var directionsDisplay = new google.maps.DirectionsRenderer({
+//         map: map,
+//         directions: response,
+//         draggable: true,
+//         polylineOptions: {
+//           strokeColor: 'red'
+//         }
+//       });
+//     }
+//   });
+// }
