@@ -170,11 +170,10 @@ input:focus, textarea:focus {
 
 .ticketTable {
   display: table;
-  width: auto;
   border-spacing: 5px;
   background-color: white;
-  width: 80%;
-  margin-left: 10px; }
+  width: 100%;
+  margin: 0 auto; }
 
 .headrow {
   font-weight: bold;
@@ -215,7 +214,10 @@ input:focus, textarea:focus {
   width: 10%; }
 
 .phoneNumber {
-  width: 10%; }
+  width: 5%; }
 
 .email {
   width: 10%; }
+
+.pictureCol {
+  width: 5%; }

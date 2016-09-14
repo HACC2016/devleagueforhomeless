@@ -43,6 +43,8 @@ html(lang='en')
                 | Phone #
               .headColumn.col.email
                 | Email
+              .headColumn.col.pictureCol
+                | Picture
           else
             .row
               .col.ticketId
@@ -61,3 +63,6 @@ html(lang='en')
                 | #{val.phoneNumber}
               .col.email
                 | #{val.email}
+              .col.pictureCol
+                a(href="/homeless/" + val.id + "/photo")
+                  | Picture
