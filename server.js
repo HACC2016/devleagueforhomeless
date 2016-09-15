@@ -15,7 +15,29 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/uploads'));
 app.put(/\/homeless\/\d+/, function(req, res) {
-
+  var split = req.url.split('/');
+  var numId = split[2];
+  Refferals.update(req.body,{where:{id:numId}})
+    .then((data)=> {
+      res.json(data);
+    });
+});
+app.get(/\/homeless\/\d+\/photo/, function(req, res) {
+  var split = req.url.split('/');
+  var numId = split[2];
+  Refferals.findOne({
+    where: {
+      id: numId
+    },
+    include: [{
+      model: Pics,
+      as: 'pic',
+    }, {
+      model: db.refferalStatus,
+      as: 'refferalStatus',
+    }]}).then(function(data) {
+      res.sendFile(data.dataValues.pic.fileName);
+  });
 });
 app.get('/homeless', function(req, res) {
   console.log(Pics);
