@@ -12,6 +12,7 @@ var Refferals = db.Refferals;
 // });
 
 app.post('/message', function(req, res) {
+  console.log(req.body);
     // Inserts Location data to  Locations table
     Refferals.create({refferalStatus:1,
                       phoneNumber: req.body.From,
