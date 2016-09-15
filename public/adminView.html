@@ -179,5 +179,30 @@
       </div>
     </div>
   </div>
+    <div class="container">
+      <div class="options-box">
+        <h1>Toggle</h1>
+        <div>
+          <input id="show-listings" type="button" value="Show Listings">
+          <input id="hide-listings" type="button" value="Hide Listings">
+        </div>
+      </div>
+      <div class="destinations-box">
+        <input id="origin-input" class="contorls" type="text" placeholder="Enter start location">
+        <input id="destination-input" class="controls" type="text" placeholder="Enter end location">
+      </div>
+      <!-- <div class="mode-box"> -->
+        <select id="mode-selector">
+          <option value="DRIVING">Driving</option>
+          <option value="WALKING">Walking</option>
+        </select>
+      <!-- </div> -->
+    <div id="map"></div>
+  </div>
+  <script type="text/javascript" src="/js/map.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap"
+  >
+  </script>
 </body>
 </html>

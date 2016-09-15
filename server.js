@@ -18,10 +18,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-app.put(/\/homeless\/\d+/, function(req, res) {
-
-
-});
 app.get('/homeless', function(req, res) {
   console.log(Pics);
   Refferals.findAll({include: [{

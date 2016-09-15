@@ -1,6 +1,7 @@
 // Resets, clearfix
 @import "sass/partials/_reset.scss";
 @import "sass/partials/_clearfix.scss";
+@import "sass/partials/maps.scss";
 
 
 // media query ranges
@@ -220,4 +221,10 @@ input:focus, textarea:focus {
 
 .pictureCol {
   width: 5%;
+  height: 35px;
+  width: 20%;
+  // background-color: #ccc;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  padding-top: 7px;
 }
