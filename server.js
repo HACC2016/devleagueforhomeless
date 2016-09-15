@@ -9,6 +9,8 @@ var Refferals = db.Refferals;
 var Pics = db.Pics;
 var bodyParser = require('body-parser');
 
+var twilioApp = require('./routes/twilio');
+
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/public'));
@@ -17,6 +19,10 @@ app.use(express.static(__dirname + '/uploads'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+app.use('/twilio', twilioApp);
+app.put(/\/homeless\/\d+/, function(req, res) {
+});
 
 app.get('/homeless', function(req, res) {
   console.log(Pics);
