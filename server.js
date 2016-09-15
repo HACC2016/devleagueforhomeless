@@ -12,6 +12,8 @@ var methodOverride = require('method-override');
 var Refferals = db.Refferals;
 var Pics = db.Pics;
 
+var twilioApp = require('./routes/twilio');
+
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/public'));
@@ -21,6 +23,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+app.use('/twilio', twilioApp);
+app.put(/\/homeless\/\d+/, function(req, res) {
+});
 
 app.get('/homeless', function(req, res) {
   console.log(Pics);
@@ -53,50 +59,87 @@ app.get('/dashboard', function(req, res, next) {
   });
 });
 
+app.post('/message', function(req, res) {
+  Pics.create({fileName: req.body.MediaUrl0})
+  .then(function(pic) {
+      // Inserts Location data to  Locations table
+      Refferals.create({refferalStatus_id:1,
+                        pic_id: pic.id,
+                        phoneNumber: req.body.From,
+                        city: req.body.FromCity,
+                        state: req.body.FromState,
+                        zip: req.body.FromZip,
+                        description: req.body.Body})
+    .then(function(refferal) {
+      // Sends response that tells the pic got uploaded
+      return res.json(refferal);
+    })
+  })
+});
 app.post('/homeless', function(req, res, next) {
   // Create Form parse
   var form = new multiparty.Form();
   form.parse(req, function(err, fields, files) {
     if(err)
-      next(err);
-    // Reads the file sent from the user
-    fs.readFile(files.pic[0].path, function (err, data) {
+      throw err
+    if(files.pic[0].size){
+      fs.readFile(files.pic[0].path, function (err, data) {
       if(err)
         next(err);
       // Creates unique file name for picture
       var insertName = __dirname +
-        '/uploads/' +
-        Date.now() +
-        files.pic[0].originalFilename;
+      '/uploads/' +
+      Date.now() +
+      files.pic[0].originalFilename;
       // Write file to disk
       fs.writeFile(insertName , data, function (err) {
-        if(err)
-          next(err);
-        // Inserts Pic Name to  Picture table
-        Pics.create({fileName: insertName})
-        .then(function(pic) {
-            // Inserts Location data to  Locations table
-            Refferals.create({refferalStatus_id:1,
-                              pic_id: pic.dataValues.id,
-                              name: fields.name[0],
-                              firstName: fields.firstName[0],
-                              lastName: fields.lastName[0],
-                              email: fields.email[0],
-                              phoneNumber: fields.phoneNumber[0],
-                              area: fields.area[0],
-                              city: fields.city[0],
-                              state: fields.state[0],
-                              zip: fields.zip[0],
-                              address: fields.address[0],
-                              GPS: "(0,0)",
-                              description: fields.description[0]})
-            .then(function(refferal) {
-              // Sends response that tells the pic got uploaded
-              return res.json(refferal);
-            });
+      if(err)
+        next(err);
+      // Inserts Pic Name to  Picture table
+      return Pics.create({fileName: insertName})
+      .then(function(pic) {
+      // Inserts Location data to  Locations table
+        return Refferals.create({refferalStatus:1,
+          pic: pic.id,
+          name: fields.name[0],
+          firstName: fields.firstName[0],
+          lastName: fields.lastName[0],
+          email: fields.email[0],
+          phoneNumber: fields.phoneNumber[0],
+          area: fields.area[0],
+          city: fields.city[0],
+          state: fields.state[0],
+          zip: fields.zip[0],
+          address: fields.address[0],
+          GPS: "(0,0)",
+          description: fields.description[0]})
+          .then(function(refferal) {
+          // Sends response that tells the pic got uploaded
+            return res.json(refferal);
+          });
+          });
         });
       });
-    });
+    }
+    else{
+       Refferals.create({refferalStatus_id:1,
+          name: fields.name[0],
+          firstName: fields.firstName[0],
+          lastName: fields.lastName[0],
+          email: fields.email[0],
+          phoneNumber: fields.phoneNumber[0],
+          area: fields.area[0],
+          city: fields.city[0],
+          state: fields.state[0],
+          zip: fields.zip[0],
+          address: fields.address[0],
+          GPS: "(0,0)",
+          description: fields.description[0]})
+          .then(function(refferal) {
+          // Sends response that tells the pic got uploaded
+            return res.json(refferal);
+          });
+    }
   });
 });
 
