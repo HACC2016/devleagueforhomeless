@@ -1,13 +1,16 @@
 var express = require('express');
-var app = express();
 var path = require('path');
 var db = require('./models');
 var multiparty = require('multiparty');
 var fs = require('fs');
 var util = require('util');
+var app = express();
+var bodyParser = require('body-parser');
+var dateFormat = require('dateformat');
+var methodOverride = require('method-override');
+
 var Refferals = db.Refferals;
 var Pics = db.Pics;
-var bodyParser = require('body-parser');
 
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -16,6 +19,7 @@ app.use(express.static(__dirname + '/uploads'));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.get('/homeless', function(req, res) {
@@ -31,6 +35,7 @@ app.get('/homeless', function(req, res) {
   });
 });
 
+/* Admin-view */
 app.get('/dashboard', function(req, res, next) {
   Refferals.findAll({include: [{
       model: Pics,
@@ -39,7 +44,10 @@ app.get('/dashboard', function(req, res, next) {
       model: db.refferalStatus,
       as: 'refferalStatus',
     }]}).then(function(refferal) {
-      console.log(refferal[1].dataValues);
+      for(var i = 0; i < refferal.length; i++) {
+        refferal[i].formatDate = dateFormat(refferal[i].createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+      }
+      /* add a blank value so that jade table doesn't skip any values. */
       refferal.push({});
       res.render('dashboard', {json: refferal.reverse()});
   });

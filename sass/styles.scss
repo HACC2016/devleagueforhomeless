@@ -221,10 +221,13 @@ input:focus, textarea:focus {
 
 .pictureCol {
   width: 5%;
-  height: 35px;
-  width: 20%;
-  // background-color: #ccc;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
-  padding-top: 7px;
+}
+
+.statusInput {
+  display: inline-block;
+  width: 40%;
+}
+
+.submitInput {
+  display: none;
 }
