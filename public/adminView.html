@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel = 'stylesheet' type="text/css" href = '/css/styles.css'>
+</head>
+<body>
+  <div id="main">
+    <div class="headerContainer">
+
+      <div class="logo">
+        IHS Logo
+      </div>
+
+      <div class="headerButtons">
+        <a href="/adminView.html">Home</a>
+        <a href="/adminView.html">Preferences</a>
+        <a href="/adminView.html">Help</a>
+      </div>
+
+      <div class="logout">
+        <button type="button">
+          Log Out
+        </button>
+      </div>
+
+      <div class="notification">
+        [  ]
+      </div>
+    </div>
+
+    <div class="title">
+      <h1>Dashboard</h1>
+    </div>
+    <div class="filter">
+      <input placeholder="filter By"></input>
+    </div>
+
+    <br>
+
+    <div class="ticketTable">
+      <div class="headrow row">
+        <div class="headColumn col">
+          Ticket ID
+        </div>
+        <div class="headColumn col">
+          Receive Date/Time
+        </div>
+        <div class="headColumn col">
+          Location
+        </div>
+        <div class="headColumn col">
+          Short Description
+        </div>
+        <div class="headColumn col">
+          Status
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="options-box">
+        <h1>Toggle</h1>
+        <div>
+          <input id="show-listings" type="button" value="Show Listings">
+          <input id="hide-listings" type="button" value="Hide Listings">
+        </div>
+      </div>
+      <div class="destinations-box">
+        <input id="origin-input" class="contorls" type="text" placeholder="Enter start location">
+        <input id="destination-input" class="controls" type="text" placeholder="Enter end location">
+      </div>
+      <!-- <div class="mode-box"> -->
+        <select id="mode-selector">
+          <option value="DRIVING">Driving</option>
+          <option value="WALKING">Walking</option>
+        </select>
+      <!-- </div> -->
+    <div id="map"></div>
+  </div>
+  <script type="text/javascript" src="/js/map.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap"
+  >
+  </script>
+</body>
+</html>

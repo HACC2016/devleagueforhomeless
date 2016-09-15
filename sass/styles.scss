@@ -1,6 +1,7 @@
 // Resets, clearfix
 @import "sass/partials/_reset.scss";
 @import "sass/partials/_clearfix.scss";
+@import "sass/partials/maps.scss";
 
 
 // media query ranges
@@ -123,4 +124,71 @@ input:focus, textarea:focus {
 
 .mahalo {
   padding: 10px;
+}
+
+// adminView
+
+.headerContainer {
+  background-color: gray;
+  height: 25px;
+  margin-bottom: 5px;
+}
+.headerContainer div{
+  display: inline-block;
+}
+
+.logout {
+  float: right;
+}
+
+.notification {
+  float: right;
+}
+
+.title h1 {
+  float: left;
+  margin: 5px;
+  margin-right: 25px;
+}
+
+.filter {
+  margin: 0 auto;
+  padding-top: 15px;
+}
+
+.ticketTable {
+  display: table;
+  width: auto;
+  // border: 1px solid black;
+  border-spacing: 5px;
+  background-color: white;
+  width: 80%;
+  margin-left: 10px;
+}
+
+.headrow {
+  font-weight: bold;
+  color: darkblue;
+  text-align: center;
+}
+
+.row {
+  display: table-row;
+}
+
+.ticketTable .row:nth-child(odd) {
+  display: table-row;
+  background-color: #e8edff;
+}
+
+.col {
+  box-sizing: border-box;
+  display: table-column;
+  float: left;
+  height: 35px;
+  width: 20%;
+  // background-color: #ccc;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  padding-top: 7px;
 }
