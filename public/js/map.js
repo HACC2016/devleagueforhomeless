@@ -169,7 +169,7 @@ function hideListings(){
 
 // function displayDirections(origin){
 //   hideListings();
-//   var directionsService = new google.maps.DirectionsService();
+//   var directionsService = new google.maps.DirectionsService;
 //   var destinationAddress = document.getElementById('search-transportation-text').value;
 //   directionsService.route({
 //     origin: origin,
