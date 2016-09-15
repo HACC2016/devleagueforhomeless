@@ -91,8 +91,8 @@ app.post('/homeless', function(req, res, next) {
       return Pics.create({fileName: insertName})
       .then(function(pic) {
       // Inserts Location data to  Locations table
-        return Refferals.create({refferalStatus_id:1,
-          pic_id: pic.id,
+        return Refferals.create({refferalStatus:1,
+          pic: pic.id,
           name: fields.name[0],
           firstName: fields.firstName[0],
           lastName: fields.lastName[0],
