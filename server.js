@@ -44,8 +44,8 @@ app.get('/dashboard', function(req, res, next) {
       as: 'refferalStatus',
     }]}).then(function(refferal) {
       console.log(refferal[1].dataValues);
-      refferal.unshift({});
-      res.render('dashboard', {json: refferal});
+      refferal.push({});
+      res.render('dashboard', {json: refferal.reverse()});
   });
 });
 
