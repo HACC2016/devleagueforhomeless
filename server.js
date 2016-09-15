@@ -51,6 +51,21 @@ app.get('/dashboard', function(req, res, next) {
   });
 });
 
+// app.post('/message', function(req, res) {
+//   console.log(req.body.From);
+//     // Inserts Location data to  Locations table
+//     Refferals.create({refferalStatus:1,
+//                       phoneNumber: req.body.From,
+//                       city: req.body.FromCity,
+//                       state: req.body.FromState,
+//                       zip: req.body.FromZip,
+//                       description: req.body.Body})
+//    .then(function(refferal) {
+//      // Sends response that tells the pic got uploaded
+//     res.send("<Response><Message>Thank you for your referral</Message></Response>")
+//    })
+// });
+
 app.post('/homeless', function(req, res, next) {
   // Create Form parse
   var form = new multiparty.Form();
