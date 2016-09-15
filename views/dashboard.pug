@@ -1,0 +1,68 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Admin Dashboard
+    link(rel='stylesheet', type='text/css', href='/css/styles.css')
+  body
+    #main
+      .headerContainer
+        .logo
+          | IHS Logo
+        .headerButtons
+          a(href='/adminView.html') Home
+          a(href='/adminView.html') Preferences
+          a(href='/adminView.html') Help
+        .logout
+          button(type='button')
+            | Log Out
+        .notification
+          | [  ]
+      .title
+        h1 Dashboard
+      .filter
+        input(placeholder='filter By')
+      br
+      .ticketTable
+        each val, index in json
+          if index === 0
+            .headrow.row
+              .headColumn.col.ticketId
+                | Ticket ID
+              .headColumn.col.createdAt
+                | Receive Date/Time
+              .headColumn.col.address
+                | Location
+              .headColumn.col.description
+                | Short Description
+              .headColumn.col.status
+                | Status
+              .headColumn.col.username
+                | Submitter
+              .headColumn.col.phoneNumber
+                | Phone #
+              .headColumn.col.email
+                | Email
+              .headColumn.col.pictureCol
+                | Picture
+          else
+            .row
+              .col.ticketId
+                | #{val.id}
+              .col.createdAt
+                | #{val.createdAt}
+              .col.address
+                | #{val.address}
+              .col.description
+                | #{val.description}
+              .col.status
+                | #{val.refferalStatus_id}
+              .col.username
+                | #{val.name}
+              .col.phoneNumber
+                | #{val.phoneNumber}
+              .col.email
+                | #{val.email}
+              .col.pictureCol
+                a(href="/homeless/" + val.id + "/photo")
+                  | Picture
