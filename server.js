@@ -50,10 +50,10 @@ app.post('/homeless', function(req, res, next) {
         if(err)
           next(err);
         // Inserts Pic Name to  Picture table
-        Pics.create({fileName: insertName})
+        return Pics.create({fileName: insertName})
         .then(function(pic) {
             // Inserts Location data to  Locations table
-            Refferals.create({refferalStatus_id:1,
+            return Refferals.create({refferalStatus_id:1,
                               pic_id: pic.dataValues.id,
                               name: fields.name[0],
                               firstName: fields.firstName[0],

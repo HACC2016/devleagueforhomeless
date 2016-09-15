@@ -189,19 +189,3 @@ function hideListings(){
 //   });
 // }
 
-var getLocation = $.ajax({
-  method: 'GET',
-  url: '/homeless',
-  dataType: 'json'
-})
-.done(function(data) {
-  //handle successful response
-  processResponse(data);
-})
-.fail(function() {
-  //Handle errors
-  handleError();
-})
-.always(function() {
-  //Always update the UI with status
-});
