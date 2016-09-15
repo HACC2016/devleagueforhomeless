@@ -7,13 +7,21 @@ var util = require('util');
 var Refferals = db.Refferals;
 var Pics = db.Pics;
 var bodyParser = require('body-parser');
+var path = require('path');
+var querystring= require('querystring');
 // git remote add upstream parent https://github.com/HACC2016/devleagueforhomeless.git
+
+const public = path.join(__dirname, 'public');
+
+var twilioApp = require('./routes/twilio');
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/uploads'));
+app.use('/twilio', twilioApp);
 app.put(/\/homeless\/\d+/, function(req, res) {
 
 });
