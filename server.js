@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var path = require('path');
 var db = require('./models');
 var multiparty = require('multiparty');
 var fs = require('fs');
@@ -7,24 +8,22 @@ var util = require('util');
 var Refferals = db.Refferals;
 var Pics = db.Pics;
 var bodyParser = require('body-parser');
-var path = require('path');
-var querystring= require('querystring');
-// git remote add upstream parent https://github.com/HACC2016/devleagueforhomeless.git
-
-const public = path.join(__dirname, 'public');
 
 var twilioApp = require('./routes/twilio');
+
+app.set('views', path.resolve(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/uploads'));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/uploads'));
 app.use('/twilio', twilioApp);
 app.put(/\/homeless\/\d+/, function(req, res) {
-
 });
+
 app.get('/homeless', function(req, res) {
   console.log(Pics);
   Refferals.findAll({include: [{
@@ -35,6 +34,20 @@ app.get('/homeless', function(req, res) {
       as: 'refferalStatus',
     }]}).then(function(data) {
       res.json(data);
+  });
+});
+
+app.get('/dashboard', function(req, res, next) {
+  Refferals.findAll({include: [{
+      model: Pics,
+      as: 'pic',
+    }, {
+      model: db.refferalStatus,
+      as: 'refferalStatus',
+    }]}).then(function(refferal) {
+      console.log(refferal[1].dataValues);
+      refferal.push({});
+      res.render('dashboard', {json: refferal.reverse()});
   });
 });
 
@@ -83,6 +96,33 @@ app.post('/homeless', function(req, res, next) {
       });
     });
   });
+});
+
+app.put(/\/homeless\/\d+/, function(req, res) {
+ var split = req.url.split('/');
+ var numId = split[2];
+ Refferals.update(req.body,{where:{id:numId}})
+   .then((data)=> {
+     res.json(data);
+   });
+});
+
+app.get(/\/homeless\/\d+\/photo/, function(req, res) {
+ var split = req.url.split('/');
+ var numId = split[2];
+ Refferals.findOne({
+   where: {
+     id: numId
+   },
+   include: [{
+     model: Pics,
+     as: 'pic',
+   }, {
+     model: db.refferalStatus,
+     as: 'refferalStatus',
+   }]}).then(function(data) {
+     res.sendFile(data.dataValues.pic.fileName);
+ });
 });
 
 var server = app.listen(3000, function(){

@@ -30,7 +30,7 @@
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "gulp": "^3.9.1",
-    "jade": "^1.11.0",
+    "gulp-sass": "^2.3.2",
     "method-override": "^2.3.6",
     "moment": "^2.14.1",
     "moment-timezone": "^0.5.5",
@@ -39,8 +39,8 @@
     "multiparty": "^4.1.2",
     "pg": "^6.1.0",
     "pg-hstore": "^2.3.2",
+    "pug": "^2.0.0-beta6",
     "sequelize": "^3.24.2",
-    "serve-favicon": "^2.3.0",
     "twilio": "^2.10.0"
   },
   "devDependencies": {
@@ -61,7 +61,6 @@
     "gulp-sass": "^2.3.2",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "twilio": "^2.10.0",
     "webpack": "^1.13.2"
   }
 }
