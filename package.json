@@ -7,7 +7,7 @@
     "dev": "npm run build -- --watch",
     "build": "webpack src/app.js public/js/app.js --module-bind 'js=babel'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./bin/www",
+    "start": "node server.js",
     "lint": "eslint src"
   },
   "repository": {
