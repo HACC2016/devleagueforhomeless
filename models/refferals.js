@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
     zip: DataTypes.INTEGER,
     state: DataTypes.STRING,
     city: DataTypes.STRING,
-    description: DataTypes.TEXT
+    GPS: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
