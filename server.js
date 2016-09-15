@@ -47,15 +47,17 @@ app.post('/homeless', function(req, res, next) {
         Date.now() +
         files.pic[0].originalFilename;
       // Write file to disk
-      fs.writeFile(insertName , data, function (err) {
+      fs.writeFile(insertName, data, function (err) {
+        console.log(data);
         if(err)
           next(err);
         // Inserts Pic Name to  Picture table
-        Pics.create({fileName: insertName})
+        return Pics.create({fileName: insertName})
         .then(function(pic) {
+            console.log("======", pic);
             // Inserts Location data to  Locations table
-            Refferals.create({refferalStatus_id:1,
-                              pic_id: pic.dataValues.id,
+            return Refferals.create({refferalStatus_id:1,
+                              pic_id: pic.id,
                               name: fields.name[0],
                               firstName: fields.firstName[0],
                               lastName: fields.lastName[0],
@@ -66,7 +68,7 @@ app.post('/homeless', function(req, res, next) {
                               state: fields.state[0],
                               zip: fields.zip[0],
                               address: fields.address[0],
-                              GPS: "(0,0)",
+                              GPS: "",
                               description: fields.description[0]})
             .then(function(refferal) {
               // Sends response that tells the pic got uploaded
@@ -76,12 +78,6 @@ app.post('/homeless', function(req, res, next) {
       });
     });
   });
-});
-
-app.post('/api/referrals', function (req, res) {
-  var location = {};
-  console.log(req.body);
-
 });
 
 var server = app.listen(3000, function(){

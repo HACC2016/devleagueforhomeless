@@ -97,7 +97,7 @@
 	    };
 	    console.log(this.state);
 	    $.ajax({
-	      url: "/api/referrals",
+	      url: "/homeless",
 	      type: "post",
 	      data: {
 	        latitude: location.latitude,
@@ -107,24 +107,45 @@
 	        if (data === "sucess") alert(response);
 	      },
 	      error: function error(response) {
-	        alert("ERROR: " + response);
+	        alert("GOT AN ERROR: " + response);
 	      }
 	    });
 	  },
 
 	  render: function render() {
 	    return _react2.default.createElement(
-	      "div",
+	      "form",
 	      null,
 	      _react2.default.createElement(
-	        "button",
-	        { onClick: this.sendLocation },
-	        "SEND MY LOCATION"
+	        "div",
+	        { id: "sendPosition" },
+	        _react2.default.createElement(
+	          "label",
+	          { "for": "sendPosition" },
+	          "Would you like to send your location?"
+	        ),
+	        _react2.default.createElement("input", { id: "nope", type: "checkbox", value: "no" }),
+	        _react2.default.createElement(
+	          "label",
+	          { "for": "nope" },
+	          "NO"
+	        ),
+	        _react2.default.createElement("input", { id: "yup", type: "checkbox", onClick: this.sendLocation, value: "yes" }),
+	        _react2.default.createElement(
+	          "label",
+	          { "for": "yup" },
+	          "YES"
+	        ),
+	        _react2.default.createElement(
+	          "p",
+	          { className: "mahalo" },
+	          " Mahalo for helping your community!"
+	        )
 	      ),
 	      _react2.default.createElement(
-	        "p",
-	        { className: "mahalo" },
-	        " Mahalo for helping your community!"
+	        "script",
+	        null,
+	        "var fields = $(\":checkbox\").serializeArray();"
 	      )
 	    );
 	  }

@@ -40,7 +40,7 @@ const MainContainer = React.createClass({
     }
     console.log(this.state)
     $.ajax({
-      url: "/api/referrals",
+      url: "/homeless",
       type: "post",
       data: {
         latitude: location.latitude,
@@ -51,17 +51,26 @@ const MainContainer = React.createClass({
           alert(response);
       },
       error: function (response) {
-        alert("ERROR: " + response);
+        alert("GOT AN ERROR: " + response);
       }
     });
   },
 
   render: function () {
     return (
-      <div>
-        <button onClick={this.sendLocation}>SEND MY LOCATION</button>
-        <p className="mahalo"> Mahalo for helping your community!</p>
-      </div>
+      <form>
+        <div id="sendPosition">
+        <label for="sendPosition">Would you like to send your location?</label>
+          <input id="nope" type="checkbox" value="no"></input>
+          <label for="nope">NO</label>
+          <input id="yup" type="checkbox" onClick={this.sendLocation} value="yes"></input>
+          <label for="yup">YES</label>
+          <p className="mahalo"> Mahalo for helping your community!</p>
+        </div>
+        <script>
+          var fields = $(":checkbox").serializeArray();
+        </script>
+      </form>
     );
   }
 });
