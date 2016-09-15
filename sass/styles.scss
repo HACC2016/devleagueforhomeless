@@ -158,12 +158,10 @@ input:focus, textarea:focus {
 
 .ticketTable {
   display: table;
-  width: auto;
-  // border: 1px solid black;
   border-spacing: 5px;
   background-color: white;
-  width: 80%;
-  margin-left: 10px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .headrow {
@@ -174,6 +172,7 @@ input:focus, textarea:focus {
 
 .row {
   display: table-row;
+  text-align: center;
 }
 
 .ticketTable .row:nth-child(odd) {
@@ -185,6 +184,43 @@ input:focus, textarea:focus {
   box-sizing: border-box;
   display: table-column;
   float: left;
+  height: 45px;
+  width: 20%;
+  // width: 16vw;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  padding-top: 12px;
+  color: black;
+}
+
+.ticketId {
+  width: 5%;
+}
+
+.description {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.status {
+  width: 5%;
+}
+
+.username {
+  width: 10%;
+}
+
+.phoneNumber {
+  width: 5%;
+}
+
+.email {
+  width: 10%;
+}
+
+.pictureCol {
+  width: 5%;
   height: 35px;
   width: 20%;
   // background-color: #ccc;
