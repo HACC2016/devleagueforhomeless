@@ -44,7 +44,7 @@ app.put(/\/homeless\/\d+/, function(req, res) {
 });
 
 app.get('/homeless', function(req, res) {
-  Refferals.findAll({include: [{
+  Refferals.findAll({order:'id ASC',include: [{
       model: Pics,
       as: 'pic',
     }, {
