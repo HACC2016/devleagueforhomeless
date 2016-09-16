@@ -104,7 +104,8 @@ app.post('/homeless', function(req, res, next) {
             state: fields.state[0],
             zip: fields.zip[0],
             address: fields.address[0],
-            GPS: "(0,0)",
+            latitude: "1.23456",
+            longitude: "9.8765",
             description: fields.description[0]})
           .then(function(refferal) {
             return res.render('success');
@@ -124,7 +125,8 @@ app.post('/homeless', function(req, res, next) {
           state: fields.state[0],
           zip: fields.zip[0],
           address: fields.address[0],
-          GPS: "(0,0)",
+          latitude: "1.23456",
+          longitude: "9.8765",
           description: fields.description[0]})
           .then(function(refferal) {
           // Sends response that tells the pic got uploaded
