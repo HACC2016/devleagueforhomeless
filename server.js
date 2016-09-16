@@ -20,16 +20,22 @@ app.use(bodyParser.json());
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use('/twilio', twilioApp);
+
 app.put(/\/homeless\/\d+/, function(req, res) {
+ var split = req.url.split('/');
+ var numId = split[2];
+ Refferals.update(req.body,{where:{id:numId}})
+   .then((data)=> {
+     res.json(data);
+   });
 });
 
 app.get('/homeless', function(req, res) {
-  console.log(Pics);
   Refferals.findAll({include: [{
       model: Pics,
       as: 'pic',
     }, {
-      model: db.refferalStatus,
+      model: db.refferalStatuses,
       as: 'refferalStatus',
     }]}).then(function(data) {
       res.json(data);
@@ -44,7 +50,6 @@ app.get('/dashboard', function(req, res, next) {
       model: db.refferalStatus,
       as: 'refferalStatus',
     }]}).then(function(refferal) {
-      console.log(refferal[1].dataValues);
       refferal.push({});
       res.render('dashboard', {json: refferal.reverse()});
   });
@@ -54,17 +59,16 @@ app.post('/message', function(req, res) {
   Pics.create({fileName: req.body.MediaUrl0})
   .then(function(pic) {
       // Inserts Location data to  Locations table
-      Refferals.create({refferalStatus_id:1,
-                        pic_id: pic.id,
-                        phoneNumber: req.body.From,
-                        city: req.body.FromCity,
-                        state: req.body.FromState,
-                        zip: req.body.FromZip,
-                        description: req.body.Body})
+      Refferals.create(
+      {
+        refferalStatus: 1,
+        phoneNumber: req.body.From,
+        description: req.body.Body
+      }
+    )
     .then(function(refferal) {
-      // Sends response that tells the pic got uploaded
-      return res.json(refferal);
-    })
+      res.send("<Response><Message>Thank you for your referral</Message></Response>")
+    });
   })
 });
 app.post('/homeless', function(req, res, next) {
@@ -90,8 +94,8 @@ app.post('/homeless', function(req, res, next) {
       return Pics.create({fileName: insertName})
       .then(function(pic) {
       // Inserts Location data to  Locations table
-        return Refferals.create({refferalStatus:1,
-          pic: pic.id,
+        return Refferals.create({refferalStatus_id:3,
+          pic_id: pic.id,
           name: fields.name[0],
           firstName: fields.firstName[0],
           lastName: fields.lastName[0],
@@ -113,7 +117,7 @@ app.post('/homeless', function(req, res, next) {
       });
     }
     else{
-       Refferals.create({refferalStatus:1,
+       Refferals.create({refferalStatus_id:3,
           name: fields.name[0],
           firstName: fields.firstName[0],
           lastName: fields.lastName[0],
@@ -154,10 +158,10 @@ app.get(/\/homeless\/\d+\/photo/, function(req, res) {
      model: Pics,
      as: 'pic',
    }, {
-     model: db.refferalStatus,
+     model: db.refferalStatuses,
      as: 'refferalStatus',
    }]}).then(function(data) {
-     res.sendFile(data.dataValues.pic.fileName);
+      res.sendFile(data.dataValues.pic.fileName);
  });
 });
 
