@@ -82,11 +82,16 @@ html(lang='en')
             input#show-listings(type='button', value='Show Listings')
             input#hide-listings(type='button', value='Hide Listings')
         .destinations-box
-          input#origin-input.contorls(type='text', placeholder='Enter start location')
+          input#origin-input.controls(type='text', placeholder='Enter start location')
           input#destination-input.controls(type='text', placeholder='Enter end location')
         select#mode-selector
           option(value='DRIVING') Driving
           option(value='WALKING') Walking
         #map
+        .map-container
+          .map-gps-table
+            each val in json
+              .map-gps-row
+                p Location: #{val.GPS} Description #{val.description}
       script(type='text/javascript', src='/js/map.js')
       script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap')
