@@ -8,7 +8,7 @@
 <body>
   <h1> Refer a Camp </h1>
   <br>
-  <form class="communityForm" action="/homeless" enctype="multipart/form-data" method="POST">
+  <form id="communityForm" class="communityForm" action="/homeless" enctype="multipart/form-data" method="POST">
     <h3>Your Info</h3>
     <hr>
     <label>Username (required)</label>
@@ -56,7 +56,7 @@
     <br>
     <label>Description</label>
     <br>
-    <input type="textbox" name="description" value="description">
+    <textarea class="descriptionArea" name="description" value="description" placeholder="Enter your description here."></textarea>
     <br>
     <label>Picture</label>
     <br>

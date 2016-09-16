@@ -177,9 +177,6 @@ input:focus, textarea:focus {
   font-weight: bold;
   font-size: 18px; }
 
-.location, .email, .phone, .description {
-  padding: 5px; }
-
 .locationText {
   color: black; }
 
