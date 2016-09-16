@@ -24,12 +24,11 @@ app.put(/\/homeless\/\d+/, function(req, res) {
 });
 
 app.get('/homeless', function(req, res) {
-  console.log(Pics);
   Refferals.findAll({include: [{
       model: Pics,
       as: 'pic',
     }, {
-      model: db.refferalStatus,
+      model: db.refferalStatuses,
       as: 'refferalStatus',
     }]}).then(function(data) {
       res.json(data);
@@ -44,7 +43,6 @@ app.get('/dashboard', function(req, res, next) {
       model: db.refferalStatus,
       as: 'refferalStatus',
     }]}).then(function(refferal) {
-      console.log(refferal[1].dataValues);
       refferal.push({});
       res.render('dashboard', {json: refferal.reverse()});
   });
@@ -90,8 +88,9 @@ app.post('/homeless', function(req, res, next) {
       return Pics.create({fileName: insertName})
       .then(function(pic) {
       // Inserts Location data to  Locations table
-        return Refferals.create({refferalStatus:1,
-          pic: pic.id,
+        console.log(pic);
+        return Refferals.create({refferalStatus_id:2,
+          pic_id: pic.id,
           name: fields.name[0],
           firstName: fields.firstName[0],
           lastName: fields.lastName[0],
@@ -146,6 +145,7 @@ app.put(/\/homeless\/\d+/, function(req, res) {
 app.get(/\/homeless\/\d+\/photo/, function(req, res) {
  var split = req.url.split('/');
  var numId = split[2];
+ console.log("GETTING PHOTO");
  Refferals.findOne({
    where: {
      id: numId
@@ -154,10 +154,10 @@ app.get(/\/homeless\/\d+\/photo/, function(req, res) {
      model: Pics,
      as: 'pic',
    }, {
-     model: db.refferalStatus,
+     model: db.refferalStatuses,
      as: 'refferalStatus',
    }]}).then(function(data) {
-     res.sendFile(data.dataValues.pic.fileName);
+      res.sendFile(data.dataValues.pic.fileName);
  });
 });
 

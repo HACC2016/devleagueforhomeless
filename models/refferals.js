@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'pic_id',
           as: 'pic'
         });
-        models.Refferals.belongsTo(models.refferalStatus, {
+        models.Refferals.belongsTo(models.refferalStatuses, {
           foreignKey: 'refferalStatus_id',
           as: 'refferalStatus'
         });
