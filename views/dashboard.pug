@@ -57,9 +57,12 @@ html(lang='en')
                 | #{val.description}
               .col.status
                 form(action='/homeless/' + val.id + "/?_method=put", method="post")
-                  div.input.statusInput
-                    input.statusInput(type="text", name="refferalStatus_id", value=val.refferalStatus_id)
-                  input.submitInput(type="submit")
+                  select(name="refferalStatus_id", onchange='this.form.submit()')
+                    option(value="" disabled selected) #{val.refferalStatus_id}
+                    option(value=1) 1
+                    option(value=2) 2
+                    option(value=3) 3
+                    option(value=4) 4
               .col.username
                 | #{val.name}
               .col.phoneNumber
@@ -78,11 +81,11 @@ html(lang='en')
         h2 Homeless Map Tracker
         .options-box
           h1 Toggle
-          div
+          div.toggleContainer
             input#show-listings(type='button', value='Show Listings')
             input#hide-listings(type='button', value='Hide Listings')
         .destinations-box
-          input#origin-input.contorls(type='text', placeholder='Enter start location')
+          input#origin-input.controls(type='text', placeholder='Enter start location')
           input#destination-input.controls(type='text', placeholder='Enter end location')
         select#mode-selector
           option(value='DRIVING') Driving

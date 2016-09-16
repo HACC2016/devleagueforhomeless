@@ -60,8 +60,9 @@ app.get('/dashboard', function(req, res, next) {
         refferal[i].formatDate = dateFormat(refferal[i].createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT");
       }
       /* add a blank value so that jade table doesn't skip any values. */
-      refferal.push({});
-      res.render('dashboard', {json: refferal.reverse()});
+      // refferal.push({});
+      refferal.unshift({});
+      res.render('dashboard', {json: refferal});
   });
 });
 
@@ -81,6 +82,7 @@ app.post('/message', function(req, res) {
     });
   })
 });
+
 app.post('/homeless', function(req, res, next) {
   // Create Form parse
   var form = new multiparty.Form();
