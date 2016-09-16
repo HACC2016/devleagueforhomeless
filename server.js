@@ -122,7 +122,7 @@ app.post('/homeless', function(req, res, next) {
       });
     }
     else{
-       Refferals.create({refferalStatus_id:1,
+       Refferals.create({refferalStatus:1,
           name: fields.name[0],
           firstName: fields.firstName[0],
           lastName: fields.lastName[0],
