@@ -267,3 +267,15 @@ input:focus, textarea:focus {
 
 .submitInput {
   display: none; }
+
+.container {
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+  width: 50%;
+  height: 250px; }
+
+#map {
+  position: relative;
+  height: 300px;
+  width: 500px; }
