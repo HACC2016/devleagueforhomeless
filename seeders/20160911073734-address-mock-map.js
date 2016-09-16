@@ -14,7 +14,7 @@ module.exports = {
       updatedAt: new Date(),
       // reporter_id: 1,
       // pic_id: 1,
-      GPS: 'lat: 21.3069, lng: -157.8583',
+      GPS: '21.3069, -157.8583',
       refferalStatus_id: 1
     }], {});
   },

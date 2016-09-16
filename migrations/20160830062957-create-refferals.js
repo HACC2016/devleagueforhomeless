@@ -51,7 +51,7 @@ module.exports = {
       },
       pic_id: {
         type:Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         foreignKey: true,
         references:{
           model: "Pics",

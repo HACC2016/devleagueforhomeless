@@ -209,11 +209,10 @@ input:focus, textarea:focus {
 
 .ticketTable {
   display: table;
-  width: auto;
   border-spacing: 5px;
   background-color: white;
-  width: 80%;
-  margin-left: 10px; }
+  width: 100%;
+  margin: 0 auto; }
 
 .headrow {
   font-weight: bold;
@@ -221,7 +220,8 @@ input:focus, textarea:focus {
   text-align: center; }
 
 .row {
-  display: table-row; }
+  display: table-row;
+  text-align: center; }
 
 .ticketTable .row:nth-child(odd) {
   display: table-row;
@@ -231,6 +231,35 @@ input:focus, textarea:focus {
   box-sizing: border-box;
   display: table-column;
   float: left;
+  height: 45px;
+  width: 20%;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  padding-top: 12px;
+  color: black; }
+
+.ticketId {
+  width: 5%; }
+
+.description {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; }
+
+.status {
+  width: 5%; }
+
+.username {
+  width: 10%; }
+
+.phoneNumber {
+  width: 5%; }
+
+.email {
+  width: 10%; }
+
+.pictureCol {
+  width: 5%;
   height: 35px;
   width: 20%;
   border-left: 1px solid white;
