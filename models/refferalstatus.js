@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var refferalStatus = sequelize.define('refferalStatus', {
+  var refferalStatus = sequelize.define('refferalStatuses', {
     name: DataTypes.STRING
   }, {
     classMethods: {
