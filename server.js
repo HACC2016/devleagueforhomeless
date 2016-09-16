@@ -8,6 +8,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
 var methodOverride = require('method-override');
+var cloudinary = require('cloudinary');
+var cloudConfig = require('./config/cloudConfig.json');
 
 var Refferals = db.Refferals;
 var Pics = db.Pics;
@@ -25,6 +27,12 @@ app.use(methodOverride('_method'));
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use('/twilio', twilioApp);
+
+cloudinary.config({
+  cloud_name: cloudConfig.name,
+  api_key: cloudConfig.key,
+  api_secret: cloudConfig.secret
+});
 
 app.put(/\/homeless\/\d+/, function(req, res) {
  var split = req.url.split('/');
@@ -90,42 +98,27 @@ app.post('/homeless', function(req, res, next) {
     if(err)
       throw err
     if(files.pic[0].size){
-      fs.readFile(files.pic[0].path, function (err, data) {
-      if(err)
-        next(err);
-      // Creates unique file name for picture
-      var insertName = __dirname +
-      '/uploads/' +
-      Date.now() +
-      files.pic[0].originalFilename;
-      // Write file to disk
-      fs.writeFile(insertName , data, function (err) {
-      if(err)
-        next(err);
-      // Inserts Pic Name to  Picture table
-      return Pics.create({fileName: insertName})
-      .then(function(pic) {
-      // Inserts Location data to  Locations table
-        return Refferals.create({refferalStatus_id:3,
-          pic_id: pic.id,
-          name: fields.name[0],
-          firstName: fields.firstName[0],
-          lastName: fields.lastName[0],
-          email: fields.email[0],
-          phoneNumber: fields.phoneNumber[0],
-          area: fields.area[0],
-          city: fields.city[0],
-          state: fields.state[0],
-          zip: fields.zip[0],
-          address: fields.address[0],
-          GPS: "(0,0)",
-          description: fields.description[0]})
+      cloudinary.uploader.upload(files.pic[0].path, function(result) {
+        return Pics.create({fileName: result.url})
+        .then(function(cloudPic) {
+          Refferals.create({refferalStatus_id:3,
+            pic_id: cloudPic.id,
+            name: fields.name[0],
+            firstName: fields.firstName[0],
+            lastName: fields.lastName[0],
+            email: fields.email[0],
+            phoneNumber: fields.phoneNumber[0],
+            area: fields.area[0],
+            city: fields.city[0],
+            state: fields.state[0],
+            zip: fields.zip[0],
+            address: fields.address[0],
+            GPS: "(0,0)",
+            description: fields.description[0]})
           .then(function(refferal) {
-          // Sends response that tells the pic got uploaded
             return res.json(refferal);
           });
-          });
-        });
+        })
       });
     }
     else{
@@ -173,7 +166,7 @@ app.get(/\/homeless\/\d+\/photo/, function(req, res) {
      model: db.refferalStatuses,
      as: 'refferalStatus',
    }]}).then(function(data) {
-      res.sendFile(data.dataValues.pic.fileName);
+      res.redirect(data.dataValues.pic.fileName);
  });
 });
 
