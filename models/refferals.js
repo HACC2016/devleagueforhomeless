@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
-    phoneNumber: DataTypes.INTEGER,
+    phoneNumber: DataTypes.STRING,
     area: DataTypes.STRING,
     address:DataTypes.STRING,
     zip: DataTypes.INTEGER,
@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'pic_id',
           as: 'pic'
         });
-        models.Refferals.belongsTo(models.refferalStatus, {
+        models.Refferals.belongsTo(models.refferalStatuses, {
           foreignKey: 'refferalStatus_id',
           as: 'refferalStatus'
         });

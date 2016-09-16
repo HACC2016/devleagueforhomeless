@@ -259,9 +259,23 @@ input:focus, textarea:focus {
   width: 10%; }
 
 .pictureCol {
-  width: 5%;
-  height: 35px;
-  width: 20%;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
-  padding-top: 7px; }
+  width: 5%; }
+
+.statusInput {
+  display: inline-block;
+  width: 40%; }
+
+.submitInput {
+  display: none; }
+
+.container {
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+  width: 50%;
+  height: 250px; }
+
+#map {
+  position: relative;
+  height: 300px;
+  width: 500px; }
