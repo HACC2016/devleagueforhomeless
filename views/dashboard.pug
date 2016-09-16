@@ -6,22 +6,8 @@ html(lang='en')
     link(rel='stylesheet', type='text/css', href='/css/styles.css')
   body
     #main
-      .headerContainer
-        .logo
-          | IHS Logo
-        .headerButtons
-          a(href='/adminView.html') Home
-          a(href='/adminView.html') Preferences
-          a(href='/adminView.html') Help
-        .logout
-          button(type='button')
-            | Log Out
-        .notification
-          | [  ]
       .title
         h1 Dashboard
-      .filter
-        input(placeholder='filter By')
       br
       .ticketTable
         each val, index in json
@@ -70,8 +56,11 @@ html(lang='en')
               .col.email
                 | #{val.email}
               .col.pictureCol
-                a(href="/homeless/" + val.id + "/photo")
-                  | Picture
+                if val.pic_id === null
+                  | N/A
+                else
+                  a(href="/homeless/" + val.id + "/photo")
+                    | Picture
       br
       br
       br

@@ -143,16 +143,41 @@ input:hover, textarea:hover,
 input:focus, textarea:focus {
   border-color: #C9C9C9; }
 
-.form {
-  padding: 10px; }
+.communityForm {
+  margin: 0 auto;
+  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  position: relative;
+  width: 30%;
+  text-align: center;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 24px;
+  font-weight: bold;
+  color: #09C;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #999;
+  border: inset 1px solid #333;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3); }
+  @media only screen and (min-width: 200px) and (max-width: 650px) {
+    .communityForm {
+      width: 80%; } }
 
-.form label {
-  color: #ca9e2b;
-  display: block;
-  margin-bottom: 5px; }
+.communityForm label {
+  text-align: left;
+  width: 100px; }
 
 .location, .email, .phone, .description {
   padding: 5px; }
+
+.locationText {
+  color: black; }
 
 .submit {
   width: auto;
@@ -199,9 +224,12 @@ input:focus, textarea:focus {
   float: right; }
 
 .title h1 {
-  float: left;
-  margin: 5px;
-  margin-right: 25px; }
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: center; }
+
+.backText {
+  color: white; }
 
 .filter {
   margin: 0 auto;
@@ -209,9 +237,11 @@ input:focus, textarea:focus {
 
 .ticketTable {
   display: table;
+  box-sizing: border-box;
+  border: 1px solid black;
   border-spacing: 5px;
   background-color: white;
-  width: 100%;
+  width: 95%;
   margin: 0 auto; }
 
 .headrow {
@@ -244,7 +274,8 @@ input:focus, textarea:focus {
 .description {
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden; }
+  overflow: hidden;
+  width: 20%; }
 
 .status {
   width: 5%; }

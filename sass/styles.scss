@@ -76,30 +76,76 @@ input:focus, textarea:focus {
   border-color: #C9C9C9;
 }
 
-.form {
+// .form {
+//   padding: 10px;
+// }
+
+// .form label {
+//   color: #ca9e2b;
+//   margin-bottom: 5px;
+// }
+
+.communityForm {
+  // padding: 10px;
+  // border: 2px solid white;
+  // margin: 0 auto;
+  // width: 50vw;
+  // background-color: gray;
+  // @include small {
+  //   width: 75vw;
+  // }
+  margin: 0 auto;
+  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  position: relative;
+  // display:inline-block;
+  width: 30%;
+  text-align: center;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 24px;
+  font-weight: bold;
+  color: #09C;
+  text-decoration: none;
+  border-radius: 10px;
   padding: 10px;
+  border: 1px solid #999;
+  border: inset 1px solid #333;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+
+  @include small {
+    width: 80%;
+  }
 }
 
-.form label {
-    color: #ca9e2b;
-    display: block;
-    margin-bottom: 5px;
+.communityForm label {
+  // float: left;
+  text-align: left;
+  width: 100px;
 }
 
 .location, .email, .phone, .description {
   padding: 5px;
 }
 
+.locationText {
+  color: black;
+}
+
 .submit {
-    width: auto;
-    margin-left: 5px;
-    padding: 9px 15px;
-    background: #ca9e2b;
-    border: 0;
-    font-size: 14px;
-    color: #FFFFFF;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
+  width: auto;
+  margin-left: 5px;
+  padding: 9px 15px;
+  background: #ca9e2b;
+  border: 0;
+  font-size: 14px;
+  color: #FFFFFF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
 }
 
 .submit:hover {
@@ -146,9 +192,13 @@ input:focus, textarea:focus {
 }
 
 .title h1 {
-  float: left;
-  margin: 5px;
-  margin-right: 25px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.backText {
+  color: white;
 }
 
 .filter {
@@ -158,9 +208,11 @@ input:focus, textarea:focus {
 
 .ticketTable {
   display: table;
+  box-sizing:border-box;
+  border: 1px solid black;
   border-spacing: 5px;
   background-color: white;
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -201,6 +253,7 @@ input:focus, textarea:focus {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  width: 20%;
 }
 
 .status {
