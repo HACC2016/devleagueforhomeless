@@ -1,12 +1,16 @@
 var express = require('express');
-var app = express();
 var path = require('path');
 var db = require('./models');
 var multiparty = require('multiparty');
 var fs = require('fs');
+var util = require('util');
+var app = express();
+var bodyParser = require('body-parser');
+var dateFormat = require('dateformat');
+var methodOverride = require('method-override');
+
 var Refferals = db.Refferals;
 var Pics = db.Pics;
-var bodyParser = require('body-parser');
 
 var twilioApp = require('./routes/twilio');
 
@@ -17,6 +21,7 @@ app.use(express.static(__dirname + '/uploads'));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use('/twilio', twilioApp);
@@ -42,14 +47,19 @@ app.get('/homeless', function(req, res) {
   });
 });
 
+/* Admin-view */
 app.get('/dashboard', function(req, res, next) {
   Refferals.findAll({include: [{
       model: Pics,
       as: 'pic',
     }, {
-      model: db.refferalStatus,
+      model: db.refferalStatuses,
       as: 'refferalStatus',
     }]}).then(function(refferal) {
+      for(var i = 0; i < refferal.length; i++) {
+        refferal[i].formatDate = dateFormat(refferal[i].createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+      }
+      /* add a blank value so that jade table doesn't skip any values. */
       refferal.push({});
       res.render('dashboard', {json: refferal.reverse()});
   });
@@ -61,7 +71,7 @@ app.post('/message', function(req, res) {
       // Inserts Location data to  Locations table
       Refferals.create(
       {
-        refferalStatus: 1,
+        refferalStatus_id: 1,
         phoneNumber: req.body.From,
         description: req.body.Body
       }
