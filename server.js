@@ -53,7 +53,7 @@ app.get('/dashboard', function(req, res, next) {
       model: Pics,
       as: 'pic',
     }, {
-      model: db.refferalStatus,
+      model: db.refferalStatuses,
       as: 'refferalStatus',
     }]}).then(function(refferal) {
       for(var i = 0; i < refferal.length; i++) {
@@ -71,7 +71,7 @@ app.post('/message', function(req, res) {
       // Inserts Location data to  Locations table
       Refferals.create(
       {
-        refferalStatus: 1,
+        refferalStatus_id: 1,
         phoneNumber: req.body.From,
         description: req.body.Body
       }
