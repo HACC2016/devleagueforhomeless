@@ -35,7 +35,7 @@ cloudinary.config({
 });
 
 app.get('/homeless', function(req, res) {
-  Refferals.findAll({include: [{
+  Refferals.findAll({order:'id ASC',include: [{
       model: Pics,
       as: 'pic',
     }, {
