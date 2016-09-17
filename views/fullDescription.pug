@@ -5,7 +5,31 @@ head
   title Full Description
   link(rel = 'stylesheet', href = '/css/styles.css')
 body
-  h3.fullDescriptionh3 Full Description
+  h3.fullDescriptionh3 Referral ID: #{json.id}
   br
-  .fullDescription #{json.description}
+  .fullDescriptionContainer
+    h3.infoHeading Submitter Info
+    ul.submitterInfo
+      li Username: #{json.name}
+      li First Name: #{json.firstname}
+      li Last Name: #{json.lastname}
+      li Email: #{json.email}
+      li Phone: #{json.phoneNumber}
+    br
+    h3.infoHeading Location Info
+    ul.locationInfo
+      li Area: #{json.area}
+      li Street: #{json.area}
+      li City: #{json.city}
+      li State: #{json.state}
+      li City: #{json.city}
+
+      li.fullDescription Full Description: #{json.description}
+    br
+    h3.infoHeading Referral Info
+    ul.referralInfo
+      li Created At: #{json.createdAt}
+      -var statuses = ["In Progress","Danger","Done"]
+      -var status = statuses[json.refferalStatus_id]
+      li Status: #{status}
     a(href="/dashboard" class = 'navButton') back to Dashboard
