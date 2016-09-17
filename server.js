@@ -4,13 +4,13 @@ var db = require('./models');
 var multiparty = require('multiparty');
 var fs = require('fs');
 var util = require('util');
-var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
 var methodOverride = require('method-override');
 var cloudinary = require('cloudinary');
 var cloudConfig = require('./config/cloudConfig.json');
 
+var app = express();
 var Refferals = db.Refferals;
 var Pics = db.Pics;
 
@@ -18,15 +18,15 @@ var twilioApp = require('./routes/twilio');
 
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'pug');
+
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/uploads'));
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
-
 app.use('/twilio', twilioApp);
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 cloudinary.config({
   cloud_name: cloudConfig.name,
@@ -71,8 +71,14 @@ app.get(/\/description\/\d/, function(req, res) {
  Refferals.findOne({
    where: {
      id: numId
-   }
-   }).then(function(data) {
+   },
+   include: [{
+     model: Pics,
+     as: 'pic',
+   }, {
+     model: db.refferalStatuses,
+     as: 'refferalStatus',
+   }]}).then(function(data) {
       res.render('fullDescription', {json: data});
   });
 });
@@ -124,12 +130,13 @@ app.post('/homeless', function(req, res, next) {
           longitude: fields.longitude[0],
           description: fields.description[0]})
           .then(function(refferal) {
-          // Sends response that tells the pic got uploaded
+            // Sends response that tells the pic got uploaded
             return res.render('success');
           });
     }
   });
 });
+
 app.put(/\/homeless\/\d+/, function(req, res) {
  var split = req.url.split('/');
  var numId = split[2];
