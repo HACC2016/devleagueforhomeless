@@ -5,8 +5,9 @@ module.exports = {
   up: function (queryInterface, Sequelize) {
     var people = [];
     for(var i = 0; i < 3; i++){
-      var lat = Math.random() * (25 - 20) + 20;
-      var long = Math.random() * (-150 - 160) + -150;
+      var lat = Math.random() * (22 - 20) + 20;
+      var long = Math.random() * (-158 + 156) + -156;
+
       people.push({
         name: faker.name.firstName(),
         email: faker.internet.email(),
