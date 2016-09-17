@@ -3,7 +3,7 @@
 module.exports = {
 up : function (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('refferalStatuses', [{
-      name: 'Done',
+      name: 'Queue',
       createdAt : new Date(),
       updatedAt : new Date()
     },{
@@ -15,7 +15,7 @@ up : function (queryInterface, Sequelize) {
       createdAt : new Date(),
       updatedAt : new Date()
     },{
-      name: 'Queue',
+      name: 'Done',
       createdAt : new Date(),
       updatedAt : new Date()
     }], {});

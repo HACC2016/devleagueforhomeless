@@ -1,22 +1,30 @@
 'use strict';
+var faker = require('faker');
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert('Refferals', [{
-      name: 'Kawika',
-      area: 'kakaako',
-      address: 'honolulu, hi',
-      zip: 96819,
-      state: 'HI',
-      city: 'honolulu',
-      description: 'a new kakaako camp brah',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      // reporter_id: 1,
-      // pic_id: 1,
-      GPS: 'lat: 21.3069, lng: -157.8583',
-      refferalStatus_id: 1
-    }], {});
+    var people = [];
+    for(var i = 0; i < 3; i++){
+      var lat = Math.random() * (25 - 20) + 20;
+      var long = Math.random() * (-150 - 160) + -150;
+      people.push({
+        name: faker.name.firstName(),
+        email: faker.internet.email(),
+        description: faker.hacker.abbreviation(),
+        area: 'kakaako',
+        state: 'HI',
+        zip: 96819,
+        city: 'honolulu',
+        address: 'honolulu, hi',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        latitude: JSON.stringify(lat),
+        longitude: JSON.stringify(long),
+        refferalStatus_id: 2,
+        pic_id: 1
+      });
+    }
+    return queryInterface.bulkInsert('Refferals', people, {});
   },
 
   down: function (queryInterface, Sequelize) {
