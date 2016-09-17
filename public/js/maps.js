@@ -8,12 +8,15 @@ function initMap(){
   $.ajax({url: '/homeless', success: (function (result){
     var referrals = result;
     markers = referrals.map(function(loc){
-      var coordinates = loc.GPS.split(',');
+      var coordinatesLat = loc.latitude;
+      var coordinatesLng = loc.longitude;
+      console.log('lat', coordinatesLat);
+      console.log('lng', coordinatesLng);
       return new google.maps.Marker({
         map: map,
         position: {
-          lat: parseFloat(coordinates[0]),
-          lng: parseFloat(coordinates[1]),
+          lat: parseFloat(coordinatesLat),
+          lng: parseFloat(coordinatesLng),
         },
         animation: google.maps.Animation.DROP
       });
