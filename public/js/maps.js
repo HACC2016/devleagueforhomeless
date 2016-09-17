@@ -16,7 +16,8 @@ function initMap(){
           lng: parseFloat(coordinatesLng),
         },
         animation: google.maps.Animation.DROP,
-        title: loc.id.toString()
+        title: loc.id.toString(),
+        icon: 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png'
       });
       var largeInfowindow = new google.maps.InfoWindow();
       marker.addListener('click', function(){
