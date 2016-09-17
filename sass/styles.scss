@@ -55,12 +55,22 @@ h1 {
   text-align: center;
 }
 
+h3 {
+  font-family: 'Bree Serif', serif;
+  font-size: 24px;
+  color: #ca9e2b;
+  text-align: left;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 input, textarea {
+  box-sizing: border-box;
   padding: 9px;
   border: solid 1px #E5E5E5;
   outline: 0;
   font: normal 13px/100% Verdana, Tahoma, sans-serif;
-  width: 200px;
+  width: 100%;
   background: #FFFFFF;
 }
 
@@ -76,35 +86,111 @@ input:focus, textarea:focus {
   border-color: #C9C9C9;
 }
 
-.form {
-  padding: 10px;
+.communityForm {
+  margin: 0 auto;
+  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  // position: relative;
+  width: 50%;
+  text-align: left;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 14px;
+  // font-style: italic;
+  line-height: 24px;
+  // font-weight: bold;
+  color: #09C;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 25px;
+  border: 1px solid #999;
+  border: inset 1px solid #333;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  @include small {
+    width: 80%;
+  }
 }
 
-.form label {
-    color: #ca9e2b;
-    display: block;
-    margin-bottom: 5px;
+.communityForm label {
+  text-align: left;
+  width: 100px;
 }
 
-.location, .email, .phone, .description {
-  padding: 5px;
+.communityForm h3 {
+  text-align: left;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+// .location, .email, .phone, .description {
+//   padding: 5px;
+// }
+
+.locationText {
+  color: black;
 }
 
 .submit {
-    width: auto;
-    margin-left: 5px;
-    padding: 9px 15px;
-    background: #ca9e2b;
-    border: 0;
-    font-size: 14px;
-    color: #FFFFFF;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
+  width: auto;
+  margin-left: 5px;
+  padding: 9px 15px;
+  background: #ca9e2b;
+  border: 0;
+  font-size: 14px;
+  color: #FFFFFF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
 }
 
 .submit:hover {
   cursor: pointer;
 }
+
+.myButton {
+  -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
+  -webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
+  box-shadow: 0px 0px 0px 2px #9fb4f2;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
+  background:-moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background:-webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background:-o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background:-ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
+  background-color:#7892c2;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px;
+  width: 50%;
+  border:1px solid #4e6096;
+  display:inline-block;
+  float: right;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:16px;
+  // padding:12px 37px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #283966;
+}
+.myButton:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+  background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+  background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+  background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+  background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+  background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+  background-color:#476e9e;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+
 // drop shadows
 input, textarea {
   box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
@@ -146,9 +232,16 @@ input:focus, textarea:focus {
 }
 
 .title h1 {
-  float: left;
-  margin: 5px;
-  margin-right: 25px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.backText {
+  color: black;
+  text-decoration: none;
+  border: 1px solid white;
+  background-color: white;
 }
 
 .filter {
@@ -158,10 +251,13 @@ input:focus, textarea:focus {
 
 .ticketTable {
   display: table;
+  box-sizing:border-box;
+  border: 1px solid black;
   border-spacing: 5px;
   background-color: white;
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
+  overflow:hidden;
 }
 
 .headrow {
@@ -201,6 +297,33 @@ input:focus, textarea:focus {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  width: 20%;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    // border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    // top: 100%;
+    // left: 50%;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
 .status {
@@ -221,10 +344,92 @@ input:focus, textarea:focus {
 
 .pictureCol {
   width: 5%;
-  height: 35px;
-  width: 20%;
-  // background-color: #ccc;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
-  padding-top: 7px;
 }
+
+.statusInput {
+  display: inline-block;
+  width: 40%;
+}
+
+.submitInput {
+  display: none;
+}
+
+.fullDescription {
+  border: 2px solid white;
+  height: 40%;
+  width: 40%;
+  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  padding: 15px;
+  color: black;
+}
+.container {
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+  width: 50%;
+  height: 250px;
+}
+
+#map {
+  position: relative;
+  height: 300px;
+  width: 500px;
+}
+
+.optionsBox {
+  margin: 0 auto;
+  height: 25px;
+  width: 100%;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    // background-color: #4CAF50;
+    color: black;
+    // padding: 16px;
+    // font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 75%;
+    height: 75%;
+    text-align: center;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
