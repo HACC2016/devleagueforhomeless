@@ -77,24 +77,6 @@ app.get(/\/description\/\d/, function(req, res) {
   });
 });
 
-app.post('/message', function(req, res) {
-  Pics.create({fileName: req.body.MediaUrl0})
-  .then(function(pic) {
-      // Inserts Location data to  Locations table
-      Refferals.create(
-      {
-        refferalStatus_id: 1,
-        phoneNumber: req.body.From,
-        description: req.body.Body
-      }
-    )
-    .then(function(refferal) {
-      res.send("<Response><Message>Thank you for your referral</Message></Response>")
-    });
-  })
-});
-
-
 app.post('/homeless', function(req, res, next) {
   // Create Form parse
   var form = new multiparty.Form();
