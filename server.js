@@ -121,7 +121,7 @@ app.post('/homeless', function(req, res, next) {
             longitude: fields.longitude[0],
             description: fields.description[0]})
           .then(function(refferal) {
-            return res.json(refferal);
+            return res.render('success');
           });
         })
       });
@@ -143,7 +143,7 @@ app.post('/homeless', function(req, res, next) {
           description: fields.description[0]})
           .then(function(refferal) {
           // Sends response that tells the pic got uploaded
-            return res.json(refferal);
+            return res.render('success');
           });
     }
   });
