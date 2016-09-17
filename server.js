@@ -34,15 +34,6 @@ cloudinary.config({
   api_secret: cloudConfig.secret
 });
 
-app.put(/\/homeless\/\d+/, function(req, res) {
- var split = req.url.split('/');
- var numId = split[2];
- Refferals.update(req.body,{where:{id:numId}})
-   .then((data)=> {
-     res.json(data);
-   });
-});
-
 app.get('/homeless', function(req, res) {
   Refferals.findAll({order:'id ASC',include: [{
       model: Pics,
@@ -57,7 +48,7 @@ app.get('/homeless', function(req, res) {
 
 /* Admin-view */
 app.get('/dashboard', function(req, res, next) {
-  Refferals.findAll({include: [{
+  Refferals.findAll({order:'id ASC', include: [{
       model: Pics,
       as: 'pic',
     }, {
@@ -68,9 +59,39 @@ app.get('/dashboard', function(req, res, next) {
         refferal[i].formatDate = dateFormat(refferal[i].createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT");
       }
       /* add a blank value so that jade table doesn't skip any values. */
-      refferal.push({});
-      res.render('dashboard', {json: refferal.reverse()});
+      // refferal.push({});
+      refferal.unshift({});
+      res.render('dashboard', {json: refferal});
   });
+});
+
+app.get(/\/description\/\d/, function(req, res) {
+ var split = req.url.split('/');
+ var numId = split[2];
+ Refferals.findOne({
+   where: {
+     id: numId
+   }
+   }).then(function(data) {
+      res.render('fullDescription', {json: data});
+  });
+});
+
+app.post('/message', function(req, res) {
+  Pics.create({fileName: req.body.MediaUrl0})
+  .then(function(pic) {
+      // Inserts Location data to  Locations table
+      Refferals.create(
+      {
+        refferalStatus_id: 1,
+        phoneNumber: req.body.From,
+        description: req.body.Body
+      }
+    )
+    .then(function(refferal) {
+      res.send("<Response><Message>Thank you for your referral</Message></Response>")
+    });
+  })
 });
 
 app.post('/homeless', function(req, res, next) {
@@ -99,7 +120,7 @@ app.post('/homeless', function(req, res, next) {
             longitude: "9.8765",
             description: fields.description[0]})
           .then(function(refferal) {
-            return res.json(refferal);
+            return res.render('success');
           });
         })
       });
@@ -121,7 +142,7 @@ app.post('/homeless', function(req, res, next) {
           description: fields.description[0]})
           .then(function(refferal) {
           // Sends response that tells the pic got uploaded
-            return res.json(refferal);
+            return res.render('success');
           });
     }
   });
@@ -132,7 +153,7 @@ app.put(/\/homeless\/\d+/, function(req, res) {
  var numId = split[2];
  Refferals.update(req.body,{where:{id:numId}})
    .then((data)=> {
-     res.json(data);
+     res.render('success');
    });
 });
 
@@ -151,7 +172,7 @@ app.get(/\/homeless\/\d+\/photo/, function(req, res) {
      as: 'refferalStatus',
    }]}).then(function(data) {
       res.redirect(data.dataValues.pic.fileName);
- });
+  });
 });
 
 var server = app.listen(3000, function(){

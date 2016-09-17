@@ -7,43 +7,64 @@
 </head>
 <body>
   <h1> Refer a Camp </h1>
-  <form action="/homeless" enctype="multipart/form-data" method="POST">
-  name:<br>
-  <input type="text" name="name" value="name">
   <br>
-  firstname:<br>
-  <input type="text" name="firstName" value="firstName">
-  <br>
-  lastname:<br>
-  <input type="text" name="lastName" value="lastName">
-  <br>
-  email:<br>
-  <input type="text" name="email" value="email">
-  <br>
-  phone#:<br>
-  <input type="text" name="phoneNumber" value="1111111">
-  <br>
-  area:<br>
-  <input type="text" name="area" value="area">
-  <br>
-  city:<br>
-  <input type="text" name="city" value="city">
-  <br>
-  state:<br>
-  <input type="text" name="state" value="state">
-  <br>
-  address:<br>
-  <input type="text" name="address" value="address">
-  <br>
-  zip:<br>
-  <input type="text" name="zip" value="222222">
-  <br>
-  description:<br>
-  <input type="textbox" name="description" value="description">
-  <br>
-  location: <input type="file" name="pic" id="pic">
-  <br>
-  <input type="submit" value="Submit">
-</form>
+  <form id="communityForm" class="communityForm" action="/homeless" enctype="multipart/form-data" method="POST">
+    <h3>Your Info</h3>
+    <hr>
+    <label>Username (required)</label>
+    <br>
+    <input type="text" name="name" value="username" placeholder="username">
+    <br>
+    <label>First Name</label>
+    <br>
+    <input type="text" name="firstName" value="firstName">
+    <br>
+    <label>Last Name</label>
+    <br>
+    <input type="text" name="lastName" value="lastName">
+    <br>
+    <label>Email</label>
+    <br>
+    <input type="text" name="email" value="email">
+    <br>
+    <label>Phone</label>
+    <br>
+    <input type="text" name="phoneNumber" value="1111111">
+    <br>
+    <br>
+    <h3>Location Info</h3>
+    <hr>
+    <label>Area</label>
+    <br>
+    <input type="text" name="area" value="area">
+    <br>
+    <label>City</label>
+    <br>
+    <input type="text" name="city" value="city">
+    <br>
+    <label>State</label>
+    <br>
+    <input type="text" name="state" value="state">
+    <br>
+    <label>Street</label>
+    <br>
+    <input type="text" name="address" value="address">
+    <br>
+    <label>Zip</label>
+    <br>
+    <input type="text" name="zip" value="222222">
+    <br>
+    <label>Description</label>
+    <br>
+    <textarea class="descriptionArea" name="description" value="description" placeholder="Enter your description here."></textarea>
+    <br>
+    <label>Picture</label>
+    <br>
+    <input class="locationText" type="file" name="pic" id="pic">
+    <br>
+    <br>
+    <!-- <a href="#" class="myButton">Submit</a> -->
+    <input class="myButton" type="submit" value="Submit">
+  </form>
 </body>
 </html>

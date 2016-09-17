@@ -2,7 +2,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Refferals = sequelize.define('Refferals', {
     name: DataTypes.STRING,
-    description: DataTypes.TEXT,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
@@ -14,6 +13,8 @@ module.exports = function(sequelize, DataTypes) {
     latitude: DataTypes.STRING,
     longitude: DataTypes.STRING,
     city: DataTypes.STRING,
+    description: DataTypes.STRING,
+    GPS: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
