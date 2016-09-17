@@ -48,7 +48,7 @@ app.get('/homeless', function(req, res) {
 
 /* Admin-view */
 app.get('/dashboard', function(req, res, next) {
-  Refferals.findAll({include: [{
+  Refferals.findAll({order:'id ASC', include: [{
       model: Pics,
       as: 'pic',
     }, {
@@ -62,6 +62,18 @@ app.get('/dashboard', function(req, res, next) {
       // refferal.push({});
       refferal.unshift({});
       res.render('dashboard', {json: refferal});
+  });
+});
+
+app.get(/\/description\/\d/, function(req, res) {
+ var split = req.url.split('/');
+ var numId = split[2];
+ Refferals.findOne({
+   where: {
+     id: numId
+   }
+   }).then(function(data) {
+      res.render('fullDescription', {json: data});
   });
 });
 

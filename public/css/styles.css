@@ -125,6 +125,14 @@ h1 {
   color: #ca9e2b;
   text-align: center; }
 
+h3 {
+  font-family: 'Bree Serif', serif;
+  font-size: 24px;
+  color: #ca9e2b;
+  text-align: left;
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
 input, textarea {
   box-sizing: border-box;
   padding: 9px;
@@ -270,7 +278,10 @@ input:focus, textarea:focus {
   text-align: center; }
 
 .backText {
-  color: white; }
+  color: black;
+  text-decoration: none;
+  border: 1px solid white;
+  background-color: white; }
 
 .filter {
   margin: 0 auto;
@@ -283,7 +294,8 @@ input:focus, textarea:focus {
   border-spacing: 5px;
   background-color: white;
   width: 95%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  overflow: hidden; }
 
 .headrow {
   font-weight: bold;
@@ -318,6 +330,25 @@ input:focus, textarea:focus {
   overflow: hidden;
   width: 20%; }
 
+.tooltip {
+  position: relative;
+  display: inline-block; }
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1; }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible; }
+
 .status {
   width: 5%; }
 
@@ -339,6 +370,16 @@ input:focus, textarea:focus {
 
 .submitInput {
   display: none; }
+
+.fullDescription {
+  border: 2px solid white;
+  height: 40%;
+  width: 40%;
+  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  padding: 15px;
+  color: black; }
 
 .container {
   display: inline-block;

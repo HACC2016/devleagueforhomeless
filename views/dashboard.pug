@@ -40,7 +40,8 @@ html(lang='en')
               .col.address
                 | #{val.address}
               .col.description
-                | #{val.description}
+                a.showDescription(href='/description/' + val.id)
+                  | #{val.description}
               .col.status
                 form(action='/homeless/' + val.id + "/?_method=put", method="post")
                   select(name="refferalStatus_id", onchange='this.form.submit()')
