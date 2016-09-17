@@ -7,22 +7,8 @@ html(lang='en')
     script(src="https://code.jquery.com/jquery-3.1.0.min.js",  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=", crossorigin="anonymous")
   body
     #main
-      .headerContainer
-        .logo
-          | IHS Logo
-        .headerButtons
-          a(href='/adminView.html') Home
-          a(href='/adminView.html') Preferences
-          a(href='/adminView.html') Help
-        .logout
-          button(type='button')
-            | Log Out
-        .notification
-          | [  ]
       .title
         h1 Dashboard
-      .filter
-        input(placeholder='filter By')
       br
       .ticketTable
         each val, index in json
@@ -55,12 +41,16 @@ html(lang='en')
               .col.address
                 | #{val.address}
               .col.description
-                | #{val.description}
+                a.showDescription(href='/description/' + val.id)
+                  | #{val.description}
               .col.status
                 form(action='/homeless/' + val.id + "/?_method=put", method="post")
-                  div.input.statusInput
-                    input.statusInput(type="text", name="refferalStatus_id", value=val.refferalStatus_id)
-                  input.submitInput(type="submit")
+                  select(name="refferalStatus_id", onchange='this.form.submit()')
+                    option(value="" disabled selected) #{val.refferalStatus_id}
+                    option(value=1) 1
+                    option(value=2) 2
+                    option(value=3) 3
+                    option(value=4) 4
               .col.username
                 | #{val.name}
               .col.phoneNumber
@@ -68,8 +58,11 @@ html(lang='en')
               .col.email
                 | #{val.email}
               .col.pictureCol
-                a(href="/homeless/" + val.id + "/photo")
-                  | Picture
+                if val.pic_id === null
+                  | N/A
+                else
+                  a(href="/homeless/" + val.id + "/photo")
+                    | Picture
       br
       br
       br
@@ -77,17 +70,17 @@ html(lang='en')
       br
       .container
         h2 Homeless Map Tracker
-        //- .options-box
-        //-   h1 Toggle
-        //-   div
-        //-     input#show-listings(type='button', value='Show Listings')
-        //-     input#hide-listings(type='button', value='Hide Listings')
-        //- .destinations-box
-        //-   input#origin-input.controls(type='text', placeholder='Enter start location')
-        //-   input#destination-input.controls(type='text', placeholder='Enter end location')
-        //- select#mode-selector
-        //-   option(value='DRIVING') Driving
-        //-   option(value='WALKING') Walking
+        .options-box
+          h1 Toggle
+          div.toggleContainer
+            input#show-listings(type='button', value='Show Listings')
+            input#hide-listings(type='button', value='Hide Listings')
+        .destinations-box
+          input#origin-input.controls(type='text', placeholder='Enter start location')
+          input#destination-input.controls(type='text', placeholder='Enter end location')
+        select#mode-selector
+          option(value='DRIVING') Driving
+          option(value='WALKING') Walking
         #map
       script(type='text/javascript', src='/js/maps.js')
       script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap')
