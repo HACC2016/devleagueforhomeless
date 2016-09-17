@@ -76,17 +76,13 @@ html(lang='en')
       br
       .mapContainer
         h2 Homeless Map Tracker
-        //- .options-box
-        //-   h1 Toggle
-        //-   div.toggleContainer
-        //-     input#show-listings(type='button', value='Show Listings')
-        //-     input#hide-listings(type='button', value='Hide Listings')
-        //- .destinations-box
-        //-   input#origin-input.controls(type='text', placeholder='Enter start location')
-        //-   input#destination-input.controls(type='text', placeholder='Enter end location')
-        //- select#mode-selector
-        //-   option(value='DRIVING') Driving
-        //-   option(value='WALKING') Walking
-        #map
+        .mapContents
+          .options-box
+            h2 Toggle
+            div.toggleContainer
+              input#show-listings(type='button', value='Show Listings')
+              input#hide-listings(type='button', value='Hide Listings')
+          .mapHolder
+            #map
       script(type='text/javascript', src='/js/maps.js')
       script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap')
