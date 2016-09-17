@@ -21,7 +21,7 @@ module.exports = {
         latitude: JSON.stringify(lat),
         longitude: JSON.stringify(long),
         refferalStatus_id: 2,
-        pic_id: Math.floor(Math.random() * 3)
+        pic_id: 1
       });
     }
     return queryInterface.bulkInsert('Refferals', people, {});
