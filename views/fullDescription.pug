@@ -29,7 +29,16 @@ body
     h3.infoHeading Referral Info
     ul.referralInfo
       li Created At: #{json.createdAt}
+      li Updated At: #{json.updatedAt}
       -var statuses = ["In Progress","Danger","Done"]
       -var status = statuses[json.refferalStatus_id]
       li Status: #{status}
+    br
+    h3.infoHeading Picture
+    ul.pictureInfo
+      li
+        br
+        img.showPicture(src=json.pic.dataValues.fileName)
+    br
+    br
     a(href="/dashboard" class = 'navButton') back to Dashboard

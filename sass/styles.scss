@@ -385,8 +385,8 @@ input:focus, textarea:focus {
 
 .fullDescriptionContainer {
   border: 2px solid white;
-  height: 40%;
-  width: 40%;
+  height: 90%;
+  width: 80%;
   background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
   background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
   background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
@@ -394,14 +394,22 @@ input:focus, textarea:focus {
   color: black;
   border-radius: 10px;
   position: relative;
+  margin: 0 auto;
+  padding-left: 5%;
 }
 
 .fullDescriptionh3 {
+  margin-top: 10px;
   font-family: 'Bree Serif', serif;
   font-size: 36px;
   color: #ca9e2b;
+  text-align: center;
 }
 
+.showPicture {
+  width: 300px;
+  height: 300px;
+}
 .infoHeading {
   font-size: 24px;
   color: blue;

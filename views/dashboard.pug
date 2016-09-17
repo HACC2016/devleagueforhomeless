@@ -54,9 +54,9 @@ html(lang='en')
                 form(action='/homeless/' + val.id + "/?_method=put", method="post")
                   select(name="refferalStatus_id", onchange='this.form.submit()')
                     option(value="" disabled selected) #{val.refferalStatus.name}
-                    option(value=num[0]) #{num[0]}
-                    option(value=num[1]) #{num[1]}
-                    option(value=num[2]) #{num[2]}
+                    option(value=num.indexOf(num[1])) #{num[0]}
+                    option(value=num.indexOf(num[2])) #{num[1]}
+                    option(value=num.indexOf(num[3])) #{num[2]}
               .col.username
                 | #{val.name}
               .col.phoneNumber

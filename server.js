@@ -71,10 +71,23 @@ app.get(/\/description\/\d/, function(req, res) {
  Refferals.findOne({
    where: {
      id: numId
-   }
-   }).then(function(data) {
+   },
+   include: [{
+     model: Pics,
+     as: 'pic',
+   }, {
+     model: db.refferalStatuses,
+     as: 'refferalStatus',
+   }]}).then(function(data) {
       res.render('fullDescription', {json: data});
   });
+ // Refferals.findOne({
+ //   where: {
+ //     id: numId
+ //   }
+ //   }).then(function(data) {
+ //      res.render('fullDescription', {json: data});
+  // });
 });
 
 app.post('/homeless', function(req, res, next) {
