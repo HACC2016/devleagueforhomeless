@@ -125,14 +125,6 @@ h1 {
   color: #ca9e2b;
   text-align: center; }
 
-.fullDescription h3 {
-  font-family: 'Bree Serif', serif;
-  font-size: 24px;
-  color: #ca9e2b;
-  text-align: left;
-  margin-top: 15px;
-  margin-bottom: 15px; }
-
 input, textarea {
   box-sizing: border-box;
   padding: 9px;
@@ -174,7 +166,8 @@ input:focus, textarea:focus {
   overflow: hidden; }
   @media only screen and (min-width: 200px) and (max-width: 650px) {
     .communityForm {
-      width: 80%; } }
+      box-sizing: border-box;
+      width: 90%; } }
 
 .communityForm label {
   text-align: left;
@@ -202,7 +195,7 @@ input:focus, textarea:focus {
 .submit:hover {
   cursor: pointer; }
 
-.myButton {
+.submitButton {
   -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
   -webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
   box-shadow: 0px 0px 0px 2px #9fb4f2;
@@ -228,7 +221,7 @@ input:focus, textarea:focus {
   text-decoration: none;
   text-shadow: 0px 1px 0px #283966; }
 
-.myButton:hover {
+.submitButton:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
   background: -moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
   background: -webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
@@ -238,7 +231,51 @@ input:focus, textarea:focus {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
   background-color: #476e9e; }
 
-.myButton:active {
+.submitButton:active {
+  position: relative;
+  top: 1px; }
+
+.navButton {
+  -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
+  -webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
+  box-shadow: 0px 0px 0px 2px #9fb4f2;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
+  background: -moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background: -webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background: -o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background: -ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
+  background-color: #7892c2;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #4e6096;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 16px;
+  padding: 10px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #283966;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  margin: 10px; }
+
+.navButton:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+  background: -moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+  background: -webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+  background: -o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+  background: -ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+  background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+  background-color: #476e9e; }
+
+.navButton:active {
   position: relative;
   top: 1px; }
 
@@ -277,12 +314,6 @@ input:focus, textarea:focus {
   margin-bottom: 5px;
   text-align: center; }
 
-.backText {
-  color: black;
-  text-decoration: none;
-  border: 1px solid white;
-  background-color: white; }
-
 .filter {
   margin: 0 auto;
   padding-top: 15px; }
@@ -319,7 +350,10 @@ input:focus, textarea:focus {
   border-left: 1px solid white;
   border-right: 1px solid white;
   padding-top: 12px;
-  color: black; }
+  color: black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; }
 
 .ticketId {
   width: 5%; }
@@ -379,7 +413,14 @@ input:focus, textarea:focus {
   background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
   background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
   padding: 15px;
-  color: black; }
+  color: black;
+  border-radius: 10px;
+  position: relative; }
+
+.fullDescriptionh3 {
+  font-family: 'Bree Serif', serif;
+  font-size: 36px;
+  color: #ca9e2b; }
 
 .container {
   display: inline-block;

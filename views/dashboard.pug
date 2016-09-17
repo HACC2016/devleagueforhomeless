@@ -44,16 +44,16 @@ html(lang='en')
                 a.showDescription(href='/description/' + val.id)
                   | #{val.description}
               .col.status
-                -var num = [2,3,4]
+                -var num = ["In Progress","Danger","Done"]
                 if val.refferalStatus_id == 2
-                  - num = [1,3,4]
+                  - num = ["Queue","Danger","Done"]
                 else if val.refferalStatus_id == 3
-                  - num = [1,2,4]
+                  - num = ["Queue","In Progress","Done"]
                 else if val.refferalStatus_id == 4
-                  - num = [1,2,3]
+                  - num = ["Queue","In Progress","Danger"]
                 form(action='/homeless/' + val.id + "/?_method=put", method="post")
                   select(name="refferalStatus_id", onchange='this.form.submit()')
-                    option(value="" disabled selected) #{val.refferalStatus_id}
+                    option(value="" disabled selected) #{val.refferalStatus.name}
                     option(value=num[0]) #{num[0]}
                     option(value=num[1]) #{num[1]}
                     option(value=num[2]) #{num[2]}
