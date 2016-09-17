@@ -94,6 +94,7 @@ app.post('/message', function(req, res) {
   })
 });
 
+
 app.post('/homeless', function(req, res, next) {
   // Create Form parse
   var form = new multiparty.Form();
@@ -116,11 +117,11 @@ app.post('/homeless', function(req, res, next) {
             state: fields.state[0],
             zip: fields.zip[0],
             address: fields.address[0],
-            latitude: "1.23456",
-            longitude: "9.8765",
+            latitude: fields.latitude[0],
+            longitude: fields.longitude[0],
             description: fields.description[0]})
           .then(function(refferal) {
-            return res.render('success');
+            return res.json(refferal);
           });
         })
       });
@@ -137,17 +138,16 @@ app.post('/homeless', function(req, res, next) {
           state: fields.state[0],
           zip: fields.zip[0],
           address: fields.address[0],
-          latitude: "1.23456",
-          longitude: "9.8765",
+          latitude: fields.latitude[0],
+          longitude: fields.longitude[0],
           description: fields.description[0]})
           .then(function(refferal) {
           // Sends response that tells the pic got uploaded
-            return res.render('success');
+            return res.json(refferal);
           });
     }
   });
 });
-
 app.put(/\/homeless\/\d+/, function(req, res) {
  var split = req.url.split('/');
  var numId = split[2];

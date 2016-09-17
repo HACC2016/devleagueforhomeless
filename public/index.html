@@ -8,7 +8,8 @@
 <body>
   <h1> Refer a Camp </h1>
   <br>
-  <form id="communityForm" class="communityForm" action="/homeless" enctype="multipart/form-data" method="POST">
+  <p><button onclick="geoFindMe()">Get my location</button></p>
+  <form id="communityForm" class="communityForm"  action="/homeless" enctype="multipart/form-data" method="POST">
     <h3>Your Info</h3>
     <hr>
     <label>Username (required)</label>
@@ -56,15 +57,36 @@
     <br>
     <label>Description</label>
     <br>
-    <textarea class="descriptionArea" name="description" value="description" placeholder="Enter your description here."></textarea>
+    <textarea class="descriptionArea" name="description"  value="description" placeholder="Enter your description here."></textarea>
     <br>
     <label>Picture</label>
     <br>
-    <input class="locationText" type="file" name="pic" id="pic">
+    <input class='locationText' type="file"  id="pic" name ="pic" />
+    <input type="hidden" id="latitude" name="latitude" value="">
+    <input type="hidden" id="longitude" name="longitude" value="">
     <br>
     <br>
     <!-- <a href="#" class="myButton">Submit</a> -->
     <input class="myButton" type="submit" value="Submit">
   </form>
+ <script>
+  function geoFindMe() {
+
+    if (!navigator.geolocation){
+      return;
+    }
+
+    function success(position) {
+      document.getElementById('latitude').value = position.coords.latitude;
+      document.getElementById('longitude').value = position.coords.longitude;
+    };
+
+    function error() {
+      alert("You did not opt in your geolocation")
+    };
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+</script>
+
 </body>
 </html>
