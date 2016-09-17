@@ -8,7 +8,6 @@
 <body>
   <h1> Refer a Camp </h1>
   <br>
-  <p><button onclick="geoFindMe()">Get my location</button></p>
   <form id="communityForm" class="communityForm"  action="/homeless" enctype="multipart/form-data" method="POST">
     <h3>Your Info</h3>
     <hr>
@@ -66,10 +65,15 @@
     <input type="hidden" id="longitude" name="longitude" value="">
     <br>
     <br>
-    <!-- <a href="#" class="myButton">Submit</a> -->
-    <input class="myButton" type="submit" value="Submit">
+    <input class="submitButton" type="submit" value="Submit">
+    <button onclick="geoFindMe()" type="button">Get my location</button>
+    <button onclick="nothing()" type="button">Turn off Location</button>
   </form>
  <script>
+  function nothing() {
+    document.getElementById('latitude').value = '';
+      document.getElementById('longitude').value = '';
+  }
   function geoFindMe() {
 
     if (!navigator.geolocation){
