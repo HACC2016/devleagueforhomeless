@@ -5,7 +5,7 @@
   <title>Enter Homeless Information</title>
 </head>
 <body>
-  <form action="/homeless" enctype="multipart/form-data" method="POST">
+  <form id="form" action="/homeless" enctype="multipart/form-data" method="POST">
   name:<br>
   <input type="text" name="name" value="name">
   <br>
@@ -39,11 +39,17 @@
   description:<br>
   <input type="textbox" name="description" value="description">
   <br>
+  latitude:<br>
+  <input type="textbox" name="latitude">
+  <br>
+  longitude:<br>
+  <input type="textbox" name="longitude">
+  <br>
   location: <input type="file" name="pic" id="pic">
   <br>
+  <div id="app" name="gps"></div>
   <input type="submit" value="Submit">
 </form>
-<div id="app"></div>
 <script type="text/javascript" src="/js/app.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </body>

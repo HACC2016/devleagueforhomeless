@@ -90,21 +90,24 @@
 	    navigator.geolocation.clearWatch(this.watchID);
 	  },
 
-	  sendLocation: function sendLocation() {
+	  toggleLocation: function toggleLocation(event) {
+
 	    var location = {
 	      latitude: this.state.initialPosition.coords.latitude,
 	      longitude: this.state.initialPosition.coords.longitude
 	    };
+
 	    console.log(this.state);
+
 	    $.ajax({
-	      url: "/homeless",
+	      url: "/api/homeless",
 	      type: "post",
 	      data: {
 	        latitude: location.latitude,
 	        longitude: location.longitude
 	      },
-	      success: function success(response) {
-	        if (data === "sucess") alert(response);
+	      success: function success(data) {
+	        console.log(data);
 	      },
 	      error: function error(response) {
 	        alert("GOT AN ERROR: " + response);
@@ -114,38 +117,23 @@
 
 	  render: function render() {
 	    return _react2.default.createElement(
-	      "form",
-	      null,
+	      "div",
+	      { id: "sendPosition" },
 	      _react2.default.createElement(
-	        "div",
-	        { id: "sendPosition" },
-	        _react2.default.createElement(
-	          "label",
-	          { "for": "sendPosition" },
-	          "Would you like to send your location?"
-	        ),
-	        _react2.default.createElement("input", { id: "nope", type: "checkbox", value: "no" }),
-	        _react2.default.createElement(
-	          "label",
-	          { "for": "nope" },
-	          "NO"
-	        ),
-	        _react2.default.createElement("input", { id: "yup", type: "checkbox", onClick: this.sendLocation, value: "yes" }),
-	        _react2.default.createElement(
-	          "label",
-	          { "for": "yup" },
-	          "YES"
-	        ),
-	        _react2.default.createElement(
-	          "p",
-	          { className: "mahalo" },
-	          " Mahalo for helping your community!"
-	        )
+	        "label",
+	        { htmlFor: "sendPosition" },
+	        "Would you like to send your location?"
+	      ),
+	      _react2.default.createElement("input", { id: "yup", type: "checkbox", onClick: this.toggleLocation, name: "yes" }),
+	      _react2.default.createElement(
+	        "label",
+	        { htmlFor: "yup" },
+	        "YES"
 	      ),
 	      _react2.default.createElement(
-	        "script",
-	        null,
-	        "var fields = $(\":checkbox\").serializeArray();"
+	        "p",
+	        { className: "mahalo" },
+	        " Mahalo for helping your community!"
 	      )
 	    );
 	  }

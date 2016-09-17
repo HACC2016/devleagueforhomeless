@@ -33,22 +33,24 @@ const MainContainer = React.createClass({
     navigator.geolocation.clearWatch(this.watchID);
   },
 
-  sendLocation: function () {
+  toggleLocation: function (event) {
+
     const location = {
       latitude: this.state.initialPosition.coords.latitude,
       longitude: this.state.initialPosition.coords.longitude
     }
+
     console.log(this.state)
+
     $.ajax({
-      url: "/homeless",
+      url: "/api/homeless",
       type: "post",
       data: {
         latitude: location.latitude,
         longitude: location.longitude
       },
-      success: function (response) {
-        if (data === "sucess")
-          alert(response);
+      success: function (data) {
+        console.log(data)
       },
       error: function (response) {
         alert("GOT AN ERROR: " + response);
@@ -58,19 +60,12 @@ const MainContainer = React.createClass({
 
   render: function () {
     return (
-      <form>
-        <div id="sendPosition">
-        <label for="sendPosition">Would you like to send your location?</label>
-          <input id="nope" type="checkbox" value="no"></input>
-          <label for="nope">NO</label>
-          <input id="yup" type="checkbox" onClick={this.sendLocation} value="yes"></input>
-          <label for="yup">YES</label>
-          <p className="mahalo"> Mahalo for helping your community!</p>
-        </div>
-        <script>
-          var fields = $(":checkbox").serializeArray();
-        </script>
-      </form>
+      <div id="sendPosition">
+      <label htmlFor="sendPosition">Would you like to send your location?</label>
+        <input id="yup" type="checkbox" onClick={this.toggleLocation} name="yes"></input>
+        <label htmlFor="yup">YES</label>
+        <p className="mahalo"> Mahalo for helping your community!</p>
+      </div>
     );
   }
 });

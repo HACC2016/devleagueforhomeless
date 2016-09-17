@@ -58,7 +58,10 @@ module.exports = {
           key: "id"
         }
       },
-      GPS:{
+      latitude:{
+        type: Sequelize.STRING
+      },
+      longitude:{
         type: Sequelize.STRING
       },
       createdAt: {

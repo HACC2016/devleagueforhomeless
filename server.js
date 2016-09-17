@@ -67,8 +67,10 @@ app.post('/message', function(req, res) {
     });
   });
 });
+
 app.post('/homeless', function(req, res, next) {
   // Create Form parse
+  console.log("=======", req.body);
   var form = new multiparty.Form();
   form.parse(req, function(err, fields, files) {
     if(err)
@@ -102,7 +104,8 @@ app.post('/homeless', function(req, res, next) {
           state: fields.state[0],
           zip: fields.zip[0],
           address: fields.address[0],
-          GPS: "(0,0)",
+          latitude: req.body.latitude,
+          longitude: req.body.longitude,
           description: fields.description[0]})
           .then(function(refferal) {
           // Sends response that tells the pic got uploaded
@@ -124,13 +127,22 @@ app.post('/homeless', function(req, res, next) {
           state: fields.state[0],
           zip: fields.zip[0],
           address: fields.address[0],
-          GPS: "(0,0)",
+          latitude: req.body.latitude,
+          longitude: req.body.longitude,
           description: fields.description[0]})
           .then(function(refferal) {
           // Sends response that tells the pic got uploaded
             return res.json(refferal);
           });
     }
+  });
+});
+
+app.post("/api/homeless", function (req, res) {
+  console.log(req.body);
+  Refferals.create({
+    longitude: req.body.longitude,
+    latitude: req.body.latitude
   });
 });
 
