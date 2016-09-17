@@ -275,10 +275,6 @@ input:focus, textarea:focus {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
   background-color: #476e9e; }
 
-.navButton:active {
-  position: relative;
-  top: 1px; }
-
 input, textarea {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
   -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
@@ -408,7 +404,7 @@ input:focus, textarea:focus {
 .submitInput {
   display: none; }
 
-.fullDescription {
+.fullDescriptionContainer {
   border: 2px solid white;
   height: 40%;
   width: 40%;
@@ -424,6 +420,10 @@ input:focus, textarea:focus {
   font-family: 'Bree Serif', serif;
   font-size: 36px;
   color: #ca9e2b; }
+
+.infoHeading {
+  font-size: 24px;
+  color: blue; }
 
 .mapInfo {
   margin: 0 auto;

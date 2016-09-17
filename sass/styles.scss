@@ -220,11 +220,6 @@ input:focus, textarea:focus {
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
   background-color:#476e9e;
 }
-.navButton:active {
-  position:relative;
-  top:1px;
-}
-
 
 // drop shadows
 input, textarea {
@@ -392,7 +387,7 @@ input:focus, textarea:focus {
   display: none;
 }
 
-.fullDescription {
+.fullDescriptionContainer {
   border: 2px solid white;
   height: 40%;
   width: 40%;
@@ -409,6 +404,11 @@ input:focus, textarea:focus {
   font-family: 'Bree Serif', serif;
   font-size: 36px;
   color: #ca9e2b;
+}
+
+.infoHeading {
+  font-size: 24px;
+  color: blue;
 }
 
 .mapInfo {
