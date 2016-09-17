@@ -10,6 +10,8 @@ module.exports = function(sequelize, DataTypes) {
     address:DataTypes.STRING,
     zip: DataTypes.INTEGER,
     state: DataTypes.STRING,
+    latitude: DataTypes.STRING,
+    longitude: DataTypes.STRING,
     city: DataTypes.STRING,
     description: DataTypes.STRING,
     GPS: DataTypes.STRING

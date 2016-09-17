@@ -44,7 +44,7 @@ app.put(/\/homeless\/\d+/, function(req, res) {
 });
 
 app.get('/homeless', function(req, res) {
-  Refferals.findAll({include: [{
+  Refferals.findAll({order:'id ASC',include: [{
       model: Pics,
       as: 'pic',
     }, {
@@ -73,22 +73,6 @@ app.get('/dashboard', function(req, res, next) {
   });
 });
 
-app.post('/message', function(req, res) {
-  Pics.create({fileName: req.body.MediaUrl0})
-  .then(function(pic) {
-      // Inserts Location data to  Locations table
-      Refferals.create(
-      {
-        refferalStatus_id: 1,
-        phoneNumber: req.body.From,
-        description: req.body.Body
-      }
-    )
-    .then(function(refferal) {
-      res.send("<Response><Message>Thank you for your referral</Message></Response>")
-    });
-  })
-});
 app.post('/homeless', function(req, res, next) {
   // Create Form parse
   var form = new multiparty.Form();
@@ -111,7 +95,8 @@ app.post('/homeless', function(req, res, next) {
             state: fields.state[0],
             zip: fields.zip[0],
             address: fields.address[0],
-            GPS: "(0,0)",
+            latitude: "1.23456",
+            longitude: "9.8765",
             description: fields.description[0]})
           .then(function(refferal) {
             return res.json(refferal);
@@ -131,7 +116,8 @@ app.post('/homeless', function(req, res, next) {
           state: fields.state[0],
           zip: fields.zip[0],
           address: fields.address[0],
-          GPS: "(0,0)",
+          latitude: "1.23456",
+          longitude: "9.8765",
           description: fields.description[0]})
           .then(function(refferal) {
           // Sends response that tells the pic got uploaded

@@ -1,6 +1,12 @@
-# hacc2016-DevLeague-for-Homelessness
+DevLeague for Homelessness
+==========================
 Help homeless outreach teams efficiently respond to community referrals through mobile apps
+----
 
-Admin View by Adam
-Community View (Tunui)
-Geolocations and more!
+***This application features***
+  - Google Maps
+  - Geolocations
+  - React
+  - Sequelize
+  - Twilio
+  - And more!
