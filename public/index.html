@@ -8,7 +8,7 @@
 <body>
   <h1> Refer a Camp </h1>
   <br>
-  <form id="communityForm" class="communityForm" action="/homeless" enctype="multipart/form-data" method="POST">
+  <form id="communityForm" class="communityForm"  action="/homeless" enctype="multipart/form-data" method="POST">
     <h3>Your Info</h3>
     <hr>
     <label>Username (required)</label>
@@ -29,7 +29,7 @@
     <br>
     <label>Phone</label>
     <br>
-    <input type="text" name="phoneNumber" value="1111111">
+    <input type="text" name="phoneNumber" value="18082277777">
     <br>
     <br>
     <h3>Location Info</h3>
@@ -38,35 +38,72 @@
     <br>
     <input type="text" name="area" value="area">
     <br>
+    <label>Street</label>
+    <br>
+    <input type="text" name="address" value="address">
+    <br>
     <label>City</label>
     <br>
     <input type="text" name="city" value="city">
     <br>
     <label>State</label>
     <br>
-    <input type="text" name="state" value="state">
+    <input type="text" name="state" value="HI">
     <br>
-    <label>Street</label>
+    <label>ZIP</label>
     <br>
-    <input type="text" name="address" value="address">
-    <br>
-    <label>Zip</label>
-    <br>
-    <input type="text" name="zip" value="222222">
+    <input type="text" name="zip" value="99999">
     <br>
     <label>Description</label>
     <br>
-    <textarea class="descriptionArea" name="description" value="description" placeholder="Enter your description here."></textarea>
+    <textarea class="descriptionArea" name="description"  value="description" placeholder="Enter your description here."></textarea>
     <br>
     <label>Picture</label>
     <br>
-    <input class="locationText" type="file" name="pic" id="pic">
+    <input class='locationText' type="file"  id="pic" name ="pic" />
+    <input type="hidden" id="latitude" name="latitude" value="">
+    <input type="hidden" id="longitude" name="longitude" value="">
     <br>
     <br>
+     <button type="button" onClick="geoFindMe()">Show my location</button>
+    <button type="button" onClick="resetGeo()">Remove my location</button>
+    <div id="out"></div>
     <!-- <a href="#" class="myButton">Submit</a> -->
     <input class="myButton" type="submit" value="Submit">
   </form>
-  <script type="text/javascript" src="/js/app.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script>
+ function resetGeo () {
+  document.getElementById('latitude').value = "";
+      document.getElementById('longitude').value = "";
+ }
+
+  function geoFindMe() {
+     var output = document.getElementById("out");
+
+    if (!navigator.geolocation){
+      output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+      return;
+    }
+    function success(position) {
+      console.log(position);
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      document.getElementById('latitude').value = latitude;
+      document.getElementById('longitude').value = longitude;
+      output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+    var img = new Image();
+    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+
+    output.appendChild(img);
+    };
+
+    function error() {
+      output.innerHTML = "Unable to retrieve your location";
+    };
+    output.innerHTML = "<p>Locating…</p>";
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+</script>
+
 </body>
 </html>

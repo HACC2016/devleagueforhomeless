@@ -117,13 +117,13 @@ app.post('/homeless', function(req, res, next) {
             state: fields.state[0],
             zip: fields.zip[0],
             address: fields.address[0],
-            latitude: "1.23456",
-            longitude: "9.8765",
+            latitude: fields.latitude[0],
+            longitude: fields.longitude[0],
             description: fields.description[0]})
           .then(function(refferal) {
             return res.render('success');
           });
-        })
+        });
       });
     }
     else{
@@ -138,8 +138,8 @@ app.post('/homeless', function(req, res, next) {
           state: fields.state[0],
           zip: fields.zip[0],
           address: fields.address[0],
-          latitude: req.body.latitude,
-          longitude: req.body.longitude,
+          latitude: fields.latitude[0],
+          longitude: fields.longitude[0],
           description: fields.description[0]})
           .then(function(refferal) {
           // Sends response that tells the pic got uploaded
