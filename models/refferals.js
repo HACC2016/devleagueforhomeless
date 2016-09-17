@@ -14,7 +14,6 @@ module.exports = function(sequelize, DataTypes) {
     longitude: DataTypes.STRING,
     city: DataTypes.STRING,
     description: DataTypes.STRING,
-    GPS: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
