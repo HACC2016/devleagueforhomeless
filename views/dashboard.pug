@@ -4,6 +4,7 @@ html(lang='en')
     meta(charset='UTF-8')
     title Admin Dashboard
     link(rel='stylesheet', type='text/css', href='/css/styles.css')
+    script(src="https://code.jquery.com/jquery-3.1.0.min.js",  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=", crossorigin="anonymous")
   body
     #main
       .headerContainer
@@ -76,22 +77,17 @@ html(lang='en')
       br
       .container
         h2 Homeless Map Tracker
-        .options-box
-          h1 Toggle
-          div
-            input#show-listings(type='button', value='Show Listings')
-            input#hide-listings(type='button', value='Hide Listings')
-        .destinations-box
-          input#origin-input.controls(type='text', placeholder='Enter start location')
-          input#destination-input.controls(type='text', placeholder='Enter end location')
-        select#mode-selector
-          option(value='DRIVING') Driving
-          option(value='WALKING') Walking
+        //- .options-box
+        //-   h1 Toggle
+        //-   div
+        //-     input#show-listings(type='button', value='Show Listings')
+        //-     input#hide-listings(type='button', value='Hide Listings')
+        //- .destinations-box
+        //-   input#origin-input.controls(type='text', placeholder='Enter start location')
+        //-   input#destination-input.controls(type='text', placeholder='Enter end location')
+        //- select#mode-selector
+        //-   option(value='DRIVING') Driving
+        //-   option(value='WALKING') Walking
         #map
-        .map-container
-          .map-gps-table
-            each val in json
-              .map-gps-row
-                p Location: #{val.GPS} Description #{val.description}
-      script(type='text/javascript', src='/js/map.js')
+      script(type='text/javascript', src='/js/maps.js')
       script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap')
