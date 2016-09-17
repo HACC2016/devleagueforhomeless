@@ -44,6 +44,7 @@ html(lang='en')
                 a.showDescription(href='/description/' + val.id)
                   | #{val.description}
               .col.status
+                -var statuses = ["Queue","In Progress","Danger","Done"]
                 -var num = ["In Progress","Danger","Done"]
                 if val.refferalStatus_id == 2
                   - num = ["Queue","Danger","Done"]
@@ -51,12 +52,13 @@ html(lang='en')
                   - num = ["Queue","In Progress","Done"]
                 else if val.refferalStatus_id == 4
                   - num = ["Queue","In Progress","Danger"]
+                - console.log(statuses.indexOf(num[2]))
                 form(action='/homeless/' + val.id + "/?_method=put", method="post")
                   select(name="refferalStatus_id", onchange='this.form.submit()')
                     option(value="" disabled selected) #{val.refferalStatus.name}
-                    option(value=num.indexOf(num[1])) #{num[0]}
-                    option(value=num.indexOf(num[2])) #{num[1]}
-                    option(value=num.indexOf(num[3])) #{num[2]}
+                    option(value=statuses.indexOf(num[0]) + 1) #{num[0]}
+                    option(value=statuses.indexOf(num[1]) + 1) #{num[1]}
+                    option(value=statuses.indexOf(num[2]) +1) #{num[2]}
               .col.username
                 | #{val.name}
               .col.phoneNumber
