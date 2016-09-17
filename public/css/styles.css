@@ -262,7 +262,6 @@ input:focus, textarea:focus {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 40%;
   margin: 10px; }
 
 .navButton:hover {
@@ -418,7 +417,7 @@ input:focus, textarea:focus {
   padding-left: 5%; }
 
 .fullDescriptionh3 {
-  margin-top: 10px;
+  margin-top: 20px;
   font-family: 'Bree Serif', serif;
   font-size: 36px;
   color: #ca9e2b;
