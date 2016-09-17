@@ -125,7 +125,7 @@ h1 {
   color: #ca9e2b;
   text-align: center; }
 
-h3 {
+.fullDescription h3 {
   font-family: 'Bree Serif', serif;
   font-size: 24px;
   color: #ca9e2b;
@@ -217,7 +217,7 @@ input:focus, textarea:focus {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  width: 50%;
+  width: 20%;
   border: 1px solid #4e6096;
   display: inline-block;
   float: right;
