@@ -411,8 +411,26 @@ input:focus, textarea:focus {
   color: #ca9e2b;
 }
 
-.mapContainer {
+.mapInfo {
+  margin: 0 auto;
+  width: 50%;
+  padding: 10px;
+}
 
+.mapContainer {
+  width: 400px;
+  margin: 0 auto 0 auto;
+}
+
+#map {
+  width: 400px;
+  height: 300px;
+}
+
+.optionsBox {
+  margin: 0 auto;
+  height: 1px;
+  width: 100px;
 }
 
 .backButton {
@@ -457,17 +475,7 @@ input:focus, textarea:focus {
   top:1px;
 }
 
-#map {
-  height: 300px;
-  width: 500px;
-  margin: 0 auto;
-}
 
-.optionsBox {
-  margin: 0 auto;
-  height: 25px;
-  width: 100%;
-}
 
 /* Dropdown Button */
 .dropbtn {
