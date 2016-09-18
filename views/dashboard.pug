@@ -78,14 +78,13 @@ html(lang='en')
       br
       .mapInfo
         h2 Homeless Map Tracker
-        .options-box
-          .toggleContainer
-            input#show-listings(type='button', value='Show Listings')
-            input#hide-listings(type='button', value='Hide Listings')
-        br
-      .mapContainer
-        #map
-      br
-      br
+        .mapContents
+          .options-box
+            h2 Toggle
+            div.toggleContainer
+              input#show-listings(type='button', value='Show Listings')
+              input#hide-listings(type='button', value='Hide Listings')
+          .mapHolder
+            #map
       script(type='text/javascript', src='/js/maps.js')
       script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap')
