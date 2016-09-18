@@ -23,7 +23,7 @@
     <br>
     <input type="text" name="lastName" value="lastName">
     <br>
-    <label>Email</label>
+    <label>Email (required)</label>
     <br>
     <input type="text" name="email" value="email">
     <br>
@@ -54,7 +54,7 @@
     <br>
     <input type="text" name="zip" value="99999">
     <br>
-    <label>Description</label>
+    <label>Description (required)</label>
     <br>
     <textarea class="descriptionArea" name="description"  value="description" placeholder="Enter your description here."></textarea>
     <br>
@@ -65,29 +65,44 @@
     <input type="hidden" id="longitude" name="longitude" value="">
     <br>
     <br>
-    <input class="submitButton" type="submit" value="Submit">
-    <button onclick="geoFindMe()" type="button">Get my location</button>
-    <button onclick="nothing()" type="button">Turn off Location</button>
+     <button type="button" onClick="geoFindMe()">Show my location</button>
+    <button type="button" onClick="resetGeo()">Remove my location</button>
+    <div id="out"></div>
+    <!-- <a href="#" class="myButton">Submit</a> -->
+    <input class="myButton" type="submit" value="Submit">
   </form>
  <script>
-  function nothing() {
-    document.getElementById('latitude').value = '';
-      document.getElementById('longitude').value = '';
-  }
+ function resetGeo () {
+  var output = document.getElementById("out");
+  document.getElementById('latitude').value = "";
+      document.getElementById('longitude').value = "";
+      output.innerHTML ="geolocation removed";
+ }
+
   function geoFindMe() {
+     var output = document.getElementById("out");
 
     if (!navigator.geolocation){
+      output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
       return;
     }
-
     function success(position) {
-      document.getElementById('latitude').value = position.coords.latitude;
-      document.getElementById('longitude').value = position.coords.longitude;
+      console.log(position);
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      document.getElementById('latitude').value = latitude;
+      document.getElementById('longitude').value = longitude;
+      output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+    var img = new Image();
+    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+
+    output.appendChild(img);
     };
 
     function error() {
-      alert("You did not opt in your geolocation")
+      output.innerHTML = "Unable to retrieve your location";
     };
+    output.innerHTML = "<p>Locating…</p>";
     navigator.geolocation.getCurrentPosition(success, error);
   }
 </script>

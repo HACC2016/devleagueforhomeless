@@ -4,13 +4,13 @@ var db = require('./models');
 var multiparty = require('multiparty');
 var fs = require('fs');
 var util = require('util');
-var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
 var methodOverride = require('method-override');
 var cloudinary = require('cloudinary');
 var cloudConfig = require('./config/cloudConfig.json');
 
+var app = express();
 var Refferals = db.Refferals;
 var Pics = db.Pics;
 
@@ -18,15 +18,15 @@ var twilioApp = require('./routes/twilio');
 
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'pug');
+
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/uploads'));
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
-
 app.use('/twilio', twilioApp);
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 cloudinary.config({
   cloud_name: cloudConfig.name,
@@ -59,7 +59,6 @@ app.get('/dashboard', function(req, res, next) {
         refferal[i].formatDate = dateFormat(refferal[i].createdAt, "mmmm dS, yyyy, h:MM:ss TT");
       }
       /* add a blank value so that jade table doesn't skip any values. */
-      // refferal.push({});
       refferal.unshift({});
       res.render('dashboard', {json: refferal});
   });
@@ -71,36 +70,25 @@ app.get(/\/description\/\d/, function(req, res) {
  Refferals.findOne({
    where: {
      id: numId
-   }
-   }).then(function(data) {
+   },
+   include: [{
+     model: Pics,
+     as: 'pic',
+   }, {
+     model: db.refferalStatuses,
+     as: 'refferalStatus',
+   }]}).then(function(data) {
       res.render('fullDescription', {json: data});
   });
 });
 
-app.post('/message', function(req, res) {
-  Pics.create({fileName: req.body.MediaUrl0})
-  .then(function(pic) {
-      // Inserts Location data to  Locations table
-      Refferals.create(
-      {
-        refferalStatus_id: 1,
-        phoneNumber: req.body.From,
-        description: req.body.Body
-      }
-    )
-    .then(function(refferal) {
-      res.send("<Response><Message>Thank you for your referral</Message></Response>")
-    });
-  })
-});
-
-
 app.post('/homeless', function(req, res, next) {
   // Create Form parse
+  console.log("=======", req.body);
   var form = new multiparty.Form();
   form.parse(req, function(err, fields, files) {
     if(err)
-      throw err
+      throw err;
     if(files.pic[0].size){
       cloudinary.uploader.upload(files.pic[0].path, function(result) {
         return Pics.create({fileName: result.url})
@@ -121,9 +109,9 @@ app.post('/homeless', function(req, res, next) {
             longitude: fields.longitude[0],
             description: fields.description[0]})
           .then(function(refferal) {
-            return res.render('success');
+            return res.render('successCommunityView');
           });
-        })
+        });
       });
     }
     else{
@@ -142,12 +130,21 @@ app.post('/homeless', function(req, res, next) {
           longitude: fields.longitude[0],
           description: fields.description[0]})
           .then(function(refferal) {
-          // Sends response that tells the pic got uploaded
-            return res.render('success');
+            // Sends response that tells the pic got uploaded
+            return res.render('successCommunityView');
           });
     }
   });
 });
+
+app.post("/api/homeless", function (req, res) {
+  console.log(req.body);
+  Refferals.create({
+    longitude: req.body.longitude,
+    latitude: req.body.latitude
+  });
+});
+
 app.put(/\/homeless\/\d+/, function(req, res) {
  var split = req.url.split('/');
  var numId = split[2];

@@ -104,61 +104,6 @@ table {
   position: relative;
   top: 1px; }
 
-.container {
-  height: 50%;
-  width: 50%;
-  display: inline-block; }
-
-#map {
-  height: 50%;
-  width: 100%;
-  display: inline-block;
-  position: absolute; }
-
-.options-box {
-  display: inline-flex;
-  height: 50%;
-  line-height: 35px;
-  padding: 10px 10px 30px 10px;
-  text-align: left;
-  width: 340px;
-  color: #09C; }
-
-.marker {
-  font-size: 12px;
-  color: black;
-  width: 75px;
-  height: 25px; }
-
-#search-transportation-text {
-  width: 30%; }
-
-div.mode {
-  position: fixed;
-  width: 50%; }
-
-div.directions-loc {
-  position: fixed;
-  width: 50%; }
-
-.mapContents {
-  display: flex;
-  flex-flow: row wrap; }
-
-.mapHolder {
-  display: flex;
-  flex-flow: row wrap; }
-
-#show-listings {
-  width: 95px;
-  padding: 5px;
-  font-size: 12px; }
-
-#hide-listings {
-  width: 95px;
-  padding: 5px;
-  font-size: 12px; }
-
 html {
   height: 100%; }
 
@@ -318,7 +263,6 @@ input:focus, textarea:focus {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 40%;
   margin: 10px; }
 
 .navButton:hover {
@@ -330,10 +274,6 @@ input:focus, textarea:focus {
   background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
   background-color: #476e9e; }
-
-.navButton:active {
-  position: relative;
-  top: 1px; }
 
 input, textarea {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
@@ -432,7 +372,6 @@ input:focus, textarea:focus {
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
-  /* Position the tooltip */
   position: absolute;
   z-index: 1; }
 
@@ -464,22 +403,85 @@ input:focus, textarea:focus {
 .submitInput {
   display: none; }
 
-.fullDescription {
+.fullDescriptionContainer {
   border: 2px solid white;
-  height: 40%;
-  width: 40%;
+  height: 90%;
+  width: 80%;
   background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
   background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
   background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
   padding: 15px;
   color: black;
   border-radius: 10px;
-  position: relative; }
+  position: relative;
+  margin: 0 auto;
+  padding-left: 5%; }
 
 .fullDescriptionh3 {
+  margin-top: 20px;
   font-family: 'Bree Serif', serif;
   font-size: 36px;
-  color: #ca9e2b; }
+  color: #ca9e2b;
+  text-align: center; }
+
+.showPicture {
+  width: 300px;
+  height: 300px; }
+
+.infoHeading {
+  font-size: 24px;
+  color: blue; }
+
+.mapInfo {
+  margin: 0 auto;
+  width: 80%;
+  height: 80%;
+  padding: 10px;
+  text-align: center;
+  font-size: 25px; }
+
+.mapContents {
+  width: 100%;
+  height: 100%; }
+
+.mapHolder {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto 0 auto; }
+
+#map {
+  width: 100%;
+  height: 400px; }
+
+.marker {
+  font-size: 12px;
+  color: black;
+  width: 75px;
+  height: 25px; }
+
+.optionsBox {
+  margin: 0 auto;
+  height: 1px;
+  width: 100px; }
+
+.toggleContainer {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto 0 auto; }
+
+#show-listings {
+  box-sizing: border-box;
+  width: 49%;
+  padding: 8px;
+  font-size: 14px;
+  margin-right: 1%;
+  margin-top: 1%; }
+
+#hide-listings {
+  box-sizing: border-box;
+  width: 49%;
+  padding: 8px;
+  font-size: 14px; }
 
 .backButton {
   -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
@@ -519,16 +521,6 @@ input:focus, textarea:focus {
 .backButton:active {
   position: relative;
   top: 1px; }
-
-#map {
-  height: 300px;
-  width: 500px;
-  margin: 0 auto; }
-
-.optionsBox {
-  margin: 0 auto;
-  height: 25px;
-  width: 100%; }
 
 /* Dropdown Button */
 .dropbtn {

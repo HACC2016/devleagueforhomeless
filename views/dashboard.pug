@@ -15,7 +15,7 @@ html(lang='en')
           if index === 0
             .headrow.row
               .headColumn.col.ticketId
-                | Ticket ID
+                | Referral #
               .headColumn.col.createdAt
                 | Received
               .headColumn.col.address
@@ -44,6 +44,7 @@ html(lang='en')
                 a.showDescription(href='/description/' + val.id)
                   | #{val.description}
               .col.status
+                -var statuses = ["Queue","In Progress","Danger","Done"]
                 -var num = ["In Progress","Danger","Done"]
                 if val.refferalStatus_id == 2
                   - num = ["Queue","Danger","Done"]
@@ -51,12 +52,13 @@ html(lang='en')
                   - num = ["Queue","In Progress","Done"]
                 else if val.refferalStatus_id == 4
                   - num = ["Queue","In Progress","Danger"]
+                - console.log(statuses.indexOf(num[2]))
                 form(action='/homeless/' + val.id + "/?_method=put", method="post")
                   select(name="refferalStatus_id", onchange='this.form.submit()')
                     option(value="" disabled selected) #{val.refferalStatus.name}
-                    option(value=num[0]) #{num[0]}
-                    option(value=num[1]) #{num[1]}
-                    option(value=num[2]) #{num[2]}
+                    option(value=statuses.indexOf(num[0]) + 1) #{num[0]}
+                    option(value=statuses.indexOf(num[1]) + 1) #{num[1]}
+                    option(value=statuses.indexOf(num[2]) +1) #{num[2]}
               .col.username
                 | #{val.name}
               .col.phoneNumber
@@ -74,15 +76,14 @@ html(lang='en')
       br
       br
       br
-      .mapContainer
-        h2 Homeless Map Tracker
+      .mapInfo
+        h2 Map Tracker
         .mapContents
           .options-box
-            h2 Toggle
+            .mapHolder
+              #map
             div.toggleContainer
-              input#show-listings(type='button', value='Show Listings')
-              input#hide-listings(type='button', value='Hide Listings')
-          .mapHolder
-            #map
+              input#show-listings(type='button', value='Show Referrals')
+              input#hide-listings(type='button', value='Hide Referrals')
       script(type='text/javascript', src='/js/maps.js')
       script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap')
