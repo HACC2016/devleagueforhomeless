@@ -9,19 +9,20 @@ A node.js application to help homeless outreach teams efficiently respond to com
 1. Fork and clone the repository. 
 2. Install dependencies with: `npm install`
 3. Run the application with `nodemon server.js`
+4. Go to `localhost:3000` on your web browser.
 
 ## DevPost
 #### Clearly describe the problem you addressed
-Homeless Outreach teams need an application that allows them to efficiently respond to 
+Homeless Outreach teams needed an application that allows them to efficiently respond to 
 community referrals.
 
 #### Tell the story behind your project
 We created an application that allows users to send a referral that can include a picture
 of the camp/site and its geolocation. Service providers receiving the referrals can view
-the camps on a map with markers to be able to easily locate camps. We wanted the
-application to be accessible to the majority of people on the island so we incorporated
+the camps on a map with markers to be able to easily locate camps. We wanted the application 
+to be accessible to the majority of people on the island so we incorporated
 text integration. With text integration people without a smartphone can also refer
-individuals to service providers for assistance and outreach services.
+individuals to service providers for assistance and outreach services. 
 
 #### Explain the impact if your solution were to be implemented
 More homeless people would be able to be connected to the appropriate resources to
