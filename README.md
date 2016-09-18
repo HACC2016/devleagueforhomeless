@@ -11,7 +11,7 @@ A node.js application to help homeless outreach teams efficiently respond to com
 3. Run the application with `nodemon server.js`
 
 ## DevPost
-# Clearly describe the problem you addressed
+#### Clearly describe the problem you addressed
 Homeless Outreach teams need an application that allows them to efficiently respond to 
 community referrals.
 
