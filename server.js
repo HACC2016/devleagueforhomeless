@@ -59,7 +59,6 @@ app.get('/dashboard', function(req, res, next) {
         refferal[i].formatDate = dateFormat(refferal[i].createdAt, "mmmm dS, yyyy, h:MM:ss TT");
       }
       /* add a blank value so that jade table doesn't skip any values. */
-      // refferal.push({});
       refferal.unshift({});
       res.render('dashboard', {json: refferal});
   });
@@ -110,7 +109,7 @@ app.post('/homeless', function(req, res, next) {
             longitude: fields.longitude[0],
             description: fields.description[0]})
           .then(function(refferal) {
-            return res.render('success');
+            return res.render('successCommunityView');
           });
         });
       });
@@ -132,7 +131,7 @@ app.post('/homeless', function(req, res, next) {
           description: fields.description[0]})
           .then(function(refferal) {
             // Sends response that tells the pic got uploaded
-            return res.render('success');
+            return res.render('successCommunityView');
           });
     }
   });
