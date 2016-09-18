@@ -81,11 +81,13 @@
     }
 
     function success(position) {
+      console.log("geolocation success");
       document.getElementById('latitude').value = position.coords.latitude;
       document.getElementById('longitude').value = position.coords.longitude;
     };
 
     function error() {
+      console.log("geolocation error");
       alert("You did not opt in your geolocation")
     };
     navigator.geolocation.getCurrentPosition(success, error);
