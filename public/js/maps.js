@@ -38,7 +38,7 @@ function initMap(){
   function populateInfoWindow(marker, infowindow) {
     if (infowindow.marker != marker) {
       infowindow.marker = marker;
-      infowindow.setContent('<div class="marker">' + 'Ticket ID: ' + marker.title + '</div>');
+      infowindow.setContent('<div class="marker">' + 'Referral #: ' + marker.title + '</div>');
       infowindow.open(map, marker);
       infowindow.addListener('closeclick', function() {
         infowindow.marker = null;
