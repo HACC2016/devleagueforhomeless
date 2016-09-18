@@ -47,12 +47,12 @@ function initMap(){
   }
 
       function showListings(){
-        var bounds = new google.maps.LatLngBounds();
+        // var bounds = new google.maps.LatLngBounds();
         for (var i = 0; i < markers.length; i++){
           markers[i].setMap(map);
-          bounds.extend(markers[i].position);
+          // bounds.extend(markers[i].position);
         }
-        map.fitBounds(bounds);
+        // map.fitBounds(bounds);
       }
 
       function hideListings(){
