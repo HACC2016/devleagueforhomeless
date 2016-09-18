@@ -84,10 +84,11 @@ app.get(/\/description\/\d/, function(req, res) {
 
 app.post('/homeless', function(req, res, next) {
   // Create Form parse
+  console.log("=======", req.body);
   var form = new multiparty.Form();
   form.parse(req, function(err, fields, files) {
     if(err)
-      throw err
+      throw err;
     if(files.pic[0].size){
       cloudinary.uploader.upload(files.pic[0].path, function(result) {
         return Pics.create({fileName: result.url})
@@ -110,7 +111,7 @@ app.post('/homeless', function(req, res, next) {
           .then(function(refferal) {
             return res.render('successCommunityView');
           });
-        })
+        });
       });
     }
     else{
@@ -133,6 +134,14 @@ app.post('/homeless', function(req, res, next) {
             return res.render('successCommunityView');
           });
     }
+  });
+});
+
+app.post("/api/homeless", function (req, res) {
+  console.log(req.body);
+  Refferals.create({
+    longitude: req.body.longitude,
+    latitude: req.body.latitude
   });
 });
 
