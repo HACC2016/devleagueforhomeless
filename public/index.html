@@ -73,8 +73,10 @@
   </form>
  <script>
  function resetGeo () {
+  var output = document.getElementById("out");
   document.getElementById('latitude').value = "";
       document.getElementById('longitude').value = "";
+      output.innerHTML ="geolocation removed";
  }
 
   function geoFindMe() {
