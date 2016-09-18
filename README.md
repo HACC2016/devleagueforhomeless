@@ -12,7 +12,7 @@ A node.js application to help homeless outreach teams efficiently respond to com
 
 ### DevPost
 - ***Clearly describe the problem you addressed***
-Homeless Outreach teams need an application that allows them to efficiently respond to 
+-- Homeless Outreach teams need an application that allows them to efficiently respond to 
 community referrals.
 
 - ***Tell the story behind your project***
