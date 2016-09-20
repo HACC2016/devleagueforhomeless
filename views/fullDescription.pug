@@ -38,7 +38,10 @@ body
     ul.pictureInfo
       li
         br
-        img.showPicture(src=json.pic.dataValues.fileName)
+        if json.pic !== null
+          img.showPicture(src=json.pic.dataValues.fileName)
+        else
+          p N/A
     br
     br
     a(href="/dashboard" class = 'navButton') back to Dashboard
