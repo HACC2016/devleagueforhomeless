@@ -16,7 +16,7 @@ app.post('/message', function(req, res) {
   return Refferals
     .create(
       {
-       refferalStatus: 1,
+       refferalStatus_id: 1,
        phoneNumber: req.body.From,
        description: req.body.Body
       }

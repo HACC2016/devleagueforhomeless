@@ -71,16 +71,16 @@
     <!-- <a href="#" class="myButton">Submit</a> -->
     <input class="myButton" type="submit" value="Submit">
   </form>
- <script>
- function resetGeo () {
-  var output = document.getElementById("out");
-  document.getElementById('latitude').value = "";
-      document.getElementById('longitude').value = "";
-      output.innerHTML ="geolocation removed";
- }
+  <script>
+  function resetGeo () {
+    var output = document.getElementById("out");
+    document.getElementById('latitude').value = "";
+    document.getElementById('longitude').value = "";
+    output.innerHTML ="geolocation removed";
+  }
 
   function geoFindMe() {
-     var output = document.getElementById("out");
+    var output = document.getElementById("out");
 
     if (!navigator.geolocation){
       output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
@@ -93,19 +93,20 @@
       document.getElementById('latitude').value = latitude;
       document.getElementById('longitude').value = longitude;
       output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-    var img = new Image();
-    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+      var img = new Image();
+      img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
 
-    output.appendChild(img);
+      output.appendChild(img);
     };
 
     function error() {
       output.innerHTML = "Unable to retrieve your location";
     };
+
     output.innerHTML = "<p>Locating…</p>";
+
     navigator.geolocation.getCurrentPosition(success, error);
   }
-</script>
-
+  </script>
 </body>
 </html>

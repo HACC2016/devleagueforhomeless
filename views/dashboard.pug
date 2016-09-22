@@ -15,7 +15,7 @@ html(lang='en')
           if index === 0
             .headrow.row
               .headColumn.col.ticketId
-                | Ticket ID
+                | Referral #
               .headColumn.col.createdAt
                 | Received
               .headColumn.col.address
@@ -44,19 +44,21 @@ html(lang='en')
                 a.showDescription(href='/description/' + val.id)
                   | #{val.description}
               .col.status
-                -var num = [2,3,4]
+                -var statuses = ["Queue","In Progress","Danger","Done"]
+                -var num = ["In Progress","Danger","Done"]
                 if val.refferalStatus_id == 2
-                  - num = [1,3,4]
+                  - num = ["Queue","Danger","Done"]
                 else if val.refferalStatus_id == 3
-                  - num = [1,2,4]
+                  - num = ["Queue","In Progress","Done"]
                 else if val.refferalStatus_id == 4
-                  - num = [1,2,3]
+                  - num = ["Queue","In Progress","Danger"]
+                - console.log(statuses.indexOf(num[2]))
                 form(action='/homeless/' + val.id + "/?_method=put", method="post")
                   select(name="refferalStatus_id", onchange='this.form.submit()')
-                    option(value="" disabled selected) #{val.refferalStatus_id}
-                    option(value=num[0]) #{num[0]}
-                    option(value=num[1]) #{num[1]}
-                    option(value=num[2]) #{num[2]}
+                    option(value="" disabled selected) #{val.refferalStatus.name}
+                    option(value=statuses.indexOf(num[0]) + 1) #{num[0]}
+                    option(value=statuses.indexOf(num[1]) + 1) #{num[1]}
+                    option(value=statuses.indexOf(num[2]) +1) #{num[2]}
               .col.username
                 | #{val.name}
               .col.phoneNumber
@@ -74,19 +76,15 @@ html(lang='en')
       br
       br
       br
-      .container
+      .mapInfo
         h2 Homeless Map Tracker
-        .options-box
-          h1 Toggle
-          div.toggleContainer
-            input#show-listings(type='button', value='Show Listings')
-            input#hide-listings(type='button', value='Hide Listings')
-        .destinations-box
-          input#origin-input.controls(type='text', placeholder='Enter start location')
-          input#destination-input.controls(type='text', placeholder='Enter end location')
-        select#mode-selector
-          option(value='DRIVING') Driving
-          option(value='WALKING') Walking
-        #map
+        .mapContents
+          .options-box
+            h2 Toggle
+            div.toggleContainer
+              input#show-listings(type='button', value='Show Listings')
+              input#hide-listings(type='button', value='Hide Listings')
+          .mapHolder
+            #map
       script(type='text/javascript', src='/js/maps.js')
       script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap')
