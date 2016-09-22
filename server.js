@@ -84,7 +84,6 @@ app.get(/\/description\/\d/, function(req, res) {
 
 app.post('/homeless', function(req, res, next) {
   // Create Form parse
-  console.log("=======", req.body);
   var form = new multiparty.Form();
   form.parse(req, function(err, fields, files) {
     if(err)
@@ -95,7 +94,6 @@ app.post('/homeless', function(req, res, next) {
         .then(function(cloudPic) {
           Refferals.create({refferalStatus_id:3,
             pic_id: cloudPic.id,
-            name: fields.name[0],
             firstName: fields.firstName[0],
             lastName: fields.lastName[0],
             email: fields.email[0],
@@ -116,7 +114,6 @@ app.post('/homeless', function(req, res, next) {
     }
     else{
        Refferals.create({refferalStatus_id:3,
-          name: fields.name[0],
           firstName: fields.firstName[0],
           lastName: fields.lastName[0],
           email: fields.email[0],

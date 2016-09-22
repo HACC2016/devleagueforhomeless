@@ -9,50 +9,53 @@
   <h1> Refer a Camp </h1>
   <br>
   <form id="communityForm" class="communityForm"  action="/homeless" enctype="multipart/form-data" method="POST">
-    <h3>Your Info</h3>
-    <hr>
-    <label>Username (required)</label>
-    <br>
-    <input type="text" name="name" value="username" placeholder="username">
-    <br>
-    <label>First Name</label>
-    <br>
-    <input type="text" name="firstName" value="firstName">
-    <br>
-    <label>Last Name</label>
-    <br>
-    <input type="text" name="lastName" value="lastName">
-    <br>
-    <label>Email (required)</label>
-    <br>
-    <input type="text" name="email" value="email">
-    <br>
-    <label>Phone</label>
-    <br>
-    <input type="text" name="phoneNumber" value="18082277777">
-    <br>
-    <br>
+  <button  id ='locationButton' type="button" onClick="toggleGeo()">Get my GPS</button>
+  <button id='infoButton' type="button" onClick="toggleYinfo()">Send my Information</button>
+  <br>
+  <div id='locationInfo'>
     <h3>Location Info</h3>
     <hr>
     <label>Area</label>
     <br>
-    <input type="text" name="area" value="area">
+    <input id='area' type="text" name="area" value="area">
     <br>
     <label>Street</label>
     <br>
-    <input type="text" name="address" value="address">
+    <input id='address' type="text" name="address" value="address">
     <br>
     <label>City</label>
     <br>
-    <input type="text" name="city" value="city">
+    <input id='city' type="text" name="city" value="city">
     <br>
     <label>State</label>
     <br>
-    <input type="text" name="state" value="HI">
+    <input id='state' type="text" name="state" value="HI">
     <br>
     <label>ZIP</label>
     <br>
-    <input type="text" name="zip" value="99999">
+    <input id='zip' type="text" name="zip" value="99999">
+  </div>
+    <div id='yourInfo'>
+      <h3>Your Info</h3>
+      <hr>
+      <label>First Name</label>
+      <br>
+      <input id='fName' type="text" name="firstName" value="firstName">
+      <br>
+      <label>Last Name</label>
+      <br>
+      <input id='lName' type="text" name="lastName" value="lastName">
+      <br>
+      <label>Email (required)</label>
+      <br>
+      <input id='email' type="text" name="email" value="email">
+      <br>
+      <label>Phone</label>
+      <br>
+      <input id='phoneNum' type="text" name="phoneNumber" value="18082277777">
+      <br>
+      <br>
+    </div>
     <br>
     <label>Description (required)</label>
     <br>
@@ -64,48 +67,72 @@
     <input type="hidden" id="latitude" name="latitude" value="">
     <input type="hidden" id="longitude" name="longitude" value="">
     <br>
-    <br>
-     <button type="button" onClick="geoFindMe()">Show my location</button>
-    <button type="button" onClick="resetGeo()">Remove my location</button>
     <div id="out"></div>
     <!-- <a href="#" class="myButton">Submit</a> -->
     <input class="myButton" type="submit" value="Submit">
   </form>
  <script>
- function resetGeo () {
-  var output = document.getElementById("out");
-  document.getElementById('latitude').value = "";
+ var showInfo = false;
+ var showGeo = false;
+ function toggleGeo() {
+    if(showGeo){
+      var output = document.getElementById("out");
+      document.getElementById('latitude').value = "";
       document.getElementById('longitude').value = "";
       output.innerHTML ="geolocation removed";
- }
-
-  function geoFindMe() {
-     var output = document.getElementById("out");
-
-    if (!navigator.geolocation){
-      output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-      return;
+      document.getElementById("locationInfo").style.display='block';
+      document.getElementById("locationButton").innerHTML='Send My GPS';
+      showGeo = false;
     }
-    function success(position) {
-      console.log(position);
-      var latitude = position.coords.latitude;
-      var longitude = position.coords.longitude;
-      document.getElementById('latitude').value = latitude;
-      document.getElementById('longitude').value = longitude;
-      output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-    var img = new Image();
-    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+    else{
+      var output = document.getElementById("out");
+      if (!navigator.geolocation){
+        output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+        return;
+      }
+      function success(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        document.getElementById('latitude').value = latitude;
+        document.getElementById('longitude').value = longitude;
+        output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+      var img = new Image();
+      img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
 
-    output.appendChild(img);
-    };
+      output.appendChild(img);
+      };
 
-    function error() {
-      output.innerHTML = "Unable to retrieve your location";
-    };
-    output.innerHTML = "<p>Locating…</p>";
-    navigator.geolocation.getCurrentPosition(success, error);
-  }
+      function error() {
+        output.innerHTML = "Unable to retrieve your location";
+      };
+      output.innerHTML = "<p>Locating…</p>";
+      navigator.geolocation.getCurrentPosition(success, error);
+      document.getElementById("locationInfo").style.display='none';
+      document.getElementById("locationButton").innerHTML='Dont Send My GPS';
+      document.getElementById('state').value = '';
+      document.getElementById('area').value = '';
+      document.getElementById('address').value = '';
+      document.getElementById('city').value = '';
+      document.getElementById('zip').value = '';
+      showGeo = true;
+    }
+ }
+ function toggleYinfo(){
+    if(showInfo){
+      document.getElementById("yourInfo").style.display='none';
+      document.getElementById("infoButton").innerHTML='Send my Informaton';
+      document.getElementById('fName').value = '';
+      document.getElementById('lName').value = '';
+      document.getElementById('phoneNum').value = '';
+      document.getElementById('email').value = '';
+      showInfo = false;
+    }
+    else{
+      document.getElementById("yourInfo").style.display='block';
+      document.getElementById("infoButton").innerHTML='Dont send my info';
+      showInfo = true;
+    }
+ }
 </script>
-
 </body>
 </html>
