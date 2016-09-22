@@ -14,7 +14,6 @@ function initMap(){
     var referrals = result;
     referrals.map(function(loc){
       var address = loc.address + ' ' + loc.city + ', ' + loc.state + ' ' + loc.zip;
-      console.log('address: ', address);
       var coordinatesLat = loc.latitude;
       var coordinatesLng = loc.longitude;
 
@@ -25,18 +24,13 @@ function initMap(){
           if (status === google.maps.GeocoderStatus.OK){
             if (status !== google.maps.GeocoderStatus.ZERO_RESULTS){
               map.setCenter(results[0].geometry.location);
-              console.log(  {
-                  lat: parseFloat(coordinatesLat),
-                  lng: parseFloat(coordinatesLng),
-                });
-              console.log('results[0]', results[0].geometry.location);
               var marker = new google.maps.Marker({
                 map: map,
                 position: coordinatesLat && coordinatesLng ?
-                {
-                  lat: parseFloat(coordinatesLat),
-                  lng: parseFloat(coordinatesLng),
-                } : results[0].geometry.location,
+                  {
+                    lat: parseFloat(coordinatesLat),
+                    lng: parseFloat(coordinatesLng),
+                  } : results[0].geometry.location,
                 animation: google.maps.Animation.DROP,
                 title: loc.id.toString(),
                 icon: color1,
@@ -44,10 +38,10 @@ function initMap(){
 
               markers.push(marker);
 
-              google.maps.event.addListener(marker, 'mouseover', function() {
+              marker.addListener('mouseover', function() {
                 marker.setIcon(color2);
               });
-              google.maps.event.addListener(marker, 'mouseout', function() {
+              marker.addListener('mouseout', function() {
                 marker.setIcon(color1);
               });
 
@@ -56,14 +50,24 @@ function initMap(){
                 populateInfoWindow(marker, largeInfowindow);
               });
 
+              var rowId = 'ref-row-' + loc.id;
+              var tr = document.getElementById(rowId);
+              tr.addEventListener('click', function(){
+                for (var j = 0; j < markers.length; j++){
+                  markers[j].setIcon(color1);
+                }
+                marker.setIcon(color2);
+              });
+
             }
           }
         }); // close geocoder callback
       } // close geocoder if statement
-      }); //closes referrals.map function
-        document.getElementById('show-listings').addEventListener('click', showListings);
+    }); //closes referrals.map function
+      document.getElementById('show-listings').addEventListener('click', showListings);
 
-        document.getElementById('hide-listings').addEventListener('click', hideListings);
+      document.getElementById('hide-listings').addEventListener('click', hideListings);
+
   }) //close success function
 }); //close ajax
 
@@ -78,19 +82,20 @@ function initMap(){
     }
   }
 
-      function showListings(){
-        // var bounds = new google.maps.LatLngBounds();
-        for (var i = 0; i < markers.length; i++){
-          markers[i].setMap(map);
-          // bounds.extend(markers[i].position);
-        }
-        // map.fitBounds(bounds);
+    function showListings(){
+      var bounds = new google.maps.LatLngBounds();
+      for (var i = 0; i < markers.length; i++){
+        markers[i].setMap(map);
+        bounds.extend(markers[i].position);
       }
+      map.fitBounds(bounds);
+    }
 
-      function hideListings(){
-        for (var i = 0; i < markers.length; i++){
-          markers[i].setMap(null);
-        }
+    function hideListings(){
+      for (var i = 0; i < markers.length; i++){
+        markers[i].setMap(null);
       }
+    }
+
 
 } //close map init
