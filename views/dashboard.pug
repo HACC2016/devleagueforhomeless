@@ -34,7 +34,7 @@ html(lang='en')
               .headColumn.col.pictureCol
                 | Picture
           else
-            .row
+            .row(id = 'ref-row-'+val.id)
               .col.ticketId
                 a.showDescription(href='/description/' + val.id)
                   | #{val.id}
