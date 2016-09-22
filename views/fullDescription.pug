@@ -19,7 +19,7 @@ body
     h3.infoHeading Location Info
     ul.locationInfo
       li Area: #{json.area}
-      li Street: #{json.area}
+      li Street: #{json.address}
       li City: #{json.city}
       li State: #{json.state}
       li City: #{json.city}
@@ -30,8 +30,8 @@ body
     ul.referralInfo
       li Created At: #{json.createdAt}
       li Updated At: #{json.updatedAt}
-      -var statuses = ["In Progress","Danger","Done"]
-      -var status = statuses[json.refferalStatus_id]
+      -var statuses = ["Queue","In Progress","Danger","Done"]
+      -var status = statuses[json.refferalStatus_id - 1]
       li Status: #{status}
     br
     h3.infoHeading Picture

@@ -3,60 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <title>Enter Homeless Information</title>
-  <link rel='stylesheet' type='text/css' href='/css/styles.css'>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
   <h1> Refer a Camp </h1>
   <br>
-  <form id="communityForm" class="communityForm"  action="/homeless" enctype="multipart/form-data" method="POST">
+  <form id="communityForm" class="container-fluid"  action="/homeless" enctype="multipart/form-data" method="POST">
     <h3>Your Info</h3>
     <hr>
-    <label>Username (required)</label>
-    <br>
-    <input type="text" name="name" value="username" placeholder="username">
-    <br>
     <label>First Name</label>
     <br>
-    <input type="text" name="firstName" value="firstName">
+
+    <div class="input-group margin-bottom-sm">
+      <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+      <input class="form-control" type="text" name="firstName" placeholder="Enter your First Name">
+    </div>
+
     <br>
     <label>Last Name</label>
     <br>
-    <input type="text" name="lastName" value="lastName">
+
+    <div class="input-group margin-bottom-sm">
+      <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+      <input class="form-control" type="text" name="lastName" placeholder="Enter your Last Name">
+    </div>
+
     <br>
-    <label>Email</label>
+    <label>Email (required)</label>
     <br>
-    <input type="text" name="email" value="email">
+
+    <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+    <input class="form-control" type="text" name="email" placeholder="Enter a Valid E-mail Address">
+    </div>
+
     <br>
     <label>Phone</label>
     <br>
-    <input type="text" name="phoneNumber" value="18082277777">
+
+    <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
+    <input class="form-control" type="text" name="phoneNumber" placeholder="Enter your Phone Number">
+    </div>
+
     <br>
     <br>
     <h3>Location Info</h3>
     <hr>
     <label>Area</label>
     <br>
-    <input type="text" name="area" value="area">
+
+    <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
+    <input class="form-control" type="text" name="area" value="area">
+    </div>
+
     <br>
     <label>Street</label>
     <br>
-    <input type="text" name="address" value="address">
+
+    <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+    <input class="form-control" type="text" name="address" value="address">
+    </div>
+
     <br>
     <label>City</label>
     <br>
-    <input type="text" name="city" value="city">
+
+    <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+    <input class="form-control" type="text" name="city" value="city">
+    </div>
+
     <br>
     <label>State</label>
     <br>
-    <input type="text" name="state" value="HI">
+
+    <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+    <input class="form-control" type="text" name="state" value="HI">
+    </div>
+
     <br>
     <label>ZIP</label>
     <br>
-    <input type="text" name="zip" value="99999">
+
+    <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+    <input class="form-control" type="text" name="zip" value="99999">
+    </div>
+
     <br>
-    <label>Description</label>
+    <label>Description (required)</label>
     <br>
-    <textarea class="descriptionArea" name="description"  value="description" placeholder="Enter your description here."></textarea>
+
+    <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+    <textarea class="form-control" name="description"  value="description" placeholder="Enter your description here."></textarea>
+    </div>
+
     <br>
     <label>Picture</label>
     <br>
@@ -86,25 +135,27 @@
       output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
       return;
     }
+
     function success(position) {
       console.log(position);
       var latitude = position.coords.latitude;
       var longitude = position.coords.longitude;
       document.getElementById('latitude').value = latitude;
       document.getElementById('longitude').value = longitude;
+
       output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+
       var img = new Image();
       img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
 
       output.appendChild(img);
-    };
+    }
 
     function error() {
       output.innerHTML = "Unable to retrieve your location";
-    };
+    }
 
     output.innerHTML = "<p>Locating…</p>";
-
     navigator.geolocation.getCurrentPosition(success, error);
   }
   </script>

@@ -38,7 +38,7 @@ function initMap(){
   function populateInfoWindow(marker, infowindow) {
     if (infowindow.marker != marker) {
       infowindow.marker = marker;
-      infowindow.setContent('<div class="marker">' + 'Ticket ID: ' + marker.title + '</div>');
+      infowindow.setContent('<div class="marker">' + 'Referral #: ' + marker.title + '</div>');
       infowindow.open(map, marker);
       infowindow.addListener('closeclick', function() {
         infowindow.marker = null;
@@ -47,12 +47,12 @@ function initMap(){
   }
 
       function showListings(){
-        var bounds = new google.maps.LatLngBounds();
+        // var bounds = new google.maps.LatLngBounds();
         for (var i = 0; i < markers.length; i++){
           markers[i].setMap(map);
-          bounds.extend(markers[i].position);
+          // bounds.extend(markers[i].position);
         }
-        map.fitBounds(bounds);
+        // map.fitBounds(bounds);
       }
 
       function hideListings(){
