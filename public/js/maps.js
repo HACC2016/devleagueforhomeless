@@ -70,16 +70,15 @@ function initMap(){
               });
 
               var rowId = 'ref-row-' + loc.id;
+              var centerVal = loc.position;
               var tr = document.getElementById(rowId);
               tr.addEventListener('click', function(){
                   for (var j = 0; j < markers.length; j++){
                     console.log(markers[j]);
                     markers[j].setIcon(color1);
                     popups[j].close();
-
                   }
                 populateInfoWindow(marker, largeInfowindow);
-                map.setCenter(map.position);
                 map.setZoom(12);
                 marker.setIcon(color2);
               });
@@ -99,10 +98,8 @@ function initMap(){
   function populateInfoWindow(marker, infowindow) {
     // if (infowindow.marker != marker) {
     //   infowindow.marker = marker;
-
       infowindow.setContent('<div class="marker">' + '<span class="info-title">' + 'Referral # ' + marker.title +   '</span>' + '<br>' + marker.address + ' ' + marker.city + ', ' + marker.state + ' ' + marker.zip + '</div>');
       infowindow.open(map, marker);
-      console.log(infowindow);
       infowindow.addListener('closeclick', function() {
         infowindow.marker = null;
       });
