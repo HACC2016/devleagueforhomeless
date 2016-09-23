@@ -56,7 +56,7 @@ app.get('/dashboard', function(req, res, next) {
       as: 'refferalStatus',
     }]}).then(function(refferal) {
       for(var i = 0; i < refferal.length; i++) {
-        refferal[i].formatDate = dateFormat(refferal[i].createdAt, "mmmm dS, yyyy, h:MM:ss TT");
+        refferal[i].formatDate = dateFormat(refferal[i].createdAt, "mmmm dS, yyyy");
       }
       /* add a blank value so that jade table doesn't skip any values. */
       refferal.unshift({});
