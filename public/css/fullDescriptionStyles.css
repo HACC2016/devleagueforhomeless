@@ -1,8 +1,35 @@
+/* Dark gold */
 body {
   margin-bottom: 5vh;
-}
+  background: #1584eb;
+  background: -moz-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1584eb), color-stop(100%, #11263d));
+  background: -webkit-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
+  background: -o-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
+  background: radial-gradient(ellipse at center, #1584eb 0%, #11263d 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 ); }
 
-.fdHeader {
-  margin-left: 20px;
-}
+h1 {
+  color: #ca9e2b;
+  text-shadow: 2px 2px black; }
 
+h2 {
+  color: #ca9e2b;
+  text-shadow: 2px 2px black; }
+
+.refHeader {
+  text-shadow: 2px 2px black;
+  display: inline-block; }
+
+.topButton {
+  display: inline-block; }
+
+.adminCommentsLabel {
+  color: #ca9e2b;
+  text-shadow: 2px 2px black; }
+
+.topButton {
+  box-shadow: 1px 1px 1px darkblue;
+  display: inline-block;
+  float: right; }
