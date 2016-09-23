@@ -45,7 +45,6 @@ function initMap(){
               markers.push(marker);
 
               marker.addListener('mouseover', function() {
-                console.log(marker);
 
                 marker.setIcon(color2);
               });
@@ -53,7 +52,6 @@ function initMap(){
               marker.addListener('click', function(){
                 $('.row-highlight').removeClass('row-highlight');
                 $('#ref-row-' + loc.id).addClass('row-highlight');
-
               });
 
               marker.addListener('mouseout', function() {
@@ -74,7 +72,6 @@ function initMap(){
               var tr = document.getElementById(rowId);
               tr.addEventListener('click', function(){
                   for (var j = 0; j < markers.length; j++){
-                    console.log(markers[j]);
                     markers[j].setIcon(color1);
                     popups[j].close();
                   }
