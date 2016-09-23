@@ -1,4 +1,5 @@
 var markers = [];
+var popups = [];
 var color1 = 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png';
 var color2 = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
 
@@ -39,6 +40,7 @@ function initMap(){
               markers.push(marker);
 
               marker.addListener('mouseover', function() {
+                console.log(marker);
                 marker.setIcon(color2);
               });
               marker.addListener('mouseout', function() {
@@ -46,16 +48,25 @@ function initMap(){
               });
 
               var largeInfowindow = new google.maps.InfoWindow();
+              popups.push(largeInfowindow);
               marker.addListener('click', function(){
+               for (var j = 0; j < popups.length; j++){
+                  popups[j].close();
+                }
                 populateInfoWindow(marker, largeInfowindow);
               });
 
               var rowId = 'ref-row-' + loc.id;
               var tr = document.getElementById(rowId);
               tr.addEventListener('click', function(){
-                for (var j = 0; j < markers.length; j++){
-                  markers[j].setIcon(color1);
-                }
+                  for (var j = 0; j < markers.length; j++){
+                    console.log(markers[j]);
+                    markers[j].setIcon(color1);
+                    popups[j].close();
+
+                  }
+                populateInfoWindow(marker, largeInfowindow);
+
                 marker.setIcon(color2);
               });
 
@@ -72,14 +83,16 @@ function initMap(){
 }); //close ajax
 
   function populateInfoWindow(marker, infowindow) {
-    if (infowindow.marker != marker) {
-      infowindow.marker = marker;
+    // if (infowindow.marker != marker) {
+    //   infowindow.marker = marker;
+
       infowindow.setContent('<div class="marker">' + 'Referral #: ' + marker.title + '</div>');
       infowindow.open(map, marker);
+      console.log(infowindow);
       infowindow.addListener('closeclick', function() {
         infowindow.marker = null;
       });
-    }
+    // }
   }
 
     function showListings(){

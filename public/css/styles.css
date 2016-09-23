@@ -362,6 +362,9 @@ input:focus, textarea:focus {
   overflow: hidden;
   width: 15%; }
 
+.refferalText {
+  color: black; }
+
 .tooltip {
   position: relative;
   display: inline-block; }
@@ -390,7 +393,7 @@ input:focus, textarea:focus {
   width: 10%; }
 
 .phoneNumber {
-  width: 10%; }
+  width: 15%; }
 
 .email {
   width: 10%; }

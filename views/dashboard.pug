@@ -3,50 +3,51 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     title Admin Dashboard
-    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
     link(href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet")
-    link(href="css/styles.css", rel="stylesheet")
     script(src="https://code.jquery.com/jquery-3.1.0.min.js",  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=", crossorigin="anonymous")
+    script(src="//code.jquery.com/jquery-1.12.0.min.js")
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+    link(href="css/styles.css", rel="stylesheet")
   body
     #main
       .title
         h1 Dashboard
       br
-      .ticketTable
+      table.ticketTable.table.table-hover.table-bordered
         each val, index in json
           if index === 0
-            .headrow.row
-              .headColumn.col.ticketId
+            thead
+              th.refferalText
                 | Referral #
-              .headColumn.col.createdAt
+              th.headColumn.col.createdAt
                 | Received
-              .headColumn.col.address
+              th.headColumn.col.address
                 | Location
-              .headColumn.col.description
+              th.headColumn.col.description
                 | Short Description
-              .headColumn.col.status
+              th.headColumn.col.status
                 | Status
-              .headColumn.col.username
+              th.headColumn.col.username
                 | Submitter
-              .headColumn.col.phoneNumber
+              th.headColumn.col.phoneNumber
                 | Phone #
-              .headColumn.col.email
+              th.headColumn.col.email
                 | Email
-              .headColumn.col.pictureCol
+              th.headColumn.col.pictureCol
                 | Picture
           else
-            .row(id = 'ref-row-'+val.id)
-              .col.ticketId
-                a.showDescription(href='/description/' + val.id)
+            tr(id='ref-row-' +val.id)
+              td
+                a(href='/description/' + val.id)
                   | #{val.id}
-              .col.createdAt
+              td.col.createdAt
                 | #{val.formatDate}
-              .col.address
+              td.col.address
                 | #{val.address}
-              .col.description
+              td.col.description
                 a.showDescription(href='/description/' + val.id)
                   | #{val.description}
-              .col.status
+              td.col.status
                 -var statuses = ["Queue","In Progress","Danger","Done"]
                 -var num = ["In Progress","Danger","Done"]
                 if val.refferalStatus_id == 2
@@ -62,13 +63,13 @@ html(lang='en')
                     option(value=statuses.indexOf(num[0]) + 1) #{num[0]}
                     option(value=statuses.indexOf(num[1]) + 1) #{num[1]}
                     option(value=statuses.indexOf(num[2]) +1) #{num[2]}
-              .col.username
-                | #{val.firstName} #{val.lastName}
-              .col.phoneNumber
+              td.col.username
+                | #{val.name}
+              td.col.phoneNumber
                 | #{val.phoneNumber}
-              .col.email
+              td.col.email
                 | #{val.email}
-              .col.pictureCol
+              td.col.pictureCol
                 if val.pic_id === null
                   | N/A
                 else
