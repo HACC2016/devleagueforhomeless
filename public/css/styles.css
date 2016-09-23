@@ -169,6 +169,8 @@ input:focus, textarea:focus {
     .communityForm {
       box-sizing: border-box;
       width: 90%; } }
+  .communityForm #yourInfo {
+    display: none; }
 
 .communityForm label {
   text-align: left;
@@ -360,6 +362,9 @@ input:focus, textarea:focus {
   overflow: hidden;
   width: 15%; }
 
+.refferalText {
+  color: black; }
+
 .tooltip {
   position: relative;
   display: inline-block; }
@@ -388,7 +393,7 @@ input:focus, textarea:focus {
   width: 10%; }
 
 .phoneNumber {
-  width: 10%; }
+  width: 15%; }
 
 .email {
   width: 10%; }

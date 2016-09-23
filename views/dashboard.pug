@@ -3,48 +3,50 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     title Admin Dashboard
-    link(rel='stylesheet', type='text/css', href='/css/styles.css')
     script(src="https://code.jquery.com/jquery-3.1.0.min.js",  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=", crossorigin="anonymous")
+    script(src="//code.jquery.com/jquery-1.12.0.min.js")
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+    link(href="css/styles.css", rel="stylesheet")
   body
     #main
       .title
         h1 Dashboard
       br
-      .ticketTable
+      table.ticketTable.table.table-hover.table-bordered
         each val, index in json
           if index === 0
-            .headrow.row
-              .headColumn.col.ticketId
+            thead
+              th.refferalText
                 | Referral #
-              .headColumn.col.createdAt
+              th.headColumn.col.createdAt
                 | Received
-              .headColumn.col.address
+              th.headColumn.col.address
                 | Location
-              .headColumn.col.description
+              th.headColumn.col.description
                 | Short Description
-              .headColumn.col.status
+              th.headColumn.col.status
                 | Status
-              .headColumn.col.username
+              th.headColumn.col.username
                 | Submitter
-              .headColumn.col.phoneNumber
+              th.headColumn.col.phoneNumber
                 | Phone #
-              .headColumn.col.email
+              th.headColumn.col.email
                 | Email
-              .headColumn.col.pictureCol
+              th.headColumn.col.pictureCol
                 | Picture
           else
-            .row
-              .col.ticketId
-                a.showDescription(href='/description/' + val.id)
+            tr
+              td
+                a(href='/description/' + val.id)
                   | #{val.id}
-              .col.createdAt
+              td.col.createdAt
                 | #{val.formatDate}
-              .col.address
+              td.col.address
                 | #{val.address}
-              .col.description
+              td.col.description
                 a.showDescription(href='/description/' + val.id)
                   | #{val.description}
-              .col.status
+              td.col.status
                 -var statuses = ["Queue","In Progress","Danger","Done"]
                 -var num = ["In Progress","Danger","Done"]
                 if val.refferalStatus_id == 2
@@ -60,13 +62,13 @@ html(lang='en')
                     option(value=statuses.indexOf(num[0]) + 1) #{num[0]}
                     option(value=statuses.indexOf(num[1]) + 1) #{num[1]}
                     option(value=statuses.indexOf(num[2]) +1) #{num[2]}
-              .col.username
+              td.col.username
                 | #{val.name}
-              .col.phoneNumber
+              td.col.phoneNumber
                 | #{val.phoneNumber}
-              .col.email
+              td.col.email
                 | #{val.email}
-              .col.pictureCol
+              td.col.pictureCol
                 if val.pic_id === null
                   | N/A
                 else
@@ -88,3 +90,4 @@ html(lang='en')
               input#hide-listings(type='button', value='Hide Referrals')
       script(type='text/javascript', src='/js/maps.js')
       script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap')
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
