@@ -64,6 +64,9 @@ module.exports = {
       longitude:{
         type: Sequelize.STRING
       },
+      adminComments: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

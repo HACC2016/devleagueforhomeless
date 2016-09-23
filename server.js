@@ -56,7 +56,7 @@ app.get('/dashboard', function(req, res, next) {
       as: 'refferalStatus',
     }]}).then(function(refferal) {
       for(var i = 0; i < refferal.length; i++) {
-        refferal[i].formatDate = dateFormat(refferal[i].createdAt, "mmmm dS, yyyy, h:MM:ss TT");
+        refferal[i].formatDate = dateFormat(refferal[i].createdAt, "mmmm dS, yyyy");
       }
       /* add a blank value so that jade table doesn't skip any values. */
       refferal.unshift({});
@@ -137,7 +137,6 @@ app.post('/homeless', function(req, res, next) {
 });
 
 app.post("/api/homeless", function (req, res) {
-  console.log(req.body);
   Refferals.create({
     longitude: req.body.longitude,
     latitude: req.body.latitude

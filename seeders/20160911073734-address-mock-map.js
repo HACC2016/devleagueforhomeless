@@ -9,7 +9,8 @@ module.exports = {
       var long = Math.random() * (-158 + 156) + -156;
 
       people.push({
-        name: faker.name.firstName(),
+        firstName: faker.name.firstName(),
+        lastName: faker.name.lastName(),
         email: faker.internet.email(),
         description: faker.hacker.abbreviation(),
         area: 'kakaako',
@@ -17,6 +18,7 @@ module.exports = {
         zip: 96819,
         city: 'honolulu',
         address: 'honolulu, hi',
+        adminComments: 'none',
         createdAt: new Date(),
         updatedAt: new Date(),
         latitude: JSON.stringify(lat),

@@ -3,42 +3,90 @@ html(lang="en")
 head
   meta(charset="utf-8")
   title Full Description
-  link(rel = 'stylesheet', href = '/css/styles.css')
+  script(src="//code.jquery.com/jquery-1.12.0.min.js")
+  link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+  link(href="https://fonts.googleapis.com/css?family=Montserrat", rel="stylesheet")
+  link(rel='stylesheet', type='text/css', href='/css/fullDescriptionStyles.css')
 body
-  h3.fullDescriptionh3 Referral ID: #{json.id}
-  br
-  .fullDescriptionContainer
-    h3.infoHeading Submitter Info
-    ul.submitterInfo
-      li Username: #{json.name}
-      li First Name: #{json.firstname}
-      li Last Name: #{json.lastname}
-      li Email: #{json.email}
-      li Phone: #{json.phoneNumber}
-    br
-    h3.infoHeading Location Info
-    ul.locationInfo
-      li Area: #{json.area}
-      li Street: #{json.address}
-      li City: #{json.city}
-      li State: #{json.state}
-      li City: #{json.city}
-
-      li.fullDescription Full Description: #{json.description}
-    br
-    h3.infoHeading Referral Info
-    ul.referralInfo
-      li Created At: #{json.createdAt}
-      li Updated At: #{json.updatedAt}
-      -var statuses = ["Queue","In Progress","Danger","Done"]
-      -var status = statuses[json.refferalStatus_id - 1]
-      li Status: #{status}
-    br
-    h3.infoHeading Picture
-    ul.pictureInfo
-      li
+  .container.fdMain
+    .container.fdHeader
+    h1.refHeader Referral ID: #{json.id}
+    a.btn.btn-primary.topButton(href="/dashboard" class = 'navButton') back to Dashboard
+    .container.fdInfo
+      h2 Submitter Info
+      .list-group
+        .list-group-item.firstname
+          span
+            b First Name:
+          span &nbsp; #{json.firstName}
+        .list-group-item.lastname
+          span
+            b Last Name:
+          span &nbsp; #{json.lastName}
+        .list-group-item.email
+          span
+            b Email:
+          span &nbsp; #{json.email}
+        .list-group-item.phone
+          span
+            b Phone Number:
+          span &nbsp; #{json.phoneNumber}
+      h2 Location Info
+      .list-group
+        .list-group-item.area
+          span
+            b Area:
+          span &nbsp; #{json.area}
+        .list-group-item.street
+          span
+            b Street:
+          span &nbsp; #{json.address}
+        .list-group-item.city
+          span
+            b City:
+          span &nbsp; #{json.city}
+        .list-group-item.state
+          span
+            b State:
+          span &nbsp; #{json.state}
+        .list-group-item.city
+          span
+            b City:
+          span &nbsp; #{json.city}
+        .list-group-item.description
+          span
+            b Full Description:
+          span &nbsp; #{json.description}
+      h2 Referral Info
+      .list-group
+        .list-group-item.createdAt
+          span
+            b Created At:
+          span &nbsp; #{json.createdAt}
+        .list-group-item.updatedAt
+          span
+            b Updated At:
+          span &nbsp; #{json.updatedAt}
+        -var statuses = ["Queue","In Progress","Danger","Done"]
+        -var status = statuses[json.refferalStatus_id - 1]
+        .list-group-item.status
+          span
+            b Status:
+          span &nbsp; #{status}
+      h2 Notes
+      form.form-group(action='/homeless/' + json.id + "/?_method=put", method="post")
+        label.adminCommentsLabel Administrator Comments
         br
+        textarea.form-control(rows="10", name="adminComments", value="adminComments"
+        ) #{json.adminComments}
+        br
+        button.btn.btn-primary(type="submit") Submit Changes
+      h2 Picture
+      if json.pic !== null
         img.showPicture(src=json.pic.dataValues.fileName)
-    br
-    br
-    a(href="/dashboard" class = 'navButton') back to Dashboard
+      else
+        p N/A
+      br
+      br
+      a.btn.btn-primary(href="/dashboard" class = 'navButton') back to Dashboard
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")

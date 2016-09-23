@@ -459,17 +459,10 @@ input:focus, textarea:focus {
   height: 400px; }
 
 .marker {
-  font-size: 14px;
-  text-align: left;
+  font-size: 12px;
   color: black;
-  width: 160px;
-  height: 70px; }
-  .marker .info-title {
-    font-weight: bold;
-    font-size: 16px; }
-
-.ticketTable .row.row-highlight {
-  background-color: #00e64d; }
+  width: 75px;
+  height: 25px; }
 
 .optionsBox {
   margin: 0 auto;
