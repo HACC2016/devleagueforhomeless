@@ -94,10 +94,10 @@ app.post('/homeless', function(req, res, next) {
         .then(function(cloudPic) {
           Refferals.create({refferalStatus_id:3,
             pic_id: cloudPic.id,
-            name: fields.name[0],
             firstName: fields.firstName[0],
             lastName: fields.lastName[0],
             email: fields.email[0],
+            adminComments: '',
             phoneNumber: fields.phoneNumber[0],
             area: fields.area[0],
             city: fields.city[0],
@@ -115,7 +115,6 @@ app.post('/homeless', function(req, res, next) {
     }
     else{
        Refferals.create({refferalStatus_id:3,
-          name: fields.name[0],
           firstName: fields.firstName[0],
           lastName: fields.lastName[0],
           email: fields.email[0],
@@ -124,6 +123,7 @@ app.post('/homeless', function(req, res, next) {
           city: fields.city[0],
           state: fields.state[0],
           zip: fields.zip[0],
+          adminComments: '',
           address: fields.address[0],
           latitude: fields.latitude[0],
           longitude: fields.longitude[0],

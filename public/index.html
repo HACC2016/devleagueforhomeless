@@ -3,161 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <title>Enter Homeless Information</title>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/community-view.css">
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-  <h1> Refer a Camp </h1>
-  <br>
-  <form id="communityForm" class="container-fluid"  action="/homeless" enctype="multipart/form-data" method="POST">
-    <h3>Your Info</h3>
-    <hr>
-    <label>First Name</label>
-    <br>
 
-    <div class="input-group margin-bottom-sm">
-      <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-      <input class="form-control" type="text" name="firstName" placeholder="Enter your First Name">
+  <div class="jumbotron text-center">
+    <h1>DevLeague For Homeless!</h1>
+    <p>Mahalo for your help</p>
+  </div>
+
+  <div class="body">
+
+    <div class="container">
+
+      <h1> Refer a Camp </h1>
+      <br>
+      <button  id ='locationButton' class="btn btn-default" type="button" onClick="toggleGeo()">Get my GPS</button>
+      <button id='infoButton' class="btn btn-default" type="button" onClick="toggleYinfo()">Send my Information</button>
+      <br>
+
+      <form id="communityForm" class="form-group" action="/homeless" enctype="multipart/form-data" method="POST">
+
+        <div id="locationInfo">
+          <h3>Location Info</h3>
+
+          <label>Area</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-street-view fa-fw" aria-hidden="true"></i></span>
+            <input id='area' class="form-control" type="text" name="area" placeholder="Accross the Bank of Hawaii...">
+            <br>
+          </div>
+
+          <label>Street</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-road fa-fw" aria-hidden="true"></i></span>
+            <input id='address' class="form-control" type="text" name="address" placeholder="142 Hinano Street">
+            <br>
+          </div>
+
+          <label>City</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-building fa-fw" aria-hidden="true"></i></span>
+            <input id='city' class="form-control" type="text" name="city" placeholder="Honolulu">
+            <br>
+          </div>
+
+          <label>State</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-map fa-fw" aria-hidden="true"></i></span>
+            <input id='state' class="form-control" type="text" name="state" placeholder="HI">
+            <br>
+          </div>
+
+          <label>ZIP</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i></span>
+            <input id='zip' class="form-control" type="text" name="zip" placeholder="96822">
+          </div>
+        </div>
+
+        <div id="yourInfo">
+          <h3>Your Info</h3>
+          <label>First Name</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+            <input id='fName' class="form-control" type="text" name="firstName" placeholder="Your First Name">
+            <br>
+          </div>
+
+          <label>Last Name</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+            <input id='lName' class="form-control" type="text" name="lastName" placeholder="Your Last Name">
+          <br>
+          </div>
+
+          <label>Email (required)</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
+            <input id='email' class="form-control" type="text" name="email" placeholder="email@example.com">
+          </div>
+
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <br>
+
+          <label>Phone</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
+            <input id='phoneNum' class="form-control" type="text" name="phoneNumber" placeholder="(XXX)XXX-XXXX">
+            <br>
+          </div>
+
+          <label>Description (required)</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></span>
+            <textarea class="form-control" name="description"  value="description" placeholder="Enter your description here."></textarea>
+          </div>
+        </div>
+        <br>
+
+        <label class="btn btn-default btn-file" for="pic">
+          Browse Pictures <input id="pic" type="file" style="display: none;" name ="pic" onchange="$('#upload-file-info').html($(this).val());" />
+        </label>
+        <span class="label label-info" id="upload-file-info"></span>
+        <br>
+
+        <input type="hidden" id="latitude" name="latitude" value="">
+        <input type="hidden" id="longitude" name="longitude" value="">
+        <br>
+
+        <div id="out"></div>
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </form>
     </div>
-
-    <br>
-    <label>Last Name</label>
-    <br>
-
-    <div class="input-group margin-bottom-sm">
-      <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-      <input class="form-control" type="text" name="lastName" placeholder="Enter your Last Name">
-    </div>
-
-    <br>
-    <label>Email (required)</label>
-    <br>
-
-    <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-    <input class="form-control" type="text" name="email" placeholder="Enter a Valid E-mail Address">
-    </div>
-
-    <br>
-    <label>Phone</label>
-    <br>
-
-    <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
-    <input class="form-control" type="text" name="phoneNumber" placeholder="Enter your Phone Number">
-    </div>
-
-    <br>
-    <br>
-    <h3>Location Info</h3>
-    <hr>
-    <label>Area</label>
-    <br>
-
-    <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
-    <input class="form-control" type="text" name="area" value="area">
-    </div>
-
-    <br>
-    <label>Street</label>
-    <br>
-
-    <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-    <input class="form-control" type="text" name="address" value="address">
-    </div>
-
-    <br>
-    <label>City</label>
-    <br>
-
-    <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-    <input class="form-control" type="text" name="city" value="city">
-    </div>
-
-    <br>
-    <label>State</label>
-    <br>
-
-    <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-    <input class="form-control" type="text" name="state" value="HI">
-    </div>
-
-    <br>
-    <label>ZIP</label>
-    <br>
-
-    <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-    <input class="form-control" type="text" name="zip" value="99999">
-    </div>
-
-    <br>
-    <label>Description (required)</label>
-    <br>
-
-    <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-    <textarea class="form-control" name="description"  value="description" placeholder="Enter your description here."></textarea>
-    </div>
-
-    <br>
-    <label>Picture</label>
-    <br>
-    <input class='locationText' type="file"  id="pic" name ="pic" />
-    <input type="hidden" id="latitude" name="latitude" value="">
-    <input type="hidden" id="longitude" name="longitude" value="">
-    <br>
-    <br>
-     <button type="button" onClick="geoFindMe()">Show my location</button>
-    <button type="button" onClick="resetGeo()">Remove my location</button>
-    <div id="out"></div>
-    <!-- <a href="#" class="myButton">Submit</a> -->
-    <input class="myButton" type="submit" value="Submit">
-  </form>
-  <script>
-  function resetGeo () {
-    var output = document.getElementById("out");
-    document.getElementById('latitude').value = "";
-    document.getElementById('longitude').value = "";
-    output.innerHTML ="geolocation removed";
-  }
-
-  function geoFindMe() {
-    var output = document.getElementById("out");
-
-    if (!navigator.geolocation){
-      output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-      return;
+  </div>
+ <script>
+ var showInfo = false;
+ var showGeo = false;
+ function toggleGeo() {
+    if(showGeo){
+      var output = document.getElementById("out");
+      document.getElementById('latitude').value = "";
+      document.getElementById('longitude').value = "";
+      output.innerHTML ="geolocation removed";
+      document.getElementById("locationInfo").style.display='block';
+      document.getElementById("locationButton").innerHTML='Send My GPS';
+      showGeo = false;
     }
-
-    function success(position) {
-      console.log(position);
-      var latitude = position.coords.latitude;
-      var longitude = position.coords.longitude;
-      document.getElementById('latitude').value = latitude;
-      document.getElementById('longitude').value = longitude;
-
-      output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-
+    else{
+      var output = document.getElementById("out");
+      if (!navigator.geolocation){
+        output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+        return;
+      }
+      function success(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        document.getElementById('latitude').value = latitude;
+        document.getElementById('longitude').value = longitude;
+        output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
       var img = new Image();
       img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-
       output.appendChild(img);
+      };
+      function error() {
+        output.innerHTML = "Unable to retrieve your location";
+      };
+      output.innerHTML = "<p>Locating…</p>";
+      navigator.geolocation.getCurrentPosition(success, error);
+      document.getElementById("locationInfo").style.display='none';
+      document.getElementById("locationButton").innerHTML='Dont Send My GPS';
+      document.getElementById('state').value = '';
+      document.getElementById('area').value = '';
+      document.getElementById('address').value = '';
+      document.getElementById('city').value = '';
+      document.getElementById('zip').value = '';
+      showGeo = true;
     }
-
-    function error() {
-      output.innerHTML = "Unable to retrieve your location";
+ }
+ function toggleYinfo(){
+    if(showInfo){
+      document.getElementById("yourInfo").style.display='none';
+      document.getElementById("infoButton").innerHTML='Send my Informaton';
+      document.getElementById('fName').value = '';
+      document.getElementById('lName').value = '';
+      document.getElementById('phoneNum').value = '';
+      document.getElementById('email').value = '';
+      showInfo = false;
     }
-
-    output.innerHTML = "<p>Locating…</p>";
-    navigator.geolocation.getCurrentPosition(success, error);
-  }
-  </script>
+    else{
+      document.getElementById("yourInfo").style.display='block';
+      document.getElementById("infoButton").innerHTML='Dont send my info';
+      showInfo = true;
+    }
+ }
+</script>
 </body>
 </html>
