@@ -6,7 +6,6 @@
 
 
 // media query ranges
-
 $small: "only screen and (min-width: 200px) and (max-width: 650px)";
 $large: "only screen and (min-width: 1000px)";
 
@@ -447,10 +446,19 @@ input:focus, textarea:focus {
 }
 
 .marker{
-  font-size: 12px;
+  font-size: 14px;
+  text-align: left;
   color: black;
-  width: 75px;
-  height: 25px;
+  width: 160px;
+  height: 70px;
+  .info-title {
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+
+.ticketTable .row.row-highlight {
+  background-color: #00e64d;
 }
 
 .optionsBox {
