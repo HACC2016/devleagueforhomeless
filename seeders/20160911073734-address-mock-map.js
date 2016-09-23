@@ -17,6 +17,7 @@ module.exports = {
         zip: 96819,
         city: 'honolulu',
         address: 'honolulu, hi',
+        adminComments: 'none',
         createdAt: new Date(),
         updatedAt: new Date(),
         latitude: JSON.stringify(lat),

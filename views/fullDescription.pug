@@ -13,7 +13,7 @@ body
   a.btn.btn-primary(href="/dashboard" class = 'navButton') back to Dashboard
   .container.fdInfo
     h2 Submitter Info
-    ul.list-group
+    .list-group
       .list-group-item.firstname
         span
           b First Name:
@@ -31,7 +31,7 @@ body
           b Phone Number:
         span &nbsp; #{json.phoneNumber}
     h2 Location Info
-    ul.list-group
+    .list-group
       .list-group-item.area
         span
           b Area:
@@ -57,7 +57,7 @@ body
           b Full Description:
         span &nbsp; #{json.description}
     h2 Referral Info
-    ul.list-group
+    .list-group
       .list-group-item.createdAt
         span
           b Created At:
@@ -72,6 +72,14 @@ body
         span
           b Status:
         span &nbsp; #{status}
+    h2 Notes
+    form.form-group(action='/homeless/' + json.id + "/?_method=put", method="post")
+      label Administrator Comments
+      br
+      textarea.form-control(name="adminComments", value="adminComments"
+      ) #{json.adminComments}
+      br
+      button.btn.btn-primary(type="submit") Submit Changes
     h2 Picture
     br
     if json.pic !== null

@@ -137,7 +137,6 @@ app.post('/homeless', function(req, res, next) {
 });
 
 app.post("/api/homeless", function (req, res) {
-  console.log(req.body);
   Refferals.create({
     longitude: req.body.longitude,
     latitude: req.body.latitude
