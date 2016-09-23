@@ -49,7 +49,7 @@ app.post('/message', function(req, res) {
   }
   firstNameRegex = " ";
 
-  var lastNameRE = /^N:.*$/gm;
+  var lastNameRE = /^LN:.*$/gm;
   var lastNameRegex = reqBodyBody.match(lastNameRE);
   if (lastNameRegex){
     var lastNameStr = lastNameRegex[0];
