@@ -6,7 +6,6 @@
 
 
 // media query ranges
-
 $small: "only screen and (min-width: 200px) and (max-width: 650px)";
 $large: "only screen and (min-width: 1000px)";
 
@@ -585,5 +584,3 @@ input:focus, textarea:focus {
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
-
-
