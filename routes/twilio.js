@@ -11,19 +11,60 @@ app.post('/message', function(req, res) {
 
   var streetRE = /^S:.*$/gm;
   var streetRegex = reqBodyBody.match(streetRE);
-  console.log("Street Regex", streetRegex[0]);
+  if (streetRegex){
+    var streetStr = streetRegex[0];
+    var streetDatabase = streetStr.slice(3);
+  }
+  streetRegex = " ";
 
-  var streetStr = streetRegex[0];
-  console.log("Street string", streetStr);
+  var cityRE = /^C:.*$/gm;
+  var cityRegex = reqBodyBody.match(cityRE);
+  if (cityRegex){
+    var cityStr = cityRegex[0];
+    var cityDatabase = cityStr.slice(3);
+  }
+  cityRegex = " ";
 
-  var streetDatabase = streetStr.slice(2);
-  console.log("Street ready for database", streetDatabase);
+  var stateRE = /^State:.*$/gm;
+  var stateRegex = reqBodyBody.match(stateRE);
+  if (stateRegex){
+    var stateStr = stateRegex[0];
+    var stateDatabase = stateStr.slice(7);
+  }
+  stateRegex = " ";
 
-  var nameRE = /^N:.*$/gm;
-  console.log(reqBodyBody.match(nameRE));
+  var zipRE = /^Z:.*$/gm;
+  var zipRegex = reqBodyBody.match(zipRE);
+  if (zipRegex){
+    var zipStr = zipRegex[0];
+    var zipDatabase = zipStr.slice(3);
+  }
+  zipRegex = " ";
+
+  var firstNameRE = /^FN:.*$/gm;
+  var firstNameRegex = reqBodyBody.match(firstNameRE);
+  if (firstNameRegex){
+    var firstNameStr = firstNameRegex[0];
+    var firstNameDatabase = firstNameStr.slice(3);
+  }
+  firstNameRegex = " ";
+
+  var lastNameRE = /^LN:.*$/gm;
+  var lastNameRegex = reqBodyBody.match(lastNameRE);
+  if (lastNameRegex){
+    var lastNameStr = lastNameRegex[0];
+    var lastNameDatabase = lastNameStr.slice(3);
+  }
+  lastNameRegex = " ";
 
   var descriptionRE = /^D:.*$/gm;
   console.log(reqBodyBody.match(descriptionRE));
+  var descriptionRegex = reqBodyBody.match(descriptionRE);
+  if (descriptionRegex){
+    var descriptionStr = descriptionRegex[0];
+    var descriptionDatabase = descriptionStr.slice(3);
+  }
+  descriptionRegex = " ";
 
   var referral;
   var imageURL;
@@ -37,8 +78,13 @@ app.post('/message', function(req, res) {
       {
        refferalStatus_id: 1,
        phoneNumber: req.body.From,
-       description: req.body.Body,
-       address: streetDatabase || null
+       firstName: firstNameDatabase,
+       lastName: lastNameDatabase,
+       description: descriptionDatabase,
+       address: streetDatabase,
+       zip: zipDatabase,
+       state: stateDatabase,
+       city: cityDatabase
       }
     )
     .then(function (newReferral) {
