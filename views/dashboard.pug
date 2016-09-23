@@ -3,6 +3,7 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     title Admin Dashboard
+    link(href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet")
     script(src="https://code.jquery.com/jquery-3.1.0.min.js",  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=", crossorigin="anonymous")
     script(src="//code.jquery.com/jquery-1.12.0.min.js")
     link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
@@ -35,7 +36,7 @@ html(lang='en')
               th.headColumn.col.pictureCol
                 | Picture
           else
-            tr
+            tr(id='ref-row-' +val.id)
               td
                 a(href='/description/' + val.id)
                   | #{val.id}
