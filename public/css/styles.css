@@ -168,7 +168,7 @@ input:focus, textarea:focus {
   @media only screen and (min-width: 200px) and (max-width: 650px) {
     .communityForm {
       box-sizing: border-box;
-      width: 90%; } }
+      width: 95%; } }
   .communityForm #yourInfo {
     display: none; }
 

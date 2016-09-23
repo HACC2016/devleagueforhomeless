@@ -11,54 +11,54 @@ body
   .container.fdMain
     .container.fdHeader
     h1.refHeader Referral ID: #{json.id}
-    a.btn.btn-primary.topButton(href="/dashboard" class = 'navButton') back to Dashboard
+    a.btn.btn-primary.topButton(href="/dashboard") back to Dashboard
     .container.fdInfo
       h2 Submitter Info
-      .list-group
-        .list-group-item.firstname
+      .list-group.row.submitterInfo
+        .list-group-item.col-xs-6.firstname
           span
             b First Name:
           span &nbsp; #{json.firstName}
-        .list-group-item.lastname
+        .list-group-item.col-xs-6.lastname
           span
             b Last Name:
           span &nbsp; #{json.lastName}
-        .list-group-item.email
+        .list-group-item.col-xs-6.email
           span
             b Email:
           span &nbsp; #{json.email}
-        .list-group-item.phone
+        .list-group-item.col-xs-6.phone
           span
             b Phone Number:
           span &nbsp; #{json.phoneNumber}
       h2 Location Info
-      .list-group
-        .list-group-item.area
+      .list-group.row.locationInfo
+        .list-group-item.col-xs-6.area
           span
             b Area:
           span &nbsp; #{json.area}
-        .list-group-item.street
+        .list-group-item.col-xs-6.street
           span
             b Street:
           span &nbsp; #{json.address}
-        .list-group-item.city
+        .list-group-item.col-xs-6.city
           span
             b City:
           span &nbsp; #{json.city}
-        .list-group-item.state
+        .list-group-item.col-xs-6.state
           span
             b State:
           span &nbsp; #{json.state}
-        .list-group-item.city
+        .list-group-item.col-xs-6.city
           span
             b City:
           span &nbsp; #{json.city}
-        .list-group-item.description
+        .list-group-item.col-xs-6.description
           span
             b Full Description:
           span &nbsp; #{json.description}
       h2 Referral Info
-      .list-group
+      .list-group.row.referralInfo
         .list-group-item.createdAt
           span
             b Created At:
@@ -83,10 +83,12 @@ body
         button.btn.btn-primary(type="submit") Submit Changes
       h2 Picture
       if json.pic !== null
-        img.showPicture(src=json.pic.dataValues.fileName)
+        a(href="/homeless/" + json.id + "/photo")
+          img.showPicture(src=json.pic.dataValues.fileName)
       else
         p N/A
       br
       br
-      a.btn.btn-primary(href="/dashboard" class = 'navButton') back to Dashboard
+      a.btn.btn-primary.bottomButton(href="/dashboard") back to Dashboard
+      br
   script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
