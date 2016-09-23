@@ -19,7 +19,6 @@ app.post('/message', function(req, res) {
   var streetDatabase = streetStr.slice(2);
   console.log("Street ready for database", streetDatabase);
 
-
   var nameRE = /^N:.*$/gm;
   console.log(reqBodyBody.match(nameRE));
 
@@ -39,7 +38,7 @@ app.post('/message', function(req, res) {
        refferalStatus_id: 1,
        phoneNumber: req.body.From,
        description: req.body.Body,
-       address: streetDatabase
+       address: streetDatabase || null
       }
     )
     .then(function (newReferral) {
