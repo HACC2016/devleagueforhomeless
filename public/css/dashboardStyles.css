@@ -64,7 +64,7 @@ table {
   display: block; }
 
 /* close commented backslash hack */
-.mapButton, #show-listings, #hide-listings {
+.mapButton {
   -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
   -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
   box-shadow: inset 0px 1px 0px 0px #ffffff;
@@ -90,7 +90,7 @@ table {
   text-decoration: none;
   text-shadow: 0px 1px 0px #ffffff; }
 
-.mapButton:hover, #show-listings:hover, #hide-listings:hover {
+.mapButton:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9));
   background: -moz-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
   background: -webkit-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
@@ -100,11 +100,11 @@ table {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9',GradientType=0);
   background-color: #e9e9e9; }
 
-.mapButton:active, #show-listings:active, #hide-listings:active {
+.mapButton:active {
   position: relative;
   top: 1px; }
 
-.mapButton, #show-listings, #hide-listings {
+.mapButton {
   -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
   -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
   box-shadow: inset 0px 1px 0px 0px #ffffff;
@@ -130,7 +130,7 @@ table {
   text-decoration: none;
   text-shadow: 0px 1px 0px #ffffff; }
 
-.mapButton:hover, #show-listings:hover, #hide-listings:hover {
+.mapButton:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9));
   background: -moz-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
   background: -webkit-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
@@ -140,7 +140,7 @@ table {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9',GradientType=0);
   background-color: #e9e9e9; }
 
-.mapButton:active, #show-listings:active, #hide-listings:active {
+.mapButton:active {
   position: relative;
   top: 1px; }
 
@@ -159,7 +159,8 @@ table {
 .mapHolder {
   width: 100%;
   height: 100%;
-  margin: 0 auto 0 auto; }
+  margin: 0 auto 0 auto;
+  margin-bottom: 10px; }
 
 #map {
   width: 100%;
@@ -177,31 +178,7 @@ table {
   font-size: 16px; }
 
 .ticketTable .row-highlight {
-  background-color: #00e64d; }
-
-.optionsBox {
-  margin: 0 auto;
-  height: 1px;
-  width: 100px; }
-
-.toggleContainer {
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0 auto 0 auto; }
-
-#show-listings {
-  box-sizing: border-box;
-  width: 49%;
-  padding: 8px;
-  font-size: 14px;
-  margin-right: 1%;
-  margin-top: 1%; }
-
-#hide-listings {
-  box-sizing: border-box;
-  width: 49%;
-  padding: 8px;
-  font-size: 14px; }
+  background-color: #a3ccff !important; }
 
 html {
   height: 100%; }
@@ -276,3 +253,7 @@ textarea {
     width: 45%;
     padding-right: 10px;
     white-space: nowrap; } }
+
+.ticketTable tbody tr:nth-child(odd) {
+  display: table-row;
+  background-color: #e8edff; }

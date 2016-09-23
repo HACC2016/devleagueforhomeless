@@ -120,3 +120,8 @@ only screen and (max-width: 760px),
     white-space: nowrap;
   }
 }
+
+.ticketTable tbody tr:nth-child(odd) {
+  display: table-row;
+  background-color: #e8edff ;
+}
