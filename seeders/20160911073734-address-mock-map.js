@@ -9,8 +9,8 @@ module.exports = {
       var long = Math.random() * (-158 + 156) + -156;
 
       people.push({
-        firstname: faker.name.firstName(),
-        lastname: faker.name.lastName(),
+        firstName: faker.name.firstName(),
+        lastName: faker.name.lastName(),
         email: faker.internet.email(),
         description: faker.hacker.abbreviation(),
         area: 'kakaako',

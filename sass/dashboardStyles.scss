@@ -1,0 +1,184 @@
+// Resets, clearfix
+@import "sass/partials/_reset.scss";
+@import "sass/partials/_clearfix.scss";
+@import "sass/partials/mapbutton.scss";
+
+
+
+// media query ranges
+
+$small: "only screen and (min-width: 200px) and (max-width: 650px)";
+$large: "only screen and (min-width: 1000px)";
+
+// Mixins
+@mixin small {
+  @media #{$small} {
+    @content;
+  }
+}
+@mixin large {
+  @media #{$large} {
+    @content;
+  }
+}
+
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  // gradient
+  background: rgba(21,132,235,1);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(21,132,235,1)), color-stop(100%, rgba(17,38,61,1)));
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  background: -o-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  background: -ms-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  background: radial-gradient(ellipse at center, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 );
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  color: #ca9e2b;
+  text-align: center;
+}
+
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  color: #ca9e2b;
+  text-align: center;
+}
+
+
+
+input, textarea {
+  box-sizing: border-box;
+  padding: 9px;
+  border: solid 1px #E5E5E5;
+  outline: 0;
+  font: normal 13px/100% Verdana, Tahoma, sans-serif;
+  width: 100%;
+  background: #FFFFFF;
+}
+
+textarea {
+  width: 400px;
+  max-width: 400px;
+  height: 150px;
+  line-height: 150%;
+}
+
+.table {
+  background-color: white;
+  overflow:hidden;
+}
+
+
+.mapInfo {
+  margin: 0 auto;
+  width: 80%;
+  height: 80%;
+  padding: 10px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.mapContents{
+  width: 100%;
+  height: 100%;
+}
+
+.mapHolder {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto 0 auto;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+}
+
+.marker{
+  font-size: 12px;
+  color: black;
+  width: 75px;
+  height: 25px;
+}
+
+.optionsBox {
+  margin: 0 auto;
+  height: 1px;
+  width: 100px;
+}
+
+.toggleContainer {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto 0 auto;
+}
+
+#show-listings {
+  @extend .mapButton;
+  box-sizing: border-box;
+  width: 49%;
+  padding: 8px;
+  font-size: 14px;
+  margin-right: 1%;
+  margin-top: 1%;
+}
+
+#hide-listings {
+  @extend .mapButton;
+  box-sizing: border-box;
+  width: 49%;
+  padding: 8px;
+  font-size: 14px;
+
+}
+
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr { border: 1px solid #ccc; }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+}
