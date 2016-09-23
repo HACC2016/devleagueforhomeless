@@ -169,6 +169,8 @@ input:focus, textarea:focus {
     .communityForm {
       box-sizing: border-box;
       width: 90%; } }
+  .communityForm #yourInfo {
+    display: none; }
 
 .communityForm label {
   text-align: left;
