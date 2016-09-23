@@ -65,7 +65,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       adminComments: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

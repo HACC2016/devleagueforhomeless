@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     longitude: DataTypes.STRING,
     city: DataTypes.STRING,
     description: DataTypes.STRING,
-    adminComments: DataTypes.STRING,
+    adminComments: DataTypes.TEXT,
   }, {
     classMethods: {
       associate: function(models) {
