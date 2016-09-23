@@ -3,75 +3,79 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     title Admin Dashboard
-    link(rel='stylesheet', type='text/css', href='/css/styles.css')
+    link(href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet")
     script(src="https://code.jquery.com/jquery-3.1.0.min.js",  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=", crossorigin="anonymous")
+    script(src="//code.jquery.com/jquery-1.12.0.min.js")
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+    link(href="css/dashboardStyles.css", rel="stylesheet")
   body
     #main
       .title
         h1 Dashboard
       br
-      .ticketTable
-        each val, index in json
-          if index === 0
-            .headrow.row
-              .headColumn.col.ticketId
-                | Referral #
-              .headColumn.col.createdAt
-                | Received
-              .headColumn.col.address
-                | Location
-              .headColumn.col.description
-                | Short Description
-              .headColumn.col.status
-                | Status
-              .headColumn.col.username
-                | Submitter
-              .headColumn.col.phoneNumber
-                | Phone #
-              .headColumn.col.email
-                | Email
-              .headColumn.col.pictureCol
-                | Picture
-          else
-            .row(id = 'ref-row-'+val.id)
-              .col.ticketId
-                a.showDescription(href='/description/' + val.id)
-                  | #{val.id}
-              .col.createdAt
-                | #{val.formatDate}
-              .col.address
-                | #{val.address}
-              .col.description
-                a.showDescription(href='/description/' + val.id)
-                  | #{val.description}
-              .col.status
-                -var statuses = ["Queue","In Progress","Danger","Done"]
-                -var num = ["In Progress","Danger","Done"]
-                if val.refferalStatus_id == 2
-                  - num = ["Queue","Danger","Done"]
-                else if val.refferalStatus_id == 3
-                  - num = ["Queue","In Progress","Done"]
-                else if val.refferalStatus_id == 4
-                  - num = ["Queue","In Progress","Danger"]
-                - console.log(statuses.indexOf(num[2]))
-                form(action='/homeless/' + val.id + "/?_method=put", method="post")
-                  select(name="refferalStatus_id", onchange='this.form.submit()')
-                    option(value="" disabled selected) #{val.refferalStatus.name}
-                    option(value=statuses.indexOf(num[0]) + 1) #{num[0]}
-                    option(value=statuses.indexOf(num[1]) + 1) #{num[1]}
-                    option(value=statuses.indexOf(num[2]) +1) #{num[2]}
-              .col.username
-                | #{val.name}
-              .col.phoneNumber
-                | #{val.phoneNumber}
-              .col.email
-                | #{val.email}
-              .col.pictureCol
-                if val.pic_id === null
-                  | N/A
-                else
-                  a(href="/homeless/" + val.id + "/photo")
-                    | Picture
+      div
+        table.ticketTable.table.table-reflow.table-hover.table-bordered
+          each val, index in json
+            if index === 0
+              thead
+                th.refferalText
+                  | Referral #
+                th.headColumn.col.createdAt
+                  | Received
+                th.headColumn.col.address
+                  | Location
+                th.headColumn.col.description
+                  | Short Description
+                th.headColumn.col.status
+                  | Status
+                th.headColumn.col.username
+                  | Submitter
+                th.headColumn.col.phoneNumber
+                  | Phone #
+                th.headColumn.col.email
+                  | Email
+                th.headColumn.col.pictureCol
+                  | Picture
+            else
+              tr(id='ref-row-' +val.id)
+                td
+                  a(href='/description/' + val.id)
+                    | #{val.id}
+                td.col.createdAt
+                  | #{val.formatDate}
+                td.col.address
+                  | #{val.address}
+                td.col.description
+                  a.showDescription(href='/description/' + val.id)
+                    | #{val.description}
+                td.col.status
+                  -var statuses = ["Queue","In Progress","Danger","Done"]
+                  -var num = ["In Progress","Danger","Done"]
+                  if val.refferalStatus_id == 2
+                    - num = ["Queue","Danger","Done"]
+                  else if val.refferalStatus_id == 3
+                    - num = ["Queue","In Progress","Done"]
+                  else if val.refferalStatus_id == 4
+                    - num = ["Queue","In Progress","Danger"]
+                  - console.log(statuses.indexOf(num[2]))
+                  form(action='/homeless/' + val.id + "/?_method=put", method="post")
+                    select(name="refferalStatus_id", onchange='this.form.submit()')
+                      option(value="" disabled selected) #{val.refferalStatus.name}
+                      option(value=statuses.indexOf(num[0]) + 1) #{num[0]}
+                      option(value=statuses.indexOf(num[1]) + 1) #{num[1]}
+                      option(value=statuses.indexOf(num[2]) +1) #{num[2]}
+                td.col.username
+                  | #{val.firstName + ' ' + val.lastName}
+                td.col.phoneNumber
+                  | #{val.phoneNumber}
+                td.col.email
+                  | #{val.email}
+                td.col.pictureCol
+                  if val.pic_id === null
+                    | N/A
+                  else
+                    a(href="/homeless/" + val.id + "/photo")
+                      | Picture
       br
       br
       br
@@ -88,3 +92,4 @@ html(lang='en')
               input#hide-listings(type='button', value='Hide Referrals')
       script(type='text/javascript', src='/js/maps.js')
       script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap')
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
