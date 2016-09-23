@@ -7,8 +7,7 @@ body {
   background: -webkit-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
   background: -o-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
   background: -ms-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
-  background: radial-gradient(ellipse at center, #1584eb 0%, #11263d 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 ); }
+  background: radial-gradient(ellipse at center, #1584eb 0%, #11263d 100%); }
 
 h1 {
   color: whitesmoke;
@@ -21,7 +20,6 @@ h2 {
   display: inline-block; }
 
 .topButton {
-  box-shadow: 1px 1px 1px darkblue;
   display: inline-block;
   float: right;
   margin-top: 25px; }

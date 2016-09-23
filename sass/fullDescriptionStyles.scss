@@ -9,7 +9,7 @@ body {
   background: -o-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
   background: -ms-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
   background: radial-gradient(ellipse at center, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 );
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 );
 }
 
 h1 {
@@ -26,7 +26,6 @@ h2 {
 }
 
 .topButton {
-  box-shadow: 1px 1px 1px darkblue;
   display: inline-block;
   float: right;
   margin-top: 25px;
