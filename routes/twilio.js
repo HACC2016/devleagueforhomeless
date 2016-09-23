@@ -58,7 +58,6 @@ app.post('/message', function(req, res) {
   lastNameRegex = " ";
 
   var descriptionRE = /^D:.*$/gm;
-  console.log(reqBodyBody.match(descriptionRE));
   var descriptionRegex = reqBodyBody.match(descriptionRE);
   if (descriptionRegex){
     var descriptionStr = descriptionRegex[0];
