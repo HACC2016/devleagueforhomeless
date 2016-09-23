@@ -1,0 +1,48 @@
+.jumbotron {
+    margin-bottom: 0px;
+    background-image: url(../img/564cdcb91f00002500f3d1ac.jpeg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    min-height: 400px;
+    padding-left: 0px;
+    padding-top: 300px;
+    padding-bottom: 3px;
+}
+
+.jumbotron h1 {
+  text-shadow: black 0em 0em 0.6em;
+}
+
+.body {
+  background-image: url(../img/brown-1321242_960_720.jpg);
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  color: white;
+}
+
+h3 {
+  color: white;
+}
+
+label {
+  color: white;
+}
+
+.form-text {
+  color: white;
+}
+
+.label {
+  color: white;
+}
+
+.label-info {
+  background-color: transparent;
+}
+
+
