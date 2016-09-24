@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
   <title>Enter Homeless Information</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/css/community-view.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <!-- <div class="jumbotron text-center">
+  <div class="jumbotron text-center">
     <h1>DevLeague For Homeless!</h1>
-    <p>Mahalo for your help</p>
-  </div> -->
+    <p>Proud to help our community</p>
+  </div>
 
   <div class="body">
 
     <div class="container">
 
-      <h1> Refer a Camp </h1>
-      <div class="sendLocation">
-        <label>
-          Get my location through GPS
-          <input type="checkbox" name="sendLocation" onchange="toggleGeo(this)">
-        </label>
-      </div>
-      <div class="sendMyInformation">
-        <label>
-          Send my Information
-          <input type="checkbox" name="sendMyInformation" onchange="toggleYinfo()">
-        </label>
-      </div>
+      <h1>Refer a Camp</h1>
+
+      <button  id ='locationButton' class="btn btn-default" type="button" onClick="toggleGeo()">Get my GPS</button>
+      <button id='infoButton' class="btn btn-default" type="button" onClick="toggleYinfo()">Send my Information</button>
+      <br>
 
       <form id="communityForm" class="form-group" action="/homeless" enctype="multipart/form-data" method="POST">
 
@@ -159,7 +152,7 @@
       document.getElementById('longitude').value = "";
       output.innerHTML ="geolocation removed";
       document.getElementById("locationInfo").style.display='block';
-      // document.getElementById("locationButton").innerHTML='Send My GPS';
+      document.getElementById("locationButton").innerHTML='Send My GPS';
       showGeo = false;
     }
     else{
@@ -184,19 +177,19 @@
       output.innerHTML = "<p>Locating…</p>";
       navigator.geolocation.getCurrentPosition(success, error);
       document.getElementById("locationInfo").style.display='none';
-      // document.getElementById("locationButton").innerHTML='Dont Send My GPS';
+      document.getElementById("locationButton").innerHTML='Dont Send My GPS';
       document.getElementById('state').value = '';
       document.getElementById('area').value = '';
       document.getElementById('address').value = '';
       document.getElementById('city').value = '';
-      document.getElementById('zip').value = null;
+      document.getElementById('zip').value = '';
       showGeo = true;
     }
  }
  function toggleYinfo(){
     if(showInfo){
       document.getElementById("yourInfo").style.display='none';
-      // document.getElementById("infoButton").innerHTML='Send my Informaton';
+      document.getElementById("infoButton").innerHTML='Send my Informaton';
       document.getElementById('fName').value = '';
       document.getElementById('lName').value = '';
       document.getElementById('phoneNum').value = '';
@@ -205,7 +198,7 @@
     }
     else{
       document.getElementById("yourInfo").style.display='block';
-      // document.getElementById("infoButton").innerHTML='Dont send my info';
+      document.getElementById("infoButton").innerHTML='Dont send my info';
       showInfo = true;
     }
  }

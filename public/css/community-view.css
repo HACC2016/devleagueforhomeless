@@ -1,13 +1,13 @@
 /*.jumbotron {
     margin-bottom: 0px;
-    background-image: url(../img/564cdcb91f00002500f3d1ac.jpeg);
-    background-position: 0% 25%;
+    background-image: url(../img/hawaii-sunset-wallpaper-wallpaper-2.jpg);
+    background-position: 0% 90%;
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
-    min-height: 400px;
+    min-height: 100px;
     padding-left: 0px;
-    padding-top: 300px;
+    padding-top: 100px;
     padding-bottom: 3px;
 }
 
@@ -16,29 +16,42 @@
 }*/
 
 .body {
-  background-image: url(../img/brown-1321242_960_720.jpg);
+  height: 100%;
+  background-image: url(../img/gray_background_by_giozaga-d7ncl9q.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
   overflow: hidden;
 }
 
 h1 {
-  color: white;
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 2.2em;
 }
 
 h3 {
-  color: white;
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 2.2em;
 }
 
 label {
-  color: white;
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.2em;
 }
 
 .form-text {
-  color: white;
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.1em;
 }
 
 .label {
-  color: white;
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 2.2em;
 }
 
 .label-info {
