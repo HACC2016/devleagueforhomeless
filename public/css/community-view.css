@@ -16,7 +16,7 @@
 }
 
 .body {
-  height: 100%;
+  height: 100vh;
   background-image: url(../img/gray_background_by_giozaga-d7ncl9q.jpg);
   background-size: cover;
   background-repeat: no-repeat;
