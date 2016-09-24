@@ -39,21 +39,18 @@ function initMap(){
                 state: loc.state,
                 zip: loc.zip,
                 icon: color1,
-                id: loc.id
+                id: loc.id,
               });
 
               markers.push(marker);
 
               marker.addListener('mouseover', function() {
-                console.log(marker);
-
                 marker.setIcon(color2);
               });
 
               marker.addListener('click', function(){
                 $('.row-highlight').removeClass('row-highlight');
                 $('#ref-row-' + loc.id).addClass('row-highlight');
-
               });
 
               marker.addListener('mouseout', function() {
@@ -70,16 +67,16 @@ function initMap(){
               });
 
               var rowId = 'ref-row-' + loc.id;
+              var centerVal = loc.position;
               var tr = document.getElementById(rowId);
               tr.addEventListener('click', function(){
+                $('.row-highlight').removeClass('row-highlight');
+                $('#ref-row-' + loc.id).addClass('row-highlight');
                   for (var j = 0; j < markers.length; j++){
-                    console.log(markers[j]);
                     markers[j].setIcon(color1);
                     popups[j].close();
-
                   }
                 populateInfoWindow(marker, largeInfowindow);
-                map.setCenter(map.position);
                 map.setZoom(12);
                 marker.setIcon(color2);
               });
@@ -89,40 +86,17 @@ function initMap(){
         }); // close geocoder callback
       } // close geocoder if statement
     }); //closes referrals.map function
-      document.getElementById('show-listings').addEventListener('click', showListings);
-
-      document.getElementById('hide-listings').addEventListener('click', hideListings);
-
   }) //close success function
 }); //close ajax
 
   function populateInfoWindow(marker, infowindow) {
     // if (infowindow.marker != marker) {
     //   infowindow.marker = marker;
-
       infowindow.setContent('<div class="marker">' + '<span class="info-title">' + 'Referral # ' + marker.title +   '</span>' + '<br>' + marker.address + ' ' + marker.city + ', ' + marker.state + ' ' + marker.zip + '</div>');
       infowindow.open(map, marker);
-      console.log(infowindow);
       infowindow.addListener('closeclick', function() {
         infowindow.marker = null;
       });
     // }
   }
-
-    function showListings(){
-      var bounds = new google.maps.LatLngBounds();
-      for (var i = 0; i < markers.length; i++){
-        markers[i].setMap(map);
-        bounds.extend(markers[i].position);
-      }
-      map.fitBounds(bounds);
-    }
-
-    function hideListings(){
-      for (var i = 0; i < markers.length; i++){
-        markers[i].setMap(null);
-      }
-    }
-
-
 } //close map init

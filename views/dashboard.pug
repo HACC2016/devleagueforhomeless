@@ -84,12 +84,8 @@ html(lang='en')
       .mapInfo
         h2 Map Tracker
         .mapContents
-          .options-box
-            .mapHolder
-              #map
-            div.toggleContainer
-              input#show-listings(type='button', value='Show Referrals')
-              input#hide-listings(type='button', value='Hide Referrals')
+          .mapHolder
+            #map
       script(type='text/javascript', src='/js/maps.js')
       script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVY-LYZbEIkWbG78IjjFmBTRalFKfrIFg&v-3&callback=initMap')
       script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")

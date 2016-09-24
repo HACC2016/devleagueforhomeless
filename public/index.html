@@ -3,76 +3,144 @@
 <head>
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
   <title>Enter Homeless Information</title>
-  <link rel='stylesheet' type='text/css' href='/css/styles.css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/community-view.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 </head>
 <body>
-  <h1> Refer a Camp </h1>
-  <br>
-  <form id="communityForm" class="communityForm"  action="/homeless" enctype="multipart/form-data" method="POST">
-  <button  id ='locationButton' type="button" onClick="toggleGeo()">Get my GPS</button>
-  <button id='infoButton' type="button" onClick="toggleYinfo()">Send my Information</button>
-  <br>
-  <div id='locationInfo'>
-    <h3>Location Info</h3>
-    <hr>
-    <label>Area</label>
-    <br>
-    <input id='area' type="text" name="area" value="area">
-    <br>
-    <label>Street</label>
-    <br>
-    <input id='address' type="text" name="address" value="address">
-    <br>
-    <label>City</label>
-    <br>
-    <input id='city' type="text" name="city" value="city">
-    <br>
-    <label>State</label>
-    <br>
-    <input id='state' type="text" name="state" value="HI">
-    <br>
-    <label>ZIP</label>
-    <br>
-    <input id='zip' type="text" name="zip" value="99999">
+
+  <div class="jumbotron text-center">
+    <h1>DevLeague For Homeless!</h1>
+    <p>Mahalo for your help</p>
   </div>
-    <div id='yourInfo'>
-      <h3>Your Info</h3>
-      <hr>
-      <label>First Name</label>
+
+  <div class="body">
+
+    <div class="container">
+
+      <h1> Refer a Camp </h1>
       <br>
-      <input id='fName' type="text" name="firstName" value="firstName">
+      <button  id ='locationButton' class="btn btn-default" type="button" onClick="toggleGeo()">Get my GPS</button>
+      <button id='infoButton' class="btn btn-default" type="button" onClick="toggleYinfo()">Send my Information</button>
       <br>
-      <label>Last Name</label>
-      <br>
-      <input id='lName' type="text" name="lastName" value="lastName">
-      <br>
-      <label>Email (required)</label>
-      <br>
-      <input id='email' type="text" name="email" value="email">
-      <br>
-      <label>Phone</label>
-      <br>
-      <input id='phoneNum' type="text" name="phoneNumber" value="18082277777">
-      <br>
-      <br>
+
+      <form id="communityForm" class="form-group" action="/homeless" enctype="multipart/form-data" method="POST">
+
+        <div id="locationInfo">
+          <h3>Location Info</h3>
+
+          <label>Area</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-street-view fa-fw" aria-hidden="true"></i></span>
+            <input id='area' class="form-control" type="text" name="area" placeholder="Accross the Bank of Hawaii...">
+            <br>
+          </div>
+
+          <label>Street</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-road fa-fw" aria-hidden="true"></i></span>
+            <input id='address' class="form-control" type="text" name="address" placeholder="142 Hinano Street">
+            <br>
+          </div>
+
+          <label>City</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-building fa-fw" aria-hidden="true"></i></span>
+            <input id='city' class="form-control" type="text" name="city" placeholder="Honolulu">
+            <br>
+          </div>
+
+          <label>State</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-map fa-fw" aria-hidden="true"></i></span>
+            <input id='state' class="form-control" type="text" name="state" placeholder="HI">
+            <br>
+          </div>
+
+          <label>ZIP</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i></span>
+            <input id='zip' class="form-control" type="text" name="zip" placeholder="96822">
+          </div>
+        </div>
+
+        <div id="yourInfo">
+          <h3>Your Info</h3>
+          <label>First Name</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+            <input id='fName' class="form-control" type="text" name="firstName" placeholder="Your First Name">
+            <br>
+          </div>
+
+          <label>Last Name</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+            <input id='lName' class="form-control" type="text" name="lastName" placeholder="Your Last Name">
+          <br>
+          </div>
+
+          <label>Email (required)</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
+            <input id='email' class="form-control" type="text" name="email" placeholder="email@example.com">
+          </div>
+
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <br>
+
+          <label>Phone</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
+            <input id='phoneNum' class="form-control" type="text" name="phoneNumber" placeholder="(XXX)XXX-XXXX">
+            <br>
+          </div>
+
+          <label>Description (required)</label>
+          <br>
+
+          <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></span>
+            <textarea class="form-control" name="description"  value="description" placeholder="Enter your description here."></textarea>
+          </div>
+        </div>
+        <br>
+
+        <label class="btn btn-default btn-file" for="pic">
+          Browse Pictures <input id="pic" type="file" style="display: none;" name ="pic" onchange="$('#upload-file-info').html($(this).val());" />
+        </label>
+        <span class="label label-info" id="upload-file-info"></span>
+        <br>
+
+        <input type="hidden" id="latitude" name="latitude" value="">
+        <input type="hidden" id="longitude" name="longitude" value="">
+        <br>
+
+        <div id="out"></div>
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </form>
     </div>
-    <br>
-    <label>Description (required)</label>
-    <br>
-    <textarea class="descriptionArea" name="description"  value="description" placeholder="Enter your description here."></textarea>
-    <br>
-    <label>Picture</label>
-    <br>
-    <input class='locationText' type="file"  id="pic" name ="pic" />
-    <input type="hidden" id="latitude" name="latitude" value="">
-    <input type="hidden" id="longitude" name="longitude" value="">
-    <br>
-    <div id="out"></div>
-    <!-- <a href="#" class="myButton">Submit</a> -->
-    <input class="myButton" type="submit" value="Submit">
-  </form>
+  </div>
  <script>
  var showInfo = false;
  var showGeo = false;
@@ -100,10 +168,8 @@
         output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
       var img = new Image();
       img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-
       output.appendChild(img);
       };
-
       function error() {
         output.innerHTML = "Unable to retrieve your location";
       };

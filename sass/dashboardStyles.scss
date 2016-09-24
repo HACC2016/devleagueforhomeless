@@ -2,6 +2,8 @@
 @import "sass/partials/_reset.scss";
 @import "sass/partials/_clearfix.scss";
 @import "sass/partials/mapbutton.scss";
+@import "sass/partials/mapStyles.scss";
+
 
 
 
@@ -195,4 +197,9 @@ only screen and (max-width: 760px),
     padding-right: 10px;
     white-space: nowrap;
   }
+}
+
+.ticketTable tbody tr:nth-child(odd) {
+  display: table-row;
+  background-color: #e8edff ;
 }
