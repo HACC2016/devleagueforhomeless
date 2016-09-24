@@ -1,5 +1,6 @@
 /* Dark gold */
 body {
+  font-size: 2.5em;
   margin-bottom: 5vh;
   background: #1584eb;
   background: -moz-radial-gradient(center, ellipse cover, #1584eb 0%, #11263d 100%);
