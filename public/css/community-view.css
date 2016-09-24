@@ -1,4 +1,4 @@
-.jumbotron {
+/*.jumbotron {
     margin-bottom: 0px;
     background-image: url(../img/564cdcb91f00002500f3d1ac.jpeg);
     background-position: 0% 25%;
@@ -13,7 +13,7 @@
 
 .jumbotron h1 {
   text-shadow: black 0em 0em 0.6em;
-}
+}*/
 
 .body {
   background-image: url(../img/brown-1321242_960_720.jpg);
@@ -45,4 +45,6 @@ label {
   background-color: transparent;
 }
 
-
+#yourInfo {
+  display: none;
+}

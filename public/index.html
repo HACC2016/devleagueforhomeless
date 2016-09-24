@@ -11,20 +11,28 @@
 </head>
 <body>
 
-  <div class="jumbotron text-center">
+  <!-- <div class="jumbotron text-center">
     <h1>DevLeague For Homeless!</h1>
     <p>Mahalo for your help</p>
-  </div>
+  </div> -->
 
   <div class="body">
 
     <div class="container">
 
       <h1> Refer a Camp </h1>
-      <br>
-      <button  id ='locationButton' class="btn btn-default" type="button" onClick="toggleGeo()">Get my GPS</button>
-      <button id='infoButton' class="btn btn-default" type="button" onClick="toggleYinfo()">Send my Information</button>
-      <br>
+      <div class="sendLocation">
+        <label>
+          Get my location through GPS
+          <input type="checkbox" name="sendLocation" onchange="toggleGeo(this)">
+        </label>
+      </div>
+      <div class="sendMyInformation">
+        <label>
+          Send my Information
+          <input type="checkbox" name="sendMyInformation" onchange="toggleYinfo()">
+        </label>
+      </div>
 
       <form id="communityForm" class="form-group" action="/homeless" enctype="multipart/form-data" method="POST">
 
@@ -151,7 +159,7 @@
       document.getElementById('longitude').value = "";
       output.innerHTML ="geolocation removed";
       document.getElementById("locationInfo").style.display='block';
-      document.getElementById("locationButton").innerHTML='Send My GPS';
+      // document.getElementById("locationButton").innerHTML='Send My GPS';
       showGeo = false;
     }
     else{
@@ -176,7 +184,7 @@
       output.innerHTML = "<p>Locating…</p>";
       navigator.geolocation.getCurrentPosition(success, error);
       document.getElementById("locationInfo").style.display='none';
-      document.getElementById("locationButton").innerHTML='Dont Send My GPS';
+      // document.getElementById("locationButton").innerHTML='Dont Send My GPS';
       document.getElementById('state').value = '';
       document.getElementById('area').value = '';
       document.getElementById('address').value = '';
@@ -188,7 +196,7 @@
  function toggleYinfo(){
     if(showInfo){
       document.getElementById("yourInfo").style.display='none';
-      document.getElementById("infoButton").innerHTML='Send my Informaton';
+      // document.getElementById("infoButton").innerHTML='Send my Informaton';
       document.getElementById('fName').value = '';
       document.getElementById('lName').value = '';
       document.getElementById('phoneNum').value = '';
@@ -197,7 +205,7 @@
     }
     else{
       document.getElementById("yourInfo").style.display='block';
-      document.getElementById("infoButton").innerHTML='Dont send my info';
+      // document.getElementById("infoButton").innerHTML='Dont send my info';
       showInfo = true;
     }
  }
