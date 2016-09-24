@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8", name="viewport" content="width=device-width, initial-scale=1">
   <title>Enter Homeless Information</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
@@ -23,8 +23,8 @@
 
       <h1>Refer a Camp</h1>
 
-      <button  id ='locationButton' class="btn btn-default" data-toggle="button" type="button" onClick="toggleGeo()">Get my GPS</button>
-      <button id='infoButton' class="btn btn-default" data-toggle="button" type="button" onClick="toggleYinfo()">Send my Information</button>
+      <button  id ='locationButton' class="btn btn-default" data-toggle="button" type="button" onClick="toggleGeo()">Get my location</button>
+      <button id='infoButton' class="btn btn-default" data-toggle="button" type="button" onClick="toggleYinfo()">Send my information</button>
       <br>
 
       <form id="communityForm" class="form-group" action="/homeless" enctype="multipart/form-data" method="POST">
@@ -37,7 +37,7 @@
 
           <div class="input-group margin-bottom-sm">
             <span class="input-group-addon"><i class="fa fa-street-view fa-fw" aria-hidden="true"></i></span>
-            <input id='area' class="form-control" type="text" name="area" placeholder="Accross the Bank of Hawaii...">
+            <input id='area' class="form-control" type="text" name="area" placeholder="Aloha Tower MarketPlace parking lot">
             <br>
           </div>
 
@@ -46,7 +46,7 @@
 
           <div class="input-group margin-bottom-sm">
             <span class="input-group-addon"><i class="fa fa-road fa-fw" aria-hidden="true"></i></span>
-            <input id='address' class="form-control" type="text" name="address" placeholder="142 Hinano Street">
+            <input id='address' class="form-control" type="text" name="address" placeholder="1 Aloha Tower Dr.">
             <br>
           </div>
 
@@ -68,12 +68,12 @@
             <br>
           </div>
 
-          <label>ZIP</label>
+          <label>Zipcode</label>
           <br>
 
           <div class="input-group margin-bottom-sm">
             <span class="input-group-addon"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i></span>
-            <input id='zip' class="form-control" type="text" name="zip" placeholder="96822">
+            <input id='zip' class="form-control" type="text" name="zip" placeholder="96813">
           </div>
         </div>
 
@@ -128,9 +128,10 @@
         <br>
 
         <label class="btn btn-default btn-file" for="pic">
-          Browse Pictures <input id="pic" type="file" style="display: none;" name ="pic" onchange="$('#upload-file-info').html($(this).val());" />
+          Upload photo <input id="pic" type="file" style="display: none;" name ="pic" onchange="previewFile()"  />
         </label>
-        <span class="label label-info" id="upload-file-info"></span>
+
+        <img class="label label-info" style="display:none" id="upload-file-info" />
         <br>
 
         <input type="hidden" id="latitude" name="latitude" value="">
@@ -182,7 +183,7 @@
       document.getElementById('area').value = '';
       document.getElementById('address').value = '';
       document.getElementById('city').value = '';
-      document.getElementById('zip').value = null;
+      document.getElementById('zip').value = '';
       showGeo = true;
     }
  }
@@ -202,6 +203,22 @@
       showInfo = true;
     }
  }
+
+ function previewFile() {
+  var preview = document.getElementById("upload-file-info");
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+  reader.addEventListener("load", function () {
+    console.log("hello");
+    preview.src = reader.result;
+    preview.setAttribute("style", "");
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
 </script>
 </body>
 </html>

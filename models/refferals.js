@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     phoneNumber: DataTypes.STRING,
     area: DataTypes.STRING,
     address:DataTypes.STRING,
-    zip: DataTypes.INTEGER,
+    zip: DataTypes.STRING,
     state: DataTypes.STRING,
     latitude: DataTypes.STRING,
     longitude: DataTypes.STRING,

@@ -2,29 +2,6 @@ $headerColor: #ca9e2b; /* Dark gold */
 
 body {
   margin-bottom: 5vh;
-}
-
-h1 {
-  color: $headerColor;
-  text-shadow: 2px 2px black;
-}
-
-h2 {
-  color: $headerColor;
-  text-shadow: 2px 2px black;
-
-}
-
-.refHeader {
-  text-shadow: 2px 2px black;
-  display: inline-block;
-}
-
-.topButton {
-  display: inline-block;
-}
-
-.fdInfo {
   background: rgba(21,132,235,1);
   background: -moz-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(21,132,235,1)), color-stop(100%, rgba(17,38,61,1)));
@@ -32,25 +9,48 @@ h2 {
   background: -o-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
   background: -ms-radial-gradient(center, ellipse cover, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
   background: radial-gradient(ellipse at center, rgba(21,132,235,1) 0%, rgba(17,38,61,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 );
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1584eb', endColorstr='#11263d', GradientType=1 );
+}
+
+h1 {
+  color: whitesmoke;
+  text-shadow: 2px 2px black;
+}
+
+h2 {
+  color: black;
+}
+
+.refHeader {
+  display: inline-block;
+}
+
+.topButton {
+  display: inline-block;
+  float: right;
+  margin-top: 25px;
+}
+
+.fdInfo {
+  border-radius: 25px;
+  background-color: whitesmoke;
 }
 .adminCommentsLabel {
-  color: $headerColor;
-  text-shadow: 2px 2px black;
+  color: black;
 }
 
 .btn-primary {
   float: right;
 }
 
-.topButton {
-  box-shadow: 1px 1px 1px darkblue;
-  display: inline-block;
-  float: right;
-  margin-top: 30px;
+.bottomButton {
+  margin-bottom: 20px;
 }
-
 .showPicture {
   width: 300px;
   height: 300px;
+}
+
+.list-group {
+  padding: 10px;
 }

@@ -49,6 +49,7 @@ h1 {
   font-size: 48px;
   color: #ca9e2b;
   text-align: center;
+  text-shadow: 2px 2px black;
 }
 
 
@@ -57,6 +58,7 @@ h2 {
   font-size: 48px;
   color: #ca9e2b;
   text-align: center;
+  text-shadow: 2px 2px black;
 }
 
 
@@ -81,7 +83,21 @@ textarea {
 .table {
   background-color: white;
   overflow:hidden;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 90%;
+  margin: 0 auto;
 }
+
+th {
+  background-color: #167f92;
+  color: white;
+  text-align: center;
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #eaf3f3;
+}
+
 
 @media
 only screen and (max-width: 760px),

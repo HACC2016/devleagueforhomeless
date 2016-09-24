@@ -1,7 +1,7 @@
 doctype html
 html(lang='en')
   head
-    meta(charset='UTF-8')
+    meta(charset='UTF-8', name="viewport", content="width=device-width, initial-scale=1")
     title Admin Dashboard
     link(href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet")
     script(src="https://code.jquery.com/jquery-3.1.0.min.js",  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=", crossorigin="anonymous")
@@ -14,7 +14,7 @@ html(lang='en')
         h1 Dashboard
       br
       div
-        table.ticketTable.table.table-reflow.table-hover.table-bordered
+        table.ticketTable.table.table-reflow.table-hover.table-bordered.table-striped
           each val, index in json
             if index === 0
               thead
