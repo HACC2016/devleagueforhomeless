@@ -1,13 +1,17 @@
 'use strict';
-var faker = require('faker');
+const faker = require('faker');
+
+const BASE_LAT = 21.309144;
+const BASE_LNG = -157.808631;
+
+function geoAdjustment (coor) {
+  return coor + ((Math.random() * 0.1) - 0.05);
+}
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
     var people = [];
     for(var i = 0; i < 3; i++){
-      var lat = Math.random() * (22 - 20) + 20;
-      var long = Math.random() * (-158 + 156) + -156;
-
       people.push({
         firstName: faker.name.firstName(),
         lastName: faker.name.lastName(),
@@ -21,8 +25,8 @@ module.exports = {
         adminComments: 'none',
         createdAt: new Date(),
         updatedAt: new Date(),
-        latitude: JSON.stringify(lat),
-        longitude: JSON.stringify(long),
+        latitude: JSON.stringify(geoAdjustment(BASE_LAT)),
+        longitude: JSON.stringify(geoAdjustment(BASE_LNG)),
         refferalStatus_id: 2,
         pic_id: 1
       });
