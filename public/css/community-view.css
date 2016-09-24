@@ -1,4 +1,4 @@
-/*.jumbotron {
+.jumbotron {
     margin-bottom: 0px;
     background-image: url(../img/hawaii-sunset-wallpaper-wallpaper-2.jpg);
     background-position: 0% 90%;
@@ -13,10 +13,10 @@
 
 .jumbotron h1 {
   text-shadow: black 0em 0em 0.6em;
-}*/
+}
 
-.body {
-  height: 100%;
+body {
+  height: 100vh;
   background-image: url(../img/gray_background_by_giozaga-d7ncl9q.jpg);
   background-size: cover;
   background-repeat: no-repeat;
