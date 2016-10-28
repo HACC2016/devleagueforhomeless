@@ -83,20 +83,17 @@ function initMap(){
 
             }
           }
-        }); // close geocoder callback
-      } // close geocoder if statement
-    }); //closes referrals.map function
-  }) //close success function
-}); //close ajax
+        });
+      }
+    });
+  })
+});
 
   function populateInfoWindow(marker, infowindow) {
-    // if (infowindow.marker != marker) {
-    //   infowindow.marker = marker;
       infowindow.setContent('<div class="marker">' + '<span class="info-title">' + 'Referral # ' + marker.title +   '</span>' + '<br>' + marker.address + ' ' + marker.city + ', ' + marker.state + ' ' + marker.zip + '</div>');
       infowindow.open(map, marker);
       infowindow.addListener('closeclick', function() {
         infowindow.marker = null;
       });
-    // }
   }
-} //close map init
+}
