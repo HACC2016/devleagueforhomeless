@@ -210,7 +210,6 @@
   var reader  = new FileReader();
 
   reader.addEventListener("load", function () {
-    console.log("hello");
     preview.src = reader.result;
     preview.setAttribute("style", "");
   }, false);

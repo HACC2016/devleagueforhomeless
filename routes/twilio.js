@@ -6,7 +6,6 @@ var Refferals = db.Refferals;
 var Pics = db.Pics;
 
 app.post('/message', function(req, res) {
-  console.log("Original", req.body.Body);
   var reqBodyBody = req.body.Body;
 
   var streetRE = /^S:.*$/gm;
