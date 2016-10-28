@@ -58,7 +58,6 @@ html(lang='en')
                     - num = ["Queue","In Progress","Done"]
                   else if val.refferalStatus_id == 4
                     - num = ["Queue","In Progress","Danger"]
-                  - console.log(statuses.indexOf(num[2]))
                   form(action='/homeless/' + val.id + "/?_method=put", method="post")
                     select(name="refferalStatus_id", onchange='this.form.submit()')
                       option(value="" disabled selected) #{val.refferalStatus.name}
